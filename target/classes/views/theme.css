@@ -1,0 +1,23 @@
+.background {
+    -fx-background-color: aliceblue;
+}
+
+.radio-button {
+    -fx-background-color: transparent;
+    -fx-padding: 20px 0px 20px 34px;
+    -fx-font-size: 14pt;
+}
+
+.radio-button:selected {
+    -fx-background-color: gray;
+}
+
+.left-panel {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-width: 0 1 0 0;
+}
+
+.label-book-title {
+    -fx-font-size: 18pt;
+}
