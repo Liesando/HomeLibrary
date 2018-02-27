@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="420.0" minHeight="249.0" minWidth="600.0" prefHeight="249.0" prefWidth="600.0" styleClass="book-panel" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.BookPanelController">
+   <children>
+      <Label fx:id="bookTitleLbl" layoutX="34.0" layoutY="14.0" styleClass="label-book-title" text="Название книги" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="10.0" />
+      <GridPane layoutX="18.0" layoutY="47.0" prefHeight="90.0" prefWidth="531.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="64.0">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="490.0" minWidth="10.0" prefWidth="333.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="ID:" />
+            <Label text="Издательство:" GridPane.rowIndex="1" />
+            <Label text="Год издания:" GridPane.rowIndex="2" />
+            <Label fx:id="bookIdLbl" GridPane.columnIndex="1" />
+            <Label fx:id="bookPublishingHouseLbl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="bookYearLbl" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Label fx:id="bookAuthorLbl" layoutX="14.0" layoutY="39.0" styleClass="label-author" text="Автор" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="40.0" />
+      <Accordion layoutX="79.0" layoutY="194.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label fx:id="moreInfoLbl" layoutX="172.0" layoutY="204.0" onMouseClicked="#onMoreInfoClick" styleClass="label-more-info" text="подробнее" textAlignment="CENTER" AnchorPane.bottomAnchor="-8.0" AnchorPane.rightAnchor="0.0" />
+      <TextArea fx:id="bookCommentaryTA" editable="false" layoutX="292.0" layoutY="261.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="292.0" visible="false" wrapText="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="16.0" />
+      <GridPane fx:id="additionalInfo" layoutX="58.0" layoutY="196.0" visible="false" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="150.0">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="322.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Автор иллюстраций:" wrapText="true" />
+            <Label text="Переводчик:" GridPane.rowIndex="1" />
+            <Label text="Комментарий" GridPane.rowIndex="2" />
+            <Label fx:id="bookIllustratorLbl" GridPane.columnIndex="1" />
+            <Label fx:id="bookTranslatorLbl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

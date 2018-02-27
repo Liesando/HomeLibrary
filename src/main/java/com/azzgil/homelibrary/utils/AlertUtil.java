@@ -91,12 +91,21 @@ public class AlertUtil
      * Отображает диалоговое окно об ошибке, вызванной нарушением
      * целостности файлов программы
      *
-     * @param owner
+     * @param owner Родитель, владелец, он же - объект-контейнер (Stage)
      */
-    public static void showDataCorruptionErrorAndWait(Window owner)
+    public static void showDataCorruptionErrorAndWait(Window owner, String content)
     {
         showErrorAndWait(owner, "Core Error",
                 "Файлы программы поверждены или отсутствуют",
-                "Пожалуйста, обратитесь к разработчику, чтобы получить целостную копию программы");
+                content);
+    }
+
+    /**
+     * Отображает диалоговое окно с текстом "dev"
+     * (используется только во время разработки)
+     * TODO: удалить после завершения разработки
+     */
+    public static void showDevTimeMessage() {
+        showInformationAndWait(null, "", "", "dev");
     }
 }

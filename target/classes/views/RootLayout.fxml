@@ -9,13 +9,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="1024.0" styleClass="background" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.RootLayoutController">
+<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="background" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.RootLayoutController">
    <left>
       <Pane prefHeight="533.0" prefWidth="173.0" styleClass="left-panel" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="274.0" prefWidth="172.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="287.0" styleClass="common-page" text="Общее">
+                  <RadioButton mnemonicParsing="false" onAction="#onLibraryRBtn" prefHeight="65.0" prefWidth="287.0" styleClass="common-page" text="Библиотека">
                      <toggleGroup>
                         <ToggleGroup fx:id="SectionGroup" />
                      </toggleGroup>

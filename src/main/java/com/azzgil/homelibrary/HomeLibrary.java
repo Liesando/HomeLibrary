@@ -2,6 +2,7 @@ package com.azzgil.homelibrary;
 
 import com.azzgil.homelibrary.model.*;
 import com.azzgil.homelibrary.utils.AlertUtil;
+import com.azzgil.homelibrary.utils.FXMLUtils;
 import com.azzgil.homelibrary.utils.HibernateUtil;
 import com.azzgil.homelibrary.views.RootLayoutController;
 import javafx.application.Application;
@@ -10,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
@@ -25,7 +25,7 @@ import java.util.List;
  * Главный класс приложения. Отвечает за запуск и конфигурацию программы,
  * отображение интерфейса.
  *
- * @version 0.5 23 Feb 2018
+ * @version 0.51 27 Feb 2018
  * @author Sergey Medelyan
  */
 public class HomeLibrary extends Application {
@@ -47,6 +47,12 @@ public class HomeLibrary extends Application {
 
     /** Корневой элемент-контейнер для GUI секции книг */
     private AnchorPane bookOverviewLayout;
+
+    /**
+     * Корневой элемент-контейнер для GUI секции общей информации
+     * о библиотеке
+     */
+    private AnchorPane libraryOverviewLayout;
 
     /** Просто главный метод */
     public static void main(String[] args) {
@@ -91,6 +97,7 @@ public class HomeLibrary extends Application {
     /**
      * Временный метод, используемый для проверки и исследования
      * работы с Hibernate
+     * TODO: удалить после завершения разработки
      */
     private void runTests()
     {
@@ -153,8 +160,7 @@ public class HomeLibrary extends Application {
      */
     private void initRootLayout() {
         try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getClassLoader().getResource("views/RootLayout.fxml"));
+            FXMLLoader loader = FXMLUtils.configureLoaderFor("views/RootLayout.fxml");
             rootLayout = loader.load();
             RootLayoutController controller = loader.getController();
             controller.setHomeLibrary(this);
@@ -164,21 +170,27 @@ public class HomeLibrary extends Application {
             primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
-            AlertUtil.showDataCorruptionErrorAndWait(primaryStage);
+            AlertUtil.showDataCorruptionErrorAndWait(primaryStage, "RootLayout.fxml");
             Platform.exit();
         }
     }
+
+
 
     /**
      * Загружает в память интерфейс секций (см. {@link Section}
      */
     private void loadSectionLayouts() {
+        String missingFile = "views/BookOverview.fxml";
         try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getClassLoader().getResource("views/BookOverview.fxml"));
+            FXMLLoader loader = FXMLUtils.configureLoaderFor("views/BookOverview.fxml");
             bookOverviewLayout = loader.load();
+
+            missingFile = "LibraryOverview.fxml";
+            loader = FXMLUtils.configureLoaderFor("views/LibraryOverview.fxml");
+            libraryOverviewLayout = loader.load();
         } catch (IOException e) {
-            AlertUtil.showDataCorruptionErrorAndWait(primaryStage);
+            AlertUtil.showDataCorruptionErrorAndWait(primaryStage, missingFile);
             Platform.exit();
         }
     }
@@ -190,6 +202,9 @@ public class HomeLibrary extends Application {
      */
     public void showSectionLayout(Section section) {
         switch (section) {
+            case Library:
+                rootLayout.setCenter(libraryOverviewLayout);
+                break;
             case Books:
 //                vBox.getChildren().add(bookOverviewLayout);
                 rootLayout.setCenter(bookOverviewLayout);
@@ -203,8 +218,9 @@ public class HomeLibrary extends Application {
     }
 
     /**
-     * Вызывется JavaFX при завершении приложения через вызов
-     * Platform.exit() или при закрытии последнего Stage.
+     * Этот метод вызывется JavaFX при завершении приложения через вызов
+     * Platform.exit() или при закрытии последнего Stage. Освобождает
+     * занятые ресурсы
      */
     public void stop() {
         releaseResources();

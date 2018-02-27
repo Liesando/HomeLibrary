@@ -12,22 +12,22 @@ import javafx.scene.control.RadioButton;
  * Контроллер для корневого представления (окна) приложения. Обрабатывает
  * определённые события.
  *
- * @version 1.0 23 Feb 2018
+ * @version 1.1 27 Feb 2018
  * @author Sergey Medelyan
  */
 public class RootLayoutController
 {
     private HomeLibrary homeLibrary;
 
+    public void setHomeLibrary(HomeLibrary homeLibrary)
+    {
+        this.homeLibrary = homeLibrary;
+    }
+
     @FXML
     private void initialize()
     {
         RadioButton rb = new RadioButton();
-    }
-
-    public void setHomeLibrary(HomeLibrary homeLibrary)
-    {
-        this.homeLibrary = homeLibrary;
     }
 
     @FXML
@@ -37,26 +37,27 @@ public class RootLayoutController
     }
 
     @FXML
-    private void onBookRBtn()
-    {
+    private void onLibraryRBtn() {
+        homeLibrary.showSectionLayout(Section.Library);
+    }
+
+    @FXML
+    private void onBookRBtn() {
         homeLibrary.showSectionLayout(Section.Books);
     }
 
     @FXML
-    private void onFriendsRBtn()
-    {
+    private void onFriendsRBtn() {
         homeLibrary.showSectionLayout(Section.Friends);
     }
 
     @FXML
-    private void onGenresRBtn()
-    {
+    private void onGenresRBtn() {
         homeLibrary.showSectionLayout(Section.Genres);
     }
 
     @FXML
-    private void onPublishingHousesRBtn()
-    {
+    private void onPublishingHousesRBtn() {
         homeLibrary.showSectionLayout(Section.PublishingHouses);
     }
 }

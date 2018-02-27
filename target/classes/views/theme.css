@@ -30,6 +30,10 @@
     -fx-border-width: 0 1 0 0;
 }
 
+.label-home-library {
+    -fx-font-size: 20pt;
+}
+
 .label-book-title {
     -fx-font-size: 16pt;
 }
@@ -41,4 +45,31 @@
 .common-page {
     -fx-padding: 8px 0px 8px -16px;
     -fx-font-size: 20px;
+}
+
+.label-more-info {
+    -fx-underline: true;
+    -fx-text-fill: #2b4f87;
+}
+
+.label-more-info:hover {
+    -fx-cursor: hand;
+}
+
+.book-panel {
+    -fx-padding: 16px;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-insets: 24px;
+    -fx-background-color: rgba(0,0,0,0.1);
+    -fx-background-insets: 24px;
+}
+
+.dev-time-border {
+    -fx-border-width: 2px;
+    -fx-border-color: red;
+}
+
+.text-area .content {
+    -fx-background-color: rgba(0,0,0,0.15);
 }

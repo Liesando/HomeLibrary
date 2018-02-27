@@ -102,5 +102,4 @@ public class Borrowing {
     public String toString() {
         return bookBorrowed.toString() + " borrowed by " + friendBorrowed.toString();
     }
-
 }
