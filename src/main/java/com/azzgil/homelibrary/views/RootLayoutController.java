@@ -4,6 +4,7 @@ import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.Section;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.RadioButton;
 
 /**
  * class RootLayoutController
@@ -17,6 +18,12 @@ import javafx.fxml.FXML;
 public class RootLayoutController
 {
     private HomeLibrary homeLibrary;
+
+    @FXML
+    private void initialize()
+    {
+        RadioButton rb = new RadioButton();
+    }
 
     public void setHomeLibrary(HomeLibrary homeLibrary)
     {

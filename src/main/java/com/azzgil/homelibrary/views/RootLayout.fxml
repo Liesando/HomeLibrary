@@ -9,30 +9,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.RootLayoutController">
+<BorderPane prefHeight="600.0" prefWidth="1024.0" styleClass="background" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.RootLayoutController">
    <left>
       <Pane prefHeight="533.0" prefWidth="173.0" styleClass="left-panel" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="274.0" prefWidth="172.0">
                <children>
-                  <RadioButton mnemonicParsing="false" onAction="#onBookRBtn" prefHeight="71.0" prefWidth="236.0" selected="true" text="Книги">
+                  <RadioButton mnemonicParsing="false" prefHeight="65.0" prefWidth="287.0" styleClass="common-page" text="Библиотека">
                      <toggleGroup>
                         <ToggleGroup fx:id="SectionGroup" />
                      </toggleGroup>
                      <VBox.margin>
-                        <Insets left="-60.0" />
+                        <Insets />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" onAction="#onBookRBtn" prefHeight="71.0" prefWidth="236.0" selected="true" stylesheets="@theme.css" text="Книги" toggleGroup="$SectionGroup">
+                     <VBox.margin>
+                        <Insets />
                      </VBox.margin></RadioButton>
                   <RadioButton mnemonicParsing="false" onAction="#onGenresRBtn" prefHeight="71.0" prefWidth="298.0" text="Жанры" toggleGroup="$SectionGroup">
                      <VBox.margin>
-                        <Insets left="-60.0" />
+                        <Insets />
                      </VBox.margin></RadioButton>
                   <RadioButton mnemonicParsing="false" onAction="#onPublishingHousesRBtn" prefHeight="51.0" prefWidth="235.0" text="Издательства" toggleGroup="$SectionGroup">
                      <VBox.margin>
-                        <Insets left="-60.0" />
+                        <Insets />
                      </VBox.margin></RadioButton>
                   <RadioButton mnemonicParsing="false" onAction="#onFriendsRBtn" prefHeight="71.0" prefWidth="330.0" text="Друзья" toggleGroup="$SectionGroup">
                      <VBox.margin>
-                        <Insets left="-60.0" />
+                        <Insets />
                      </VBox.margin></RadioButton>
                </children>
             </VBox>
@@ -42,7 +47,7 @@
    <top>
       <Pane prefHeight="67.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar prefHeight="27.0" prefWidth="800.0">
+            <MenuBar prefHeight="29.0" prefWidth="1024.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Файл">
                   <items>
@@ -61,7 +66,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <ToolBar layoutY="27.0" prefHeight="40.0" prefWidth="800.0" />
+            <ToolBar layoutY="27.0" prefHeight="40.0" prefWidth="1024.0" />
          </children>
       </Pane>
    </top>

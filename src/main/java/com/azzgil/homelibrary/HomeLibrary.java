@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
@@ -160,6 +161,7 @@ public class HomeLibrary extends Application {
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
             AlertUtil.showDataCorruptionErrorAndWait(primaryStage);
@@ -189,9 +191,11 @@ public class HomeLibrary extends Application {
     public void showSectionLayout(Section section) {
         switch (section) {
             case Books:
+//                vBox.getChildren().add(bookOverviewLayout);
                 rootLayout.setCenter(bookOverviewLayout);
                 break;
             default:
+//                vBox.getChildren().clear();
                 rootLayout.setCenter(null);
                 AlertUtil.showNotRealizedWarningAndWait(primaryStage);
                 break;
