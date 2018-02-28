@@ -10,7 +10,7 @@
          <children>
             <VBox prefHeight="274.0" prefWidth="172.0">
                <children>
-                  <RadioButton mnemonicParsing="false" onAction="#onLibraryRBtn" prefHeight="65.0" prefWidth="287.0" styleClass="common-page" text="Библиотека">
+                  <RadioButton mnemonicParsing="false" onAction="#onLibraryRBtn" prefHeight="65.0" prefWidth="287.0" selected="true" styleClass="common-page" text="Библиотека">
                      <toggleGroup>
                         <ToggleGroup fx:id="SectionGroup" />
                      </toggleGroup>
@@ -18,7 +18,7 @@
                         <Insets />
                      </VBox.margin>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" onAction="#onBookRBtn" prefHeight="71.0" prefWidth="236.0" selected="true" stylesheets="@theme.css" text="Книги" toggleGroup="$SectionGroup">
+                  <RadioButton mnemonicParsing="false" onAction="#onBookRBtn" prefHeight="71.0" prefWidth="236.0" stylesheets="@theme.css" text="Книги" toggleGroup="$SectionGroup">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin></RadioButton>

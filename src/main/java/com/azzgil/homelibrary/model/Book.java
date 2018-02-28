@@ -2,6 +2,7 @@ package com.azzgil.homelibrary.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 /**
@@ -139,5 +140,19 @@ public class Book {
     @Transient
     public String toString() {
         return String.format("%s, %d", getName(), getYear());
+    }
+
+    @Transient
+    public String getGenresAsString() {
+        StringBuilder sb = new StringBuilder();
+        if (genres == null) {
+            return "[жанр не указан]";
+        }
+        for(Iterator i = genres.iterator(); i.hasNext();) {
+            sb.append(((Genre) i.next()).getFullName());
+            sb.append(", ");
+        }
+        sb.delete(sb.length() - 2, sb.length());
+        return sb.toString();
     }
 }

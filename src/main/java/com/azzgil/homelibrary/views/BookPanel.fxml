@@ -5,7 +5,7 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="420.0" minHeight="249.0" minWidth="600.0" prefHeight="249.0" prefWidth="600.0" styleClass="book-panel" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.BookPanelController">
    <children>
-      <Label fx:id="bookTitleLbl" layoutX="34.0" layoutY="14.0" styleClass="label-book-title" text="Название книги" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="bookTitleLbl" layoutX="34.0" layoutY="14.0" styleClass="label-book-title" text="Название книги" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="-6.0" />
       <GridPane layoutX="18.0" layoutY="47.0" prefHeight="90.0" prefWidth="531.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="64.0">
         <columnConstraints>
           <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" />
@@ -25,7 +25,7 @@
             <Label fx:id="bookYearLbl" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Label fx:id="bookAuthorLbl" layoutX="14.0" layoutY="39.0" styleClass="label-author" text="Автор" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="40.0" />
+      <Label fx:id="bookAuthorLbl" layoutX="14.0" layoutY="39.0" styleClass="label-author" text="Автор" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="24.0" />
       <Accordion layoutX="79.0" layoutY="194.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Label fx:id="moreInfoLbl" layoutX="172.0" layoutY="204.0" onMouseClicked="#onMoreInfoClick" styleClass="label-more-info" text="подробнее" textAlignment="CENTER" AnchorPane.bottomAnchor="-8.0" AnchorPane.rightAnchor="0.0" />
       <TextArea fx:id="bookCommentaryTA" editable="false" layoutX="292.0" layoutY="261.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="292.0" visible="false" wrapText="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="16.0" />
@@ -47,5 +47,6 @@
             <Label fx:id="bookTranslatorLbl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
+      <Label fx:id="bookGenresLbl" layoutX="58.0" layoutY="81.0" styleClass="label-book-genres" text="Жанры" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="44.0" />
    </children>
 </AnchorPane>

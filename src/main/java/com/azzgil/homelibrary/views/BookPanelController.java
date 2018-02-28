@@ -32,6 +32,7 @@ public class BookPanelController {
     @FXML private TextArea bookCommentaryTA;
     @FXML private Label bookTitleLbl;
     @FXML private Label bookAuthorLbl;
+    @FXML private Label bookGenresLbl;
     @FXML private Label bookIdLbl;
     @FXML private Label bookPublishingHouseLbl;
     @FXML private Label bookYearLbl;
@@ -78,6 +79,7 @@ public class BookPanelController {
         if(book == null) {
             bookTitleLbl.setText("");
             bookAuthorLbl.setText("");
+            bookGenresLbl.setText("");
             bookIdLbl.setText("");
             bookPublishingHouseLbl.setText("");
             bookYearLbl.setText("");
@@ -87,6 +89,7 @@ public class BookPanelController {
         } else {
             bookTitleLbl.setText(book.getName());
             bookAuthorLbl.setText(book.getAuthor());
+            bookGenresLbl.setText(book.getGenresAsString());
             bookIdLbl.setText(Integer.toString(book.getId()));
             bookPublishingHouseLbl.setText(book.getPublishingHouse().getName());
             bookYearLbl.setText(Integer.toString(book.getYear()));

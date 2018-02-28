@@ -4,6 +4,7 @@ import com.azzgil.homelibrary.model.*;
 import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.FXMLUtils;
 import com.azzgil.homelibrary.utils.HibernateUtil;
+import com.azzgil.homelibrary.views.BookOverviewController;
 import com.azzgil.homelibrary.views.RootLayoutController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -47,6 +48,7 @@ public class HomeLibrary extends Application {
 
     /** Корневой элемент-контейнер для GUI секции книг */
     private AnchorPane bookOverviewLayout;
+    private BookOverviewController bookOverviewController;
 
     /**
      * Корневой элемент-контейнер для GUI секции общей информации
@@ -75,7 +77,7 @@ public class HomeLibrary extends Application {
 
         initRootLayout();
         loadSectionLayouts();
-        showSectionLayout(Section.Books);
+        showSectionLayout(Section.Library);
 
         // TODO: delete when tests are finished
         runTests();
@@ -120,7 +122,7 @@ public class HomeLibrary extends Application {
 
             for (Genre g :
                     b.getGenres()) {
-                message += g.toString() + ", ";
+                message += g.getFullName() + ", ";
             }
             message += "\n";
 
@@ -185,11 +187,13 @@ public class HomeLibrary extends Application {
         try {
             FXMLLoader loader = FXMLUtils.configureLoaderFor("views/BookOverview.fxml");
             bookOverviewLayout = loader.load();
+            bookOverviewController = loader.getController();
 
             missingFile = "LibraryOverview.fxml";
             loader = FXMLUtils.configureLoaderFor("views/LibraryOverview.fxml");
             libraryOverviewLayout = loader.load();
         } catch (IOException e) {
+            e.printStackTrace();
             AlertUtil.showDataCorruptionErrorAndWait(primaryStage, missingFile);
             Platform.exit();
         }
@@ -231,5 +235,9 @@ public class HomeLibrary extends Application {
      */
     private void releaseResources() {
         HibernateUtil.destroySessionFactory();
+    }
+
+    public BookOverviewController getBookOverviewController() {
+        return bookOverviewController;
     }
 }

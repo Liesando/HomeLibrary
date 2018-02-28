@@ -30,7 +30,7 @@
     -fx-border-width: 0 1 0 0;
 }
 
-.label-home-library {
+.label-section-title {
     -fx-font-size: 20pt;
 }
 
@@ -40,6 +40,13 @@
 
 .label-author {
     -fx-text-fill: #616161;
+}
+
+.label-book-genres {
+    -fx-font-style: italic;
+    -fx-font-size: 10pt;
+    -fx-underline: true;
+    -fx-text-fill: #505050;
 }
 
 .common-page {

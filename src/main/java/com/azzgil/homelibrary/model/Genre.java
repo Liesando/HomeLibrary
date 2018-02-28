@@ -25,6 +25,8 @@ public class Genre {
      * и другому жанру).
      */
     private Collection<Book> books;
+    private Genre parentGenre;
+    private Collection<Genre> childGenres;
 
 
     public Genre() {}
@@ -53,6 +55,25 @@ public class Genre {
         return books;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "id_parent_genre", insertable = false, updatable = false)
+    public Genre getParentGenre() {
+        return parentGenre;
+    }
+
+    @OneToMany(mappedBy = "parentGenre")
+    public Collection<Genre> getChildGenres() {
+        return childGenres;
+    }
+
+    public void setChildGenres(Collection<Genre> childGenres) {
+        this.childGenres = childGenres;
+    }
+
+    public void setParentGenre(Genre parentGenre) {
+        this.parentGenre = parentGenre;
+    }
+
     public void setBooks(Collection<Book> books) {
         this.books = books;
     }
@@ -73,5 +94,13 @@ public class Genre {
     @Transient
     public String toString() {
         return getName();
+    }
+
+    @Transient
+    public String getFullName() {
+        if(getParentGenre() == null) {
+            return getName();
+        }
+        return getParentGenre().getFullName().concat(" / " + getName());
     }
 }
