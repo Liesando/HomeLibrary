@@ -9,7 +9,7 @@ import java.util.Collection;
  * Жанр книги в библиотеке. Помимо непосредственной информации о себе
  * содержит информацию о книгах, относящихся к этому жанру (см. {@link Book})
  *
- * @version 1.0 23 Feb 2018
+ * @version 1.1 1 March 2018
  * @author Sergey Medelyan
  */
 @Entity
@@ -33,7 +33,10 @@ public class Genre {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genre_seq_gen")
+    @SequenceGenerator(name = "genre_seq_gen",
+            sequenceName = "genre_seq", initialValue = 1,
+            allocationSize = 20)
     @Column(name = "id_genre")
     public int getId() {
         return id;
@@ -46,7 +49,7 @@ public class Genre {
 
     @JoinColumn
     @Column(name = "id_parent_genre")
-    public int getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
@@ -93,7 +96,7 @@ public class Genre {
     @Override
     @Transient
     public String toString() {
-        return getName();
+        return getFullName();
     }
 
     @Transient

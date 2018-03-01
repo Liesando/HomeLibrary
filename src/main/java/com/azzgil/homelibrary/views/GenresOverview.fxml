@@ -4,14 +4,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.GenresOverviewController">
    <children>
       <VBox maxHeight="50.0" prefHeight="50.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" text="Добавить жанр" />
+                  <Button mnemonicParsing="false" onAction="#onAddGenreBtnClick" text="Добавить жанр" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -27,7 +26,7 @@
       </VBox>
       <ScrollPane layoutX="14.0" layoutY="60.0" prefHeight="326.0" prefViewportHeight="200.0" prefViewportWidth="572.0" prefWidth="572.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0">
          <content>
-            <TreeView layoutX="14.0" layoutY="50.0" prefHeight="326.0" prefWidth="569.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0" />
+            <TreeView fx:id="treeView" layoutX="14.0" layoutY="50.0" prefHeight="326.0" prefWidth="569.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0" />
          </content>
       </ScrollPane>
       <Label styleClass="label-section-title" text="Жанры" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />

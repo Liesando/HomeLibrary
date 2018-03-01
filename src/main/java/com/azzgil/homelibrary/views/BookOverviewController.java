@@ -2,6 +2,7 @@ package com.azzgil.homelibrary.views;
 
 import com.azzgil.homelibrary.model.Book;
 import com.azzgil.homelibrary.utils.AlertUtil;
+import com.azzgil.homelibrary.utils.DataUtils;
 import com.azzgil.homelibrary.utils.FXMLUtils;
 import com.azzgil.homelibrary.utils.HibernateUtil;
 import javafx.application.Platform;
@@ -24,7 +25,7 @@ import java.util.List;
  * интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.1 27 Feb 2018
+ * @version 1.2 1 March 2018
  */
 public class BookOverviewController {
 
@@ -58,10 +59,8 @@ public class BookOverviewController {
      */
     private void loadBooks() {
         try {
-            Session session = HibernateUtil.openSession();
-            List books = session.createQuery("from Book").list();
-            for (Object o : books) {
-                Book b = (Book) o;
+            Book[] books = DataUtils.fetchAllBooks();
+            for (Book b : books) {
                 FXMLLoader loader = FXMLUtils.configureLoaderFor("views/BookPanel.fxml");
                 contentVBox.getChildren().add(loader.load());
                 BookPanelController controller = loader.getController();

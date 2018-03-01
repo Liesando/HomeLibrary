@@ -49,6 +49,7 @@ public class HomeLibrary extends Application {
     /** Корневой элемент-контейнер для GUI секции книг */
     private AnchorPane bookOverviewLayout;
     private BookOverviewController bookOverviewController;
+    private AnchorPane genresOverviewLayout;
 
     /**
      * Корневой элемент-контейнер для GUI секции общей информации
@@ -189,9 +190,13 @@ public class HomeLibrary extends Application {
             bookOverviewLayout = loader.load();
             bookOverviewController = loader.getController();
 
-            missingFile = "LibraryOverview.fxml";
+            missingFile = "views/LibraryOverview.fxml";
             loader = FXMLUtils.configureLoaderFor("views/LibraryOverview.fxml");
             libraryOverviewLayout = loader.load();
+
+            missingFile = "views/GenresOverview.fxml";
+            loader = FXMLUtils.configureLoaderFor("views/GenresOverview.fxml");
+            genresOverviewLayout = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
             AlertUtil.showDataCorruptionErrorAndWait(primaryStage, missingFile);
@@ -212,6 +217,9 @@ public class HomeLibrary extends Application {
             case Books:
 //                vBox.getChildren().add(bookOverviewLayout);
                 rootLayout.setCenter(bookOverviewLayout);
+                break;
+            case Genres:
+                rootLayout.setCenter(genresOverviewLayout);
                 break;
             default:
 //                vBox.getChildren().clear();

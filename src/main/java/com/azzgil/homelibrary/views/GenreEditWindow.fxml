@@ -4,13 +4,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="122.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="122.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.GenreEditWindowController">
    <children>
       <HBox alignment="CENTER_RIGHT" layoutX="200.0" layoutY="300.0" maxHeight="39.0" prefHeight="39.0" prefWidth="400.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" text="Добавить" />
-            <Button mnemonicParsing="false" text="Отмена" />
+            <Button mnemonicParsing="false" onAction="#onConfirmBtnClick" text="Добавить" />
+            <Button mnemonicParsing="false" onAction="#onCancelBtnClick" text="Отмена" />
          </children>
          <padding>
             <Insets right="8.0" />
@@ -27,9 +26,9 @@
         </rowConstraints>
          <children>
             <Label text="Название жанра:" />
-            <TextField promptText="Введите название жанра" GridPane.columnIndex="1" />
+            <TextField fx:id="genreNameTF" promptText="Введите название жанра" GridPane.columnIndex="1" />
             <Label text="Категория:" GridPane.rowIndex="1" />
-            <ComboBox prefWidth="150.0" visibleRowCount="7" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="parentCategories" prefWidth="150.0" visibleRowCount="7" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

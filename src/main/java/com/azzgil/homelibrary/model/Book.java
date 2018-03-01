@@ -80,7 +80,7 @@ public class Book {
         return translator;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "BooksGenres",
             joinColumns = { @JoinColumn(name = "id_book") },
@@ -145,10 +145,10 @@ public class Book {
     @Transient
     public String getGenresAsString() {
         StringBuilder sb = new StringBuilder();
-        if (genres == null) {
+        if (getGenres() == null) {
             return "[жанр не указан]";
         }
-        for(Iterator i = genres.iterator(); i.hasNext();) {
+        for(Iterator i = getGenres().iterator(); i.hasNext();) {
             sb.append(((Genre) i.next()).getFullName());
             sb.append(", ");
         }
