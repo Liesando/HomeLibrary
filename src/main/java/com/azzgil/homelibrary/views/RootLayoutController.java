@@ -4,6 +4,7 @@ import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.Section;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 
 /**
@@ -12,12 +13,14 @@ import javafx.scene.control.RadioButton;
  * Контроллер для корневого представления (окна) приложения. Обрабатывает
  * определённые события.
  *
- * @version 1.1 27 Feb 2018
+ * @version 1.2 2 March 2018
  * @author Sergey Medelyan
  */
 public class RootLayoutController
 {
     private HomeLibrary homeLibrary;
+
+    @FXML private MenuItem editMI;
 
     public void setHomeLibrary(HomeLibrary homeLibrary)
     {
@@ -59,5 +62,21 @@ public class RootLayoutController
     @FXML
     private void onPublishingHousesRBtn() {
         homeLibrary.showSectionLayout(Section.PublishingHouses);
+    }
+
+//    TODO: add global all-app user capabilities turning on/off methods
+//    @FXML
+//    private boolean onValidateEdit() {
+//        boolean result = homeLibrary.getCurrentController() != null
+//                && homeLibrary.getCurrentController().validateUpdate();
+//        editMI.setDisable(!result);
+//        return result;
+//    }
+
+    @FXML
+    private void onEdit() {
+        if(homeLibrary.getCurrentController() != null) {
+            homeLibrary.getCurrentController().update();
+        }
     }
 }

@@ -1,10 +1,8 @@
 package com.azzgil.homelibrary.views;
 
+import com.azzgil.homelibrary.ICUDController;
 import com.azzgil.homelibrary.model.Book;
-import com.azzgil.homelibrary.utils.AlertUtil;
-import com.azzgil.homelibrary.utils.DataUtils;
-import com.azzgil.homelibrary.utils.FXMLUtils;
-import com.azzgil.homelibrary.utils.HibernateUtil;
+import com.azzgil.homelibrary.utils.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.hibernate.Session;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * BookOverviewController
@@ -25,9 +21,9 @@ import java.util.List;
  * интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.2 1 March 2018
+ * @version 1.3 2 March 2018
  */
-public class BookOverviewController {
+public class BookOverviewController implements ICUDController {
 
     /** Высота иконки добавления книги (иконка подгружается динамически) */
     private static final double ADD_BOOK_ICON_HEIGHT = 24.0;
@@ -47,11 +43,7 @@ public class BookOverviewController {
      * Загружает все требуемые интерфейсу иконки
      */
     private void loadIcons() {
-        ImageView iv = new ImageView(new Image(getClass().getClassLoader()
-                .getResourceAsStream("icons/add_book.png")));
-        iv.setFitHeight(ADD_BOOK_ICON_HEIGHT);
-        iv.setFitWidth(ADD_BOOK_ICON_HEIGHT);
-        addBookBtn.setGraphic(iv);
+        GUIUtils.loadButtonIcon(addBookBtn, "icons/add_book.png");
     }
 
     /**
@@ -72,7 +64,28 @@ public class BookOverviewController {
         }
     }
 
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    @Override
+    public void create() {
+
+    }
+
+    @Override
+    public boolean validateUpdate() {
+        return false;
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public boolean validateDelete() {
+        return false;
+    }
+
+    @Override
+    public void delete() {
+
     }
 }

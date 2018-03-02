@@ -9,7 +9,7 @@
         <property name="connection.username">azzgil</property>
         <property name="connection.password">2501192520</property>
         <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
-
+        <property name="show_sql">true</property>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

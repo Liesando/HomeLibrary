@@ -9,7 +9,7 @@ import java.util.Collection;
  * Жанр книги в библиотеке. Помимо непосредственной информации о себе
  * содержит информацию о книгах, относящихся к этому жанру (см. {@link Book})
  *
- * @version 1.1 1 March 2018
+ * @version 1.2 2 March 2018
  * @author Sergey Medelyan
  */
 @Entity
@@ -31,6 +31,11 @@ public class Genre {
 
     public Genre() {}
 
+    public Genre(int id, String name, Integer parentId) {
+        this.id = id;
+        this.name = name;
+        this.parentId = parentId;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genre_seq_gen")
@@ -96,14 +101,23 @@ public class Genre {
     @Override
     @Transient
     public String toString() {
-        return getFullName();
+        return getName();
     }
 
+    /**
+     * Возвращает полное имя жанра в формате:
+     * < и т. д. > / <имя предка предка> / <имя предка> / <имя жанра>
+     * Если name == null, то в качестве имени жанра ( <имя жанра> )
+     * берётся пустая строка
+     *
+     * @return Полное имя жанра
+     */
     @Transient
     public String getFullName() {
+        String niceName = getName() == null ? "" : getName();
         if(getParentGenre() == null) {
-            return getName();
+            return niceName;
         }
-        return getParentGenre().getFullName().concat(" / " + getName());
+        return getParentGenre().getFullName().concat(" / " + niceName);
     }
 }

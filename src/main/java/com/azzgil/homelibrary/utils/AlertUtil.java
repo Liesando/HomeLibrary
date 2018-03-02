@@ -8,7 +8,7 @@ import javafx.stage.Window;
  *
  * Вспомогательный класс для отображения диалоговых окон с сообщениями пользователю.
  *
- * @version 1.0 23 Feb 2018
+ * @version 1.1 2 March 2018
  * @author Sergey Medelyan
  */
 public class AlertUtil
@@ -98,6 +98,18 @@ public class AlertUtil
         showErrorAndWait(owner, "Core Error",
                 "Файлы программы поверждены или отсутствуют",
                 content);
+    }
+
+    /**
+     * Отображает диалоговое окно с сообщением об ошибке, которая возникает
+     * при попытке обработки команды редактирования и отсутствии редактируемого
+     * объекта.
+     *
+     * @param owner Родитель, владелец, он же - объект-контейнер (Stage)
+     * @param content Текст сообщения
+     */
+    public static void showEmptySelectionErrorAndWait(Window owner, String content) {
+        showErrorAndWait(owner, "Error", "Не выбран объект", content);
     }
 
     /**

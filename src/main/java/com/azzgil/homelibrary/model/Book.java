@@ -37,6 +37,7 @@ public class Book {
     public Book() {}
 
 
+    // TODO: Sequence-generator
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_book")
@@ -145,13 +146,15 @@ public class Book {
     @Transient
     public String getGenresAsString() {
         StringBuilder sb = new StringBuilder();
-        if (getGenres() == null) {
+        if (getGenres() == null || getGenres().size() == 0) {
             return "[жанр не указан]";
         }
-        for(Iterator i = getGenres().iterator(); i.hasNext();) {
-            sb.append(((Genre) i.next()).getFullName());
+
+        for (Genre g: getGenres()) {
+            sb.append(g.getFullName());
             sb.append(", ");
         }
+
         sb.delete(sb.length() - 2, sb.length());
         return sb.toString();
     }

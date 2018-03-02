@@ -5,6 +5,7 @@ import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.FXMLUtils;
 import com.azzgil.homelibrary.utils.HibernateUtil;
 import com.azzgil.homelibrary.views.BookOverviewController;
+import com.azzgil.homelibrary.views.GenresOverviewController;
 import com.azzgil.homelibrary.views.RootLayoutController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -26,7 +27,7 @@ import java.util.List;
  * Главный класс приложения. Отвечает за запуск и конфигурацию программы,
  * отображение интерфейса.
  *
- * @version 0.51 27 Feb 2018
+ * @version dev-0.52 2 March 2018
  * @author Sergey Medelyan
  */
 public class HomeLibrary extends Application {
@@ -46,15 +47,20 @@ public class HomeLibrary extends Application {
      */
     private BorderPane rootLayout;
 
-    /** Корневой элемент-контейнер для GUI секции книг */
+    /**
+     * Текущий контроллер (для передачи управления при вызове
+     * функций CUD (см. {@link ICUDController}))
+     */
+    private ICUDController currentController;
+
+    /**
+     * Корневые элементы-контейнеры (...Layout) для соотетствующих
+     * GUI-секций и их контроллеры (...Controller)
+     */
     private AnchorPane bookOverviewLayout;
     private BookOverviewController bookOverviewController;
     private AnchorPane genresOverviewLayout;
-
-    /**
-     * Корневой элемент-контейнер для GUI секции общей информации
-     * о библиотеке
-     */
+    private GenresOverviewController genresOverviewController;
     private AnchorPane libraryOverviewLayout;
 
     /** Просто главный метод */
@@ -98,7 +104,7 @@ public class HomeLibrary extends Application {
     }
 
     /**
-     * Временный метод, используемый для проверки и исследования
+     * Временный метод, используемый для исследования
      * работы с Hibernate
      * TODO: удалить после завершения разработки
      */
@@ -159,7 +165,7 @@ public class HomeLibrary extends Application {
     }
 
     /**
-     * Загружает и настраивает основной интерфейс приложения
+     * Загружает и настраивает основной каркас интерфейса приложения
      */
     private void initRootLayout() {
         try {
@@ -173,7 +179,7 @@ public class HomeLibrary extends Application {
             primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
-            AlertUtil.showDataCorruptionErrorAndWait(primaryStage, "RootLayout.fxml");
+            AlertUtil.showDataCorruptionErrorAndWait(primaryStage, "views/RootLayout.fxml");
             Platform.exit();
         }
     }
@@ -181,7 +187,8 @@ public class HomeLibrary extends Application {
 
 
     /**
-     * Загружает в память интерфейс секций (см. {@link Section}
+     * Загружает в память интерфейс секций (см. {@link Section} и их
+     * контроллеры
      */
     private void loadSectionLayouts() {
         String missingFile = "views/BookOverview.fxml";
@@ -197,6 +204,7 @@ public class HomeLibrary extends Application {
             missingFile = "views/GenresOverview.fxml";
             loader = FXMLUtils.configureLoaderFor("views/GenresOverview.fxml");
             genresOverviewLayout = loader.load();
+            genresOverviewController = loader.getController();
         } catch (IOException e) {
             e.printStackTrace();
             AlertUtil.showDataCorruptionErrorAndWait(primaryStage, missingFile);
@@ -213,16 +221,20 @@ public class HomeLibrary extends Application {
         switch (section) {
             case Library:
                 rootLayout.setCenter(libraryOverviewLayout);
+                currentController = null;
                 break;
+
             case Books:
-//                vBox.getChildren().add(bookOverviewLayout);
                 rootLayout.setCenter(bookOverviewLayout);
+                currentController = bookOverviewController;
                 break;
+
             case Genres:
                 rootLayout.setCenter(genresOverviewLayout);
+                currentController = genresOverviewController;
                 break;
+
             default:
-//                vBox.getChildren().clear();
                 rootLayout.setCenter(null);
                 AlertUtil.showNotRealizedWarningAndWait(primaryStage);
                 break;
@@ -231,8 +243,9 @@ public class HomeLibrary extends Application {
 
     /**
      * Этот метод вызывется JavaFX при завершении приложения через вызов
-     * Platform.exit() или при закрытии последнего Stage. Освобождает
-     * занятые ресурсы
+     * Platform.exit() или при закрытии последнего Stage. Предназначен
+     * для корректного завершения работы, освобождения ресурсов, сохранений
+     * и т. д.
      */
     public void stop() {
         releaseResources();
@@ -247,5 +260,9 @@ public class HomeLibrary extends Application {
 
     public BookOverviewController getBookOverviewController() {
         return bookOverviewController;
+    }
+
+    public ICUDController getCurrentController() {
+        return currentController;
     }
 }

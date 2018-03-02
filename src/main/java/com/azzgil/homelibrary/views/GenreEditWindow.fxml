@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,8 +9,8 @@
    <children>
       <HBox alignment="CENTER_RIGHT" layoutX="200.0" layoutY="300.0" maxHeight="39.0" prefHeight="39.0" prefWidth="400.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#onConfirmBtnClick" text="Добавить" />
-            <Button mnemonicParsing="false" onAction="#onCancelBtnClick" text="Отмена" />
+            <Button fx:id="confirmBtn" mnemonicParsing="false" onAction="#onConfirmBtn" text="Добавить" />
+            <Button mnemonicParsing="false" onAction="#onCancelBtn" text="Отмена" />
          </children>
          <padding>
             <Insets right="8.0" />
