@@ -21,6 +21,7 @@ public class RootLayoutController
     private HomeLibrary homeLibrary;
 
     @FXML private MenuItem editMI;
+    @FXML private MenuItem deleteMI;
 
     public void setHomeLibrary(HomeLibrary homeLibrary)
     {
@@ -77,6 +78,13 @@ public class RootLayoutController
     private void onEdit() {
         if(homeLibrary.getCurrentController() != null) {
             homeLibrary.getCurrentController().update();
+        }
+    }
+
+    @FXML
+    private void onDelete() {
+        if(homeLibrary.getCurrentController() != null) {
+            homeLibrary.getCurrentController().delete();
         }
     }
 }

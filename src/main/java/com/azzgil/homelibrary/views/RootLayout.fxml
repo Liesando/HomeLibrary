@@ -53,6 +53,7 @@
                 <Menu mnemonicParsing="false" text="Редактирование">
                   <items>
                     <MenuItem fx:id="editMI" mnemonicParsing="false" onAction="#onEdit" text="Редактировать" />
+                        <MenuItem fx:id="deleteMI" mnemonicParsing="false" onAction="#onDelete" text="Удалить" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Помощь">

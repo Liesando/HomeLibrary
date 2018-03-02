@@ -52,7 +52,6 @@ public class Genre {
         return name;
     }
 
-    @JoinColumn
     @Column(name = "id_parent_genre")
     public Integer getParentId() {
         return parentId;
@@ -69,7 +68,7 @@ public class Genre {
         return parentGenre;
     }
 
-    @OneToMany(mappedBy = "parentGenre")
+    @OneToMany(mappedBy = "parentGenre", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     public Collection<Genre> getChildGenres() {
         return childGenres;
     }

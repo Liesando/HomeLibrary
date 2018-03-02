@@ -5,14 +5,19 @@ import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.DataUtils;
 import com.azzgil.homelibrary.utils.FXMLUtils;
+import com.azzgil.homelibrary.utils.HibernateUtil;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 
 import java.io.IOException;
 import java.util.*;
@@ -44,6 +49,7 @@ public class GenresOverviewController implements ICUDController {
     public void refreshGenres() {
         genres = DataUtils.fetchAllGenres();
         generateTree(genres);
+        treeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     /**
@@ -145,12 +151,32 @@ public class GenresOverviewController implements ICUDController {
 
     @Override
     public boolean validateDelete() {
-        return false;
+        return validateUpdate();
     }
 
     @Override
     public void delete() {
+        if(!validateDelete()) {
+            AlertUtil.showEmptySelectionErrorAndWait(null, EMPTY_SELECTION_ERROR);
+            return;
+        }
 
+        Session session = HibernateUtil.openSession();
+        try {
+            session.beginTransaction();
+            for (TreeItem<Genre> t:
+                    treeView.getSelectionModel().getSelectedItems()) {
+                session.delete(t.getValue());
+            }
+            session.getTransaction().commit();
+            refreshGenres();
+        } catch (HibernateException e) {
+            // TODO: Display message that something's happened
+            session.getTransaction().rollback();
+        }
+        finally {
+            session.close();
+        }
     }
 
     @FXML
