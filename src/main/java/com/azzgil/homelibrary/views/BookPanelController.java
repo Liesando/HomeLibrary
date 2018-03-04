@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
  * Контроллер панельки конкретной книги. Обрабатывает события интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.0 27 Feb 2018
+ * @version 1.1 4 March 2018
  */
 public class BookPanelController {
 
@@ -22,9 +22,10 @@ public class BookPanelController {
     private final static String MORE_INFO = "подробнее";
     private final static String LESS_INFO = "свернуть";
 
+    private BookOverviewController parentController;
     private Book book;
     private boolean isFolded = true;
-    private double initialHeigth = 0;
+    private double initialHeight = 0;
 
     @FXML private AnchorPane anchorPane;
     @FXML private Label moreInfoLbl;
@@ -42,7 +43,7 @@ public class BookPanelController {
 
     @FXML
     private void initialize() {
-        initialHeigth = anchorPane.getPrefHeight();
+        initialHeight = anchorPane.getPrefHeight();
     }
 
     @FXML
@@ -50,13 +51,17 @@ public class BookPanelController {
         isFolded = !isFolded;
 
         if(isFolded) {
-            anchorPane.setPrefHeight(initialHeigth);
+            anchorPane.setPrefHeight(initialHeight);
             additionalInfo.setVisible(false);
             bookCommentaryTA.setVisible(false);
+            parentController.correctVBoxHeight(
+                    initialHeight - anchorPane.getMaxHeight());
         } else {
             anchorPane.setPrefHeight(anchorPane.getMaxHeight());
             additionalInfo.setVisible(true);
             bookCommentaryTA.setVisible(true);
+            parentController.correctVBoxHeight(
+                    anchorPane.getMaxHeight() - initialHeight);
         }
 
         moreInfoLbl.setText( isFolded ? MORE_INFO : LESS_INFO);
@@ -97,5 +102,13 @@ public class BookPanelController {
             bookTranslatorLbl.setText(book.getTranslator());
             bookCommentaryTA.setText(book.getCommentary());
         }
+    }
+
+    public double getCurrentHeight() {
+        return anchorPane.getPrefHeight();
+    }
+
+    public void setParentController(BookOverviewController parentController) {
+        this.parentController = parentController;
     }
 }

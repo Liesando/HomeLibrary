@@ -1,6 +1,8 @@
 package com.azzgil.homelibrary.utils;
 
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import javafx.stage.Window;
 
 /**
@@ -8,7 +10,7 @@ import javafx.stage.Window;
  *
  * Вспомогательный класс для отображения диалоговых окон с сообщениями пользователю.
  *
- * @version 1.1 2 March 2018
+ * @version 1.2 4 March 2018
  * @author Sergey Medelyan
  */
 public class AlertUtil
@@ -19,40 +21,37 @@ public class AlertUtil
     /**
      * Отображает диалоговое предупреждающее окно и ожидает его закрытия
      *
-     * @param owner       Родитель, владелец, он же - объект-контейнер (Stage)
      * @param title       Заголовок окна
      * @param headerText  Заголовок сообщения
      * @param contentText Сообщение
      */
-    public static void showWarningAndWait(Window owner, String title, String headerText, String contentText)
+    public static void showWarningAndWait(String title, String headerText, String contentText)
     {
-        showAlertAndWait(Alert.AlertType.WARNING, owner, title, headerText, contentText);
+        showAlertAndWait(Alert.AlertType.WARNING, null, title, headerText, contentText);
     }
 
     /**
      * Отображает диалоговое информационное окно и ожидает его закрытия
      *
-     * @param owner       Родитель, владелец, он же - объект-контенейр (Stage)
      * @param title       Заголовок окна
      * @param headerText  Заговолок сообщения
      * @param contentText Сообщение
      */
-    public static void showInformationAndWait(Window owner, String title, String headerText, String contentText)
+    public static void showInformationAndWait(String title, String headerText, String contentText)
     {
-        showAlertAndWait(Alert.AlertType.INFORMATION, owner, title, headerText, contentText);
+        showAlertAndWait(Alert.AlertType.INFORMATION, null, title, headerText, contentText);
     }
 
     /**
      * Отображает диалоговое окно об ошибке и ожидает его закрытия
      *
-     * @param owner       Родитель, владелец, он же - объект-контейнер (Stage)
      * @param title       Заголовок окна
      * @param headerText  Заголовок сообщения
      * @param contentText Сообщение
      */
-    public static void showErrorAndWait(Window owner, String title, String headerText, String contentText)
+    public static void showErrorAndWait(String title, String headerText, String contentText)
     {
-        showAlertAndWait(Alert.AlertType.ERROR, owner, title, headerText, contentText);
+        showAlertAndWait(Alert.AlertType.ERROR, null, title, headerText, contentText);
     }
 
     /**
@@ -71,7 +70,11 @@ public class AlertUtil
         alert.initOwner(owner);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
-        alert.setContentText(contentText);
+        TextArea ta = new TextArea(contentText);
+        ta.setEditable(false);
+        ta.setWrapText(true);
+        alert.getDialogPane().setExpandableContent(ta);
+        alert.getDialogPane().setExpanded(true);
 
         alert.showAndWait();
     }
@@ -79,23 +82,19 @@ public class AlertUtil
     /**
      * Отображает диалоговое окно с сообщением о пока нереализованной функции,
      * к которой пользователь попытался получить доступ
-     *
-     * @param owner Родитель, владелец, он же - объект-контейнер (Stage)
      */
-    public static void showNotRealizedWarningAndWait(Window owner)
+    public static void showNotRealizedWarningAndWait()
     {
-        showWarningAndWait(owner, "", "not realized yet", "");
+        showWarningAndWait("", "not realized yet", "");
     }
 
     /**
      * Отображает диалоговое окно об ошибке, вызванной нарушением
      * целостности файлов программы
-     *
-     * @param owner Родитель, владелец, он же - объект-контейнер (Stage)
      */
-    public static void showDataCorruptionErrorAndWait(Window owner, String content)
+    public static void showDataCorruptionErrorAndWait(String content)
     {
-        showErrorAndWait(owner, "Core Error",
+        showErrorAndWait("Core Error",
                 "Файлы программы поверждены или отсутствуют",
                 content);
     }
@@ -105,11 +104,10 @@ public class AlertUtil
      * при попытке обработки команды редактирования и отсутствии редактируемого
      * объекта.
      *
-     * @param owner Родитель, владелец, он же - объект-контейнер (Stage)
      * @param content Текст сообщения
      */
-    public static void showEmptySelectionErrorAndWait(Window owner, String content) {
-        showErrorAndWait(owner, "Error", "Не выбран объект", content);
+    public static void showEmptySelectionErrorAndWait(String content) {
+        showErrorAndWait("Error", "Не выбран объект", content);
     }
 
     /**
@@ -118,6 +116,6 @@ public class AlertUtil
      * TODO: удалить после завершения разработки
      */
     public static void showDevTimeMessage() {
-        showInformationAndWait(null, "", "", "dev");
+        showInformationAndWait("", "", "dev");
     }
 }

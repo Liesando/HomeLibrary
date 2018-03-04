@@ -12,7 +12,7 @@ import java.util.Iterator;
  * информацию о жанрах, к которым она отнесена, и истории займов,
  * а именно кто и когда взял книгу (см. {@link Borrowing}).
  *
- * @version 1.0 23 Feb 2018
+ * @version 1.1 4 March 2018
  * @author Sergey Medelyan
  */
 @Entity
@@ -37,7 +37,6 @@ public class Book {
     public Book() {}
 
 
-    // TODO: Sequence-generator
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_book")
@@ -81,7 +80,7 @@ public class Book {
         return translator;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "BooksGenres",
             joinColumns = { @JoinColumn(name = "id_book") },
@@ -140,7 +139,7 @@ public class Book {
     @Override
     @Transient
     public String toString() {
-        return String.format("%s, %d", getName(), getYear());
+        return String.format("\"%s\", %d", getName(), getYear());
     }
 
     @Transient

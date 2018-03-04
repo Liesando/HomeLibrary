@@ -1,5 +1,8 @@
 package com.azzgil.homelibrary.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -58,6 +61,7 @@ public class Genre {
     }
 
     @ManyToMany(mappedBy = "genres")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public Collection<Book> getBooks() {
         return books;
     }

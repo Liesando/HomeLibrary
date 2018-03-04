@@ -4,9 +4,7 @@ import com.azzgil.homelibrary.model.*;
 import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.FXMLUtils;
 import com.azzgil.homelibrary.utils.HibernateUtil;
-import com.azzgil.homelibrary.views.BookOverviewController;
-import com.azzgil.homelibrary.views.GenresOverviewController;
-import com.azzgil.homelibrary.views.RootLayoutController;
+import com.azzgil.homelibrary.views.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -27,13 +25,14 @@ import java.util.List;
  * Главный класс приложения. Отвечает за запуск и конфигурацию программы,
  * отображение интерфейса.
  *
- * @version dev-0.52 2 March 2018
+ * @version dev-0.6 2 March 2018
  * @author Sergey Medelyan
  */
 public class HomeLibrary extends Application {
 
     /** Заголовок окна приложения */
     private static final String APP_TITLE = "Домашняя библиотека";
+    private static HomeLibrary instance;
 
     /** Объект-контейнер для всего содержимого окна (можно считать его синонимом окна) */
     private Stage primaryStage;
@@ -62,6 +61,9 @@ public class HomeLibrary extends Application {
     private AnchorPane genresOverviewLayout;
     private GenresOverviewController genresOverviewController;
     private AnchorPane libraryOverviewLayout;
+    private LibraryOverviewController libraryOverviewController;
+    private AnchorPane pubHousesOverviewLayout;
+    private PublishingHousesOverviewController pubHousesOverviewController;
 
     /** Просто главный метод */
     public static void main(String[] args) {
@@ -76,6 +78,7 @@ public class HomeLibrary extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
+        instance = this;
         registerMappingClasses();
         HibernateUtil.buildSessionFactory();
 
@@ -179,7 +182,7 @@ public class HomeLibrary extends Application {
             primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
-            AlertUtil.showDataCorruptionErrorAndWait(primaryStage, "views/RootLayout.fxml");
+            AlertUtil.showDataCorruptionErrorAndWait("views/RootLayout.fxml");
             Platform.exit();
         }
     }
@@ -193,21 +196,27 @@ public class HomeLibrary extends Application {
     private void loadSectionLayouts() {
         String missingFile = "views/BookOverview.fxml";
         try {
-            FXMLLoader loader = FXMLUtils.configureLoaderFor("views/BookOverview.fxml");
+            FXMLLoader loader = FXMLUtils.configureLoaderFor(missingFile);
             bookOverviewLayout = loader.load();
             bookOverviewController = loader.getController();
 
             missingFile = "views/LibraryOverview.fxml";
-            loader = FXMLUtils.configureLoaderFor("views/LibraryOverview.fxml");
+            loader = FXMLUtils.configureLoaderFor(missingFile);
             libraryOverviewLayout = loader.load();
+            libraryOverviewController = loader.getController();
 
             missingFile = "views/GenresOverview.fxml";
-            loader = FXMLUtils.configureLoaderFor("views/GenresOverview.fxml");
+            loader = FXMLUtils.configureLoaderFor(missingFile);
             genresOverviewLayout = loader.load();
             genresOverviewController = loader.getController();
+
+            missingFile = "views/PublishingHousesOverview.fxml";
+            loader = FXMLUtils.configureLoaderFor(missingFile);
+            pubHousesOverviewLayout = loader.load();
+            pubHousesOverviewController = loader.getController();
         } catch (IOException e) {
             e.printStackTrace();
-            AlertUtil.showDataCorruptionErrorAndWait(primaryStage, missingFile);
+            AlertUtil.showDataCorruptionErrorAndWait(missingFile);
             Platform.exit();
         }
     }
@@ -234,9 +243,14 @@ public class HomeLibrary extends Application {
                 currentController = genresOverviewController;
                 break;
 
+            case PublishingHouses:
+                rootLayout.setCenter(pubHousesOverviewLayout);
+                currentController = pubHousesOverviewController;
+                break;
+
             default:
                 rootLayout.setCenter(null);
-                AlertUtil.showNotRealizedWarningAndWait(primaryStage);
+                AlertUtil.showNotRealizedWarningAndWait();
                 break;
         }
     }
@@ -264,5 +278,22 @@ public class HomeLibrary extends Application {
 
     public ICUDController getCurrentController() {
         return currentController;
+    }
+
+    /**
+     * Обновляет список книг (использовать, когда пользователь
+     * изменил например, имя жанра или издательства)
+     */
+    public static void refreshBooks() {
+        instance.bookOverviewController.refreshBooks();
+    }
+
+    /**
+     * Обновляет общую информацию, отображаемую в секции
+     * "Библиотека" (использовать, когда пользователь
+     * что-то удалил или создал).
+     */
+    public static void refreshOverallInfo() {
+        instance.libraryOverviewController.refreshOverallInfo();
     }
 }

@@ -1,5 +1,8 @@
 package com.azzgil.homelibrary.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -10,7 +13,7 @@ import java.util.Collection;
  * Дополнительно содержит информацию о книгах, изданных
  * данным издательством.
  *
- * @version 1.0 23 Feb 2018
+ * @version 1.1 4 March 2018
  * @author Sergey Medelyan
  */
 @Entity
@@ -29,7 +32,8 @@ public class PublishingHouse {
 
     @Id
     @Column(name = "id_pub_house")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pub_house_id_gen")
+    @SequenceGenerator(name = "pub_house_id_gen", sequenceName = "pub_house_seq")
     public int getId() {
         return id;
     }
@@ -39,7 +43,8 @@ public class PublishingHouse {
         return name;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "publishingHouse")
+    @OneToMany(mappedBy = "publishingHouse")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public Collection<Book> getBooks() {
         return books;
     }

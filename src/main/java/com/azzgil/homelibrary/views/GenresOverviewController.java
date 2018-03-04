@@ -1,24 +1,21 @@
 package com.azzgil.homelibrary.views;
 
+import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.ICUDController;
+import com.azzgil.homelibrary.model.Book;
 import com.azzgil.homelibrary.model.Genre;
-import com.azzgil.homelibrary.utils.AlertUtil;
-import com.azzgil.homelibrary.utils.DataUtils;
-import com.azzgil.homelibrary.utils.FXMLUtils;
-import com.azzgil.homelibrary.utils.HibernateUtil;
+import com.azzgil.homelibrary.utils.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.exception.ConstraintViolationException;
 
+import javax.persistence.PersistenceException;
 import java.io.IOException;
 import java.util.*;
 
@@ -30,18 +27,25 @@ import java.util.*;
  * интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.1 2 March 2018
+ * @version 1.2 4 March 2018
  */
 public class GenresOverviewController implements ICUDController {
     private static final String EMPTY_SELECTION_ERROR =
             "Пожалуйста, сначала выберите жанр из списка";
+    private static final String SHOW_BOOKS_BTN_TOOLTIP =
+            "Показать книги этого жанра";
 
-    @FXML
-    private TreeView<Genre> treeView;
+    @FXML private Button addGenreBtn;
+    @FXML private Button showBooksBtn;
+    @FXML private TreeView<Genre> treeView;
     private Genre[] genres;
 
     @FXML
     private void initialize() {
+        GUIUtils.loadButtonIcon(addGenreBtn, GUIUtils.ADD_ICON);
+        GUIUtils.loadButtonIcon(showBooksBtn, GUIUtils.EYE_FIND_ICON);
+        GUIUtils.addTooltipToButton(showBooksBtn, SHOW_BOOKS_BTN_TOOLTIP, 30.0);
+
         refreshGenres();
     }
 
@@ -62,9 +66,9 @@ public class GenresOverviewController implements ICUDController {
         TreeItem<Genre>[] items = new TreeItem[genres.length + 1];
 
         // пустой жанр-корень
-        items[genres.length] = new TreeItem<Genre>(new Genre());
+        items[genres.length] = new TreeItem<>(new Genre());
         for (int i = 0; i < genres.length; ++i) {
-            items[i] = new TreeItem<Genre>(genres[i]);
+            items[i] = new TreeItem<>(genres[i]);
         }
 
         int indexOfParent;
@@ -93,6 +97,26 @@ public class GenresOverviewController implements ICUDController {
         treeView.setRoot(items[genres.length]);
         treeView.setShowRoot(false);
         items[genres.length].setExpanded(true);
+    }
+
+    /**
+     * Отображает книги выбранного жанра и его поджанров.
+     * Если выбрано несколько жанров, то выбирает первый из них.
+     * TODO: сделать для нескольких жанров
+     */
+    @FXML
+    private void showBooks() {
+        Genre g = treeView.getSelectionModel().getSelectedItem() != null ?
+                treeView.getSelectionModel().getSelectedItem().getValue():
+                null;
+        if(g == null) {
+            AlertUtil.showEmptySelectionErrorAndWait(EMPTY_SELECTION_ERROR);
+            return;
+        }
+
+        String books = DataUtils.reduceBooks(DataUtils.collectBooksOfGenre(g));
+        AlertUtil.showInformationAndWait("Книги жанра", g.getFullName(),
+                (books != "" ? books : "книг указанного жанра нет в библиотеке"));
     }
 
     @Override
@@ -129,8 +153,7 @@ public class GenresOverviewController implements ICUDController {
 
             if(editMode) {
                 if (!validateUpdate()) {
-                    AlertUtil.showEmptySelectionErrorAndWait(null,
-                            EMPTY_SELECTION_ERROR);
+                    AlertUtil.showEmptySelectionErrorAndWait(EMPTY_SELECTION_ERROR);
                     return;
                 }
                 controller.switchToEditMode(treeView.getSelectionModel()
@@ -140,10 +163,15 @@ public class GenresOverviewController implements ICUDController {
 
             if(controller.isSuccessful()) {
                 refreshGenres();
+                if(editMode) {
+                    HomeLibrary.refreshBooks();
+                } else {
+                    HomeLibrary.refreshOverallInfo();
+                }
             }
 
         } catch (IOException e) {
-            AlertUtil.showDataCorruptionErrorAndWait(null, "views/GenreEditWindow.fxml");
+            AlertUtil.showDataCorruptionErrorAndWait("views/GenreEditWindow.fxml");
             e.printStackTrace();
             Platform.exit();
         }
@@ -157,7 +185,7 @@ public class GenresOverviewController implements ICUDController {
     @Override
     public void delete() {
         if(!validateDelete()) {
-            AlertUtil.showEmptySelectionErrorAndWait(null, EMPTY_SELECTION_ERROR);
+            AlertUtil.showEmptySelectionErrorAndWait(EMPTY_SELECTION_ERROR);
             return;
         }
 
@@ -170,17 +198,35 @@ public class GenresOverviewController implements ICUDController {
             }
             session.getTransaction().commit();
             refreshGenres();
-        } catch (HibernateException e) {
-            // TODO: Display message that something's happened
+            HomeLibrary.refreshOverallInfo();
+        } catch (PersistenceException e) {
             session.getTransaction().rollback();
-        }
-        finally {
+            if(e.getCause() instanceof ConstraintViolationException) {
+
+                // отображаем список книг, которые, возможно,
+                // вызывают конфликт и препятствуют удалению жанра
+                ArrayList<Book> books = new ArrayList<>();
+                for (TreeItem<Genre> i:
+                     treeView.getSelectionModel().getSelectedItems()) {
+                    books.addAll(DataUtils.collectBooksOfGenre(i.getValue()));
+                }
+
+                String info = DataUtils.reduceBooks(books);
+
+                AlertUtil.showWarningAndWait("Error",
+                        "Невозможно удалить жанр",
+                        "Существуют книги этого жанра или его поджанров. " +
+                                "Чтобы удаление жанра стало возможным, " +
+                                "сначала удалите эти книги либо измените их жанр\n\n" +
+                                "Книги, могущие вызвать конфликт:\n" +
+                                info);
+
+            } else {
+                // unknown exception, throw through
+                throw e;
+            }
+        } finally {
             session.close();
         }
-    }
-
-    @FXML
-    private void onAddGenreBtn() {
-        create();
     }
 }

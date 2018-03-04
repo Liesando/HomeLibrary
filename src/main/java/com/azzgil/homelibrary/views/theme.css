@@ -54,6 +54,15 @@
     -fx-font-size: 20px;
 }
 
+.label-pub-house {
+    -fx-underline: true;
+    -fx-text-fill: #2b4f87;
+}
+
+.label-pub-house:hover {
+    -fx-cursor: hand;
+}
+
 .label-more-info {
     -fx-underline: true;
     -fx-text-fill: #2b4f87;

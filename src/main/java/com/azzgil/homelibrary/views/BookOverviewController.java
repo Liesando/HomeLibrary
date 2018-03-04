@@ -7,10 +7,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -21,14 +18,9 @@ import java.io.IOException;
  * интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.3 2 March 2018
+ * @version 1.4 4 March 2018
  */
 public class BookOverviewController implements ICUDController {
-
-    /** Высота иконки добавления книги (иконка подгружается динамически) */
-    private static final double ADD_BOOK_ICON_HEIGHT = 24.0;
-
-    private Stage primaryStage;
     @FXML private Button addBookBtn;
     @FXML private VBox contentVBox;
 
@@ -36,37 +28,63 @@ public class BookOverviewController implements ICUDController {
     private void initialize()
     {
         loadIcons();
-        loadBooks();
+        refreshBooks();
     }
 
     /**
      * Загружает все требуемые интерфейсу иконки
      */
     private void loadIcons() {
-        GUIUtils.loadButtonIcon(addBookBtn, "icons/add_book.png");
+        GUIUtils.loadButtonIcon(addBookBtn, GUIUtils.ADD_ICON);
     }
 
     /**
-     * Загружает все книги и отображает их
+     * Обновляет список книг и перерисовывает их
      */
-    private void loadBooks() {
+    public void refreshBooks() {
+        contentVBox.getChildren().clear();
         try {
             Book[] books = DataUtils.fetchAllBooks();
+            double totalHeight = 0.0;
             for (Book b : books) {
                 FXMLLoader loader = FXMLUtils.configureLoaderFor("views/BookPanel.fxml");
                 contentVBox.getChildren().add(loader.load());
                 BookPanelController controller = loader.getController();
+                controller.setParentController(this);
                 controller.setBook(b);
+                totalHeight += controller.getCurrentHeight();
             }
+
+            setVBoxHeight(totalHeight);
         } catch (IOException e) {
-            AlertUtil.showDataCorruptionErrorAndWait(primaryStage, "views/BookPanel.fxml");
+            AlertUtil.showDataCorruptionErrorAndWait("views/BookPanel.fxml");
             Platform.exit();
         }
     }
 
+    /**
+     * Корректирует размер VBox'а для правильного отображения
+     * полосы прокрутки
+     *
+     * @param correction Коррекция в пикселах
+     */
+    public void correctVBoxHeight(double correction) {
+        setVBoxHeight(contentVBox.getPrefHeight() + correction);
+    }
+
+    /**
+     * Задаёт предпочтительную и максимальную высоты для VBox'а
+     *
+     * @param height Новая высота
+     */
+    private void setVBoxHeight(double height) {
+        contentVBox.setMaxHeight(height);
+        contentVBox.setPrefHeight(height);
+    }
+
     @Override
     public void create() {
-
+        AlertUtil.showNotRealizedWarningAndWait();
     }
 
     @Override
@@ -76,7 +94,7 @@ public class BookOverviewController implements ICUDController {
 
     @Override
     public void update() {
-
+        AlertUtil.showNotRealizedWarningAndWait();
     }
 
     @Override
@@ -86,6 +104,6 @@ public class BookOverviewController implements ICUDController {
 
     @Override
     public void delete() {
-
+        AlertUtil.showNotRealizedWarningAndWait();
     }
 }
