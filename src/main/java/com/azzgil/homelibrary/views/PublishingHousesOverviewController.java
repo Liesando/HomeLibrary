@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
@@ -25,7 +26,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Optional;
 
 
 /**
@@ -34,15 +34,22 @@ import java.util.Optional;
  * Контроллер секции издательств.
  *
  * @author Sergey Medelyan
- * @version 1.0 4 March 2018
+ * @version 1.1 6 March 2018
  */
 public class PublishingHousesOverviewController implements ICUDController {
     private static final String EMPTY_SELECTION_ERROR =
             "Пожалуйста, сначала выберите издательство из списка";
     private static final String SHOW_BOOKS_BTN_TOOLTIP = "Показать книги этого издательства";
+    private static final String DELETE_BTN_TOOLTIP = "Удалить выбранные издательства";
+    private static final String EDIT_BTN_TOOLTIP = "Редактировать издательство";
 
     @FXML private Button addPubHouseBtn;
     @FXML private Button showBooksBtn;
+    @FXML private Button deleteBtn;
+    @FXML private Button editBtn;
+    @FXML private MenuItem showBooksMI;
+    @FXML private MenuItem deleteMI;
+    @FXML private MenuItem editMI;
     @FXML private ListView<PublishingHouse> listView;
     private ObservableList<PublishingHouse> pubHouses;
 
@@ -50,7 +57,12 @@ public class PublishingHousesOverviewController implements ICUDController {
     private void initialize() {
         GUIUtils.loadButtonIcon(addPubHouseBtn, GUIUtils.ADD_ICON);
         GUIUtils.loadButtonIcon(showBooksBtn, GUIUtils.EYE_FIND_ICON);
-        GUIUtils.addTooltipToButton(showBooksBtn, SHOW_BOOKS_BTN_TOOLTIP, 30.0);
+        GUIUtils.loadButtonIcon(deleteBtn, GUIUtils.DELETE_ICON);
+        GUIUtils.loadButtonIcon(editBtn, GUIUtils.EDIT_ICON);
+
+        GUIUtils.addTooltipToButton(showBooksBtn, SHOW_BOOKS_BTN_TOOLTIP);
+        GUIUtils.addTooltipToButton(deleteBtn, DELETE_BTN_TOOLTIP);
+        GUIUtils.addTooltipToButton(editBtn, EDIT_BTN_TOOLTIP);
 
         refreshPubHouses();
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -198,5 +210,23 @@ public class PublishingHousesOverviewController implements ICUDController {
     @Override
     public boolean validateDelete() {
         return listView.getSelectionModel().getSelectedItems().size() > 0;
+    }
+
+    @Override
+    public void setReadFeatureAccess(boolean accessible) {
+        showBooksBtn.setDisable(!accessible);
+        showBooksMI.setDisable(!accessible);
+    }
+
+    @Override
+    public void setUpdateFeatureAccess(boolean accessible) {
+        editBtn.setDisable(!accessible);
+        editMI.setDisable(!accessible);
+    }
+
+    @Override
+    public void setDeleteFeatureAccess(boolean accessible) {
+        deleteBtn.setDisable(!accessible);
+        deleteMI.setDisable(!accessible);
     }
 }

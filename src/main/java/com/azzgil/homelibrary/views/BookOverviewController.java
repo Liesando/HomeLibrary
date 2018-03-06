@@ -18,7 +18,7 @@ import java.io.IOException;
  * интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.4 4 March 2018
+ * @version 1.5 6 March 2018
  */
 public class BookOverviewController implements ICUDController {
     @FXML private Button addBookBtn;
@@ -100,6 +100,21 @@ public class BookOverviewController implements ICUDController {
     @Override
     public boolean validateDelete() {
         return false;
+    }
+
+    @Override
+    public void setUpdateFeatureAccess(boolean accessible) {
+
+    }
+
+    @Override
+    public void setReadFeatureAccess(boolean accessible) {
+
+    }
+
+    @Override
+    public void setDeleteFeatureAccess(boolean accessible) {
+
     }
 
     @Override

@@ -14,12 +14,17 @@ package com.azzgil.homelibrary;
  * секция Библиотека не имеет контроллера в данный момент.
  *
  * @author Sergey Medelyan
- * @version 1.0 2 March 2018
+ * @version 1.1 6 March 2018
  */
 public interface ICUDController {
     void create();
     void update();
     void delete();
+
     boolean validateUpdate();
     boolean validateDelete();
+
+    void setReadFeatureAccess(boolean accessible);
+    void setUpdateFeatureAccess(boolean accessible);
+    void setDeleteFeatureAccess(boolean accessible);
 }

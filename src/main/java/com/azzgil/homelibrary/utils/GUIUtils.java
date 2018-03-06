@@ -14,7 +14,7 @@ import javafx.util.Duration;
  * для GUI-элементов и их настройку.
  *
  * @author Sergey Medelyan
- * @version 1.1 4 March 2018
+ * @version 1.2 6 March 2018
  */
 public class GUIUtils {
 
@@ -22,10 +22,13 @@ public class GUIUtils {
     public static final double STD_BUTTON_ICON_HEIGTH = 24.0;
     public static final double STD_BUTTON_ICON_WIDTH = 24.0;
 
+    public static final double DEFAULT_TOOLTIP_DELAY = 30.0;
+
     // пути до определённых иконок
     public static final String ADD_ICON = "icons/add_book.png";
-    public static final String EYE_ICON = "icons/eye.png";
     public static final String EYE_FIND_ICON = "icons/watch-tool.png";
+    public static final String DELETE_ICON = "icons/delete.png";
+    public static final String EDIT_ICON = "icons/edit.png";
 
     private GUIUtils() {
     }
@@ -47,6 +50,17 @@ public class GUIUtils {
         iv.setFitHeight(heigth);
         iv.setFitWidth(width);
         btn.setGraphic(iv);
+    }
+
+    /**
+     * Добавляет кнопке всплывающую подсказку со временем
+     * задержки до всплытия {@value DEFAULT_TOOLTIP_DELAY} мс
+     *
+     * @param btn         Кнопка
+     * @param tooltipText Текст подсказки
+     */
+    public static void addTooltipToButton(Button btn, String tooltipText) {
+        addTooltipToButton(btn, tooltipText, DEFAULT_TOOLTIP_DELAY);
     }
 
     /**

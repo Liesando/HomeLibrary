@@ -9,6 +9,8 @@
    <children>
       <HBox alignment="CENTER_RIGHT" maxHeight="50.0" prefHeight="50.0" prefWidth="600.0" spacing="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#update" />
+            <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#delete" />
             <Button fx:id="showBooksBtn" mnemonicParsing="false" onAction="#showBooks" />
             <Button fx:id="addPubHouseBtn" mnemonicParsing="false" onAction="#create" text="Добавить издательство">
                <HBox.margin>
@@ -24,6 +26,16 @@
          </padding>
       </HBox>
       <Label styleClass="label-section-title" text="Издательства" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0" />
+      <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0">
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#create" text="Добавить издательство..." />
+                  <MenuItem fx:id="editMI" mnemonicParsing="false" onAction="#update" text="Редактировать" />
+                  <MenuItem fx:id="deleteMI" mnemonicParsing="false" onAction="#delete" text="Удалить выбранное" />
+                  <MenuItem fx:id="showBooksMI" mnemonicParsing="false" onAction="#showBooks" text="Показать книги этого издательства" />
+              </items>
+            </ContextMenu>
+         </contextMenu></ListView>
    </children>
 </AnchorPane>

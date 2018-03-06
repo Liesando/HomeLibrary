@@ -6,6 +6,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 
 /**
  * class RootLayoutController
@@ -13,7 +16,7 @@ import javafx.scene.control.RadioButton;
  * Контроллер для корневого представления (окна) приложения. Обрабатывает
  * определённые события.
  *
- * @version 1.2 2 March 2018
+ * @version 1.3 6 March 2018
  * @author Sergey Medelyan
  */
 public class RootLayoutController
@@ -29,14 +32,12 @@ public class RootLayoutController
     }
 
     @FXML
-    private void initialize()
-    {
-        RadioButton rb = new RadioButton();
+    private void initialize() {
+        deleteMI.setAccelerator(new KeyCodeCombination(KeyCode.DELETE));
     }
 
     @FXML
-    private void onExit()
-    {
+    private void onExit() {
         Platform.exit();
     }
 

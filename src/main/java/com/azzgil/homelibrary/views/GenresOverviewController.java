@@ -27,16 +27,25 @@ import java.util.*;
  * интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.2 4 March 2018
+ * @version 1.3 6 March 2018
  */
 public class GenresOverviewController implements ICUDController {
     private static final String EMPTY_SELECTION_ERROR =
             "Пожалуйста, сначала выберите жанр из списка";
     private static final String SHOW_BOOKS_BTN_TOOLTIP =
             "Показать книги этого жанра";
+    private static final String DELETE_BTN_TOOLTIP =
+            "Удалить выбранные жанры и их поджанры";
+    private static final String EDIT_BTN_TOOLTIP =
+            "Редактировать выбранный жанр";
 
     @FXML private Button addGenreBtn;
     @FXML private Button showBooksBtn;
+    @FXML private Button deleteBtn;
+    @FXML private Button editBtn;
+    @FXML private MenuItem deleteMI;
+    @FXML private MenuItem editMI;
+    @FXML private MenuItem showBooksMI;
     @FXML private TreeView<Genre> treeView;
     private Genre[] genres;
 
@@ -44,7 +53,12 @@ public class GenresOverviewController implements ICUDController {
     private void initialize() {
         GUIUtils.loadButtonIcon(addGenreBtn, GUIUtils.ADD_ICON);
         GUIUtils.loadButtonIcon(showBooksBtn, GUIUtils.EYE_FIND_ICON);
-        GUIUtils.addTooltipToButton(showBooksBtn, SHOW_BOOKS_BTN_TOOLTIP, 30.0);
+        GUIUtils.loadButtonIcon(deleteBtn, GUIUtils.DELETE_ICON);
+        GUIUtils.loadButtonIcon(editBtn, GUIUtils.EDIT_ICON);
+
+        GUIUtils.addTooltipToButton(showBooksBtn, SHOW_BOOKS_BTN_TOOLTIP);
+        GUIUtils.addTooltipToButton(deleteBtn, DELETE_BTN_TOOLTIP);
+        GUIUtils.addTooltipToButton(editBtn, EDIT_BTN_TOOLTIP);
 
         refreshGenres();
     }
@@ -54,6 +68,12 @@ public class GenresOverviewController implements ICUDController {
         genres = DataUtils.fetchAllGenres();
         generateTree(genres);
         treeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
+
+    @Override
+    public void setReadFeatureAccess(boolean accessible) {
+        showBooksBtn.setDisable(!accessible);
+        showBooksMI.setDisable(!accessible);
     }
 
     /**
@@ -132,6 +152,10 @@ public class GenresOverviewController implements ICUDController {
 
     @Override
     public void update() {
+        if (!validateUpdate()) {
+            AlertUtil.showEmptySelectionErrorAndWait(EMPTY_SELECTION_ERROR);
+            return;
+        }
         showGenreEditWindow(true);
     }
 
@@ -152,10 +176,6 @@ public class GenresOverviewController implements ICUDController {
             controller.setPrimaryStage(stage);
 
             if(editMode) {
-                if (!validateUpdate()) {
-                    AlertUtil.showEmptySelectionErrorAndWait(EMPTY_SELECTION_ERROR);
-                    return;
-                }
                 controller.switchToEditMode(treeView.getSelectionModel()
                         .getSelectedItem().getValue());
             }
@@ -180,6 +200,18 @@ public class GenresOverviewController implements ICUDController {
     @Override
     public boolean validateDelete() {
         return validateUpdate();
+    }
+
+    @Override
+    public void setUpdateFeatureAccess(boolean accessible) {
+        editBtn.setDisable(!accessible);
+        editMI.setDisable(!accessible);
+    }
+
+    @Override
+    public void setDeleteFeatureAccess(boolean accessible) {
+        deleteBtn.setDisable(!accessible);
+        deleteMI.setDisable(!accessible);
     }
 
     @Override

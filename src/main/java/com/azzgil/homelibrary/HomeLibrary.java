@@ -25,7 +25,9 @@ import java.util.List;
  * Главный класс приложения. Отвечает за запуск и конфигурацию программы,
  * отображение интерфейса.
  *
- * @version dev-0.6 2 March 2018
+ * TODO: load .css file
+ *
+ * @version dev-0.7 6 March 2018
  * @author Sergey Medelyan
  */
 public class HomeLibrary extends Application {
@@ -186,8 +188,6 @@ public class HomeLibrary extends Application {
             Platform.exit();
         }
     }
-
-
 
     /**
      * Загружает в память интерфейс секций (см. {@link Section} и их
