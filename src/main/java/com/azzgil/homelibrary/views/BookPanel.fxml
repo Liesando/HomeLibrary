@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="anchorPane" maxHeight="420.0" minHeight="249.0" minWidth="600.0" prefHeight="249.0" prefWidth="600.0" styleClass="book-panel" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.BookPanelController">
    <children>
-      <Label fx:id="bookTitleLbl" layoutX="34.0" layoutY="14.0" styleClass="label-book-title" text="Название книги" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="-6.0" />
+      <Label fx:id="bookTitleLbl" layoutX="34.0" layoutY="14.0" maxWidth="350.0" styleClass="label-book-title" text="Название книги" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="-6.0" />
       <GridPane layoutX="18.0" layoutY="47.0" prefHeight="90.0" prefWidth="531.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="64.0">
         <columnConstraints>
           <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" />
@@ -48,5 +49,11 @@
          </children>
       </GridPane>
       <Label fx:id="bookGenresLbl" layoutX="58.0" layoutY="81.0" styleClass="label-book-genres" text="Жанры" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="44.0" />
+      <HBox layoutX="371.0" layoutY="32.0" maxHeight="30.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="200.0" spacing="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDeleteBtn" />
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onEditBtn" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

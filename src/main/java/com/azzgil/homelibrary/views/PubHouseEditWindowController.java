@@ -15,8 +15,7 @@ import org.hibernate.Session;
  * Контроллер окна создания/редактирования издательства
  *
  * @author Sergey Medelyan
- * @version 1.0 4 March 2018
- */
+ * @version 1.1 8 March 2018 */
 public class PubHouseEditWindowController
         extends EditWindowBaseController<PublishingHouse> {
 
@@ -25,12 +24,21 @@ public class PubHouseEditWindowController
     @FXML
     private void initialize() {}
 
-    @FXML
-    private void onConfirmBtn() {
-        isSuccessful = !pubHouseNameTF.getText().trim().isEmpty();
-        if(!isSuccessful) {
+    @Override
+    protected boolean validateData() {
+        // TODO: посмотреть, что больше нет таких издательств
+        if(pubHouseNameTF.getText().trim().isEmpty()) {
             AlertUtil.showWarningAndWait("Warning", "Пустое имя издательства",
                     "Пожалуйста, введите корректное (непустое) имя издательства");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    private void onConfirmBtn() {
+        isSuccessful = validateData();
+        if(!isSuccessful) {
             return;
         }
 
@@ -45,12 +53,6 @@ public class PubHouseEditWindowController
         session.saveOrUpdate(editable);
         session.getTransaction().commit();
         session.close();
-        if(editMode) {
-            HomeLibrary.refreshBooks();
-        } else {
-            HomeLibrary.refreshOverallInfo();
-        }
-
         primaryStage.close();
 
     }

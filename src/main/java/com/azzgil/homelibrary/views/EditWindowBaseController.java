@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * @version 1.0 4 March 2018
  * @param <T> Тип создаваемой/редактируемой сущности
  */
-public class EditWindowBaseController<T> {
+public abstract class EditWindowBaseController<T> {
 
     // текст кнопки в режиме редактирования
     private static final String CONFIRM_BTN_EDIT_MODE_TEXT = "Сохранить";
@@ -57,4 +57,6 @@ public class EditWindowBaseController<T> {
         // TODO: show dialog warning window first
         primaryStage.close();
     }
+
+    protected abstract boolean validateData();
 }

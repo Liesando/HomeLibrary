@@ -27,7 +27,7 @@ import java.util.*;
  * интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.3 6 March 2018
+ * @version 1.4 8 March 2018
  */
 public class GenresOverviewController implements ICUDController {
     private static final String EMPTY_SELECTION_ERROR =
@@ -65,7 +65,7 @@ public class GenresOverviewController implements ICUDController {
 
     /** Обновляет список жанров */
     public void refreshGenres() {
-        genres = DataUtils.fetchAllGenres();
+        genres = HomeLibrary.getAllGenres();
         generateTree(genres);
         treeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
@@ -141,7 +141,7 @@ public class GenresOverviewController implements ICUDController {
 
     @Override
     public void create() {
-        showGenreEditWindow(false);
+        HomeLibrary.showGenreEditWindow(false, null);
     }
 
     @Override
@@ -156,46 +156,11 @@ public class GenresOverviewController implements ICUDController {
             AlertUtil.showEmptySelectionErrorAndWait(EMPTY_SELECTION_ERROR);
             return;
         }
-        showGenreEditWindow(true);
+        HomeLibrary.showGenreEditWindow(true,
+                treeView.getSelectionModel().getSelectedItem().getValue());
     }
 
-    /**
-     * Создаёт окно редактирования жанра в одном из двух режимов:
-     * создание жанра (editMode = false) и редактирование жанра
-     * (editMode = false).
-     *
-     * @param editMode включить режим редактирования?
-     */
-    private void showGenreEditWindow(boolean editMode) {
-        try {
-            FXMLLoader loader = FXMLUtils.configureLoaderFor("views/GenreEditWindow.fxml");
 
-            Stage stage = new Stage(StageStyle.UTILITY);
-            stage.setScene(new Scene(loader.load()));
-            GenreEditWindowController controller = loader.getController();
-            controller.setPrimaryStage(stage);
-
-            if(editMode) {
-                controller.switchToEditMode(treeView.getSelectionModel()
-                        .getSelectedItem().getValue());
-            }
-            stage.showAndWait();
-
-            if(controller.isSuccessful()) {
-                refreshGenres();
-                if(editMode) {
-                    HomeLibrary.refreshBooks();
-                } else {
-                    HomeLibrary.refreshOverallInfo();
-                }
-            }
-
-        } catch (IOException e) {
-            AlertUtil.showDataCorruptionErrorAndWait("views/GenreEditWindow.fxml");
-            e.printStackTrace();
-            Platform.exit();
-        }
-    }
 
     @Override
     public boolean validateDelete() {
@@ -229,8 +194,10 @@ public class GenresOverviewController implements ICUDController {
                 session.delete(t.getValue());
             }
             session.getTransaction().commit();
+
+            HomeLibrary.refreshGenres();
+            HomeLibrary.getLibraryOverviewController().refreshOverallInfo();
             refreshGenres();
-            HomeLibrary.refreshOverallInfo();
         } catch (PersistenceException e) {
             session.getTransaction().rollback();
             if(e.getCause() instanceof ConstraintViolationException) {

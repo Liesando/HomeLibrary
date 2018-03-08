@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -10,7 +11,7 @@
             <AnchorPane prefHeight="48.0" prefWidth="800.0" VBox.vgrow="NEVER">
                <children>
                   <Label layoutX="349.0" layoutY="12.0" text="Тут будет поиск :|" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="12.0" />
-                  <Button fx:id="addBookBtn" layoutX="725.0" layoutY="9.0" mnemonicParsing="false" text="Добавить книгу" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="8.0" />
+                  <Button fx:id="addBookBtn" layoutX="725.0" layoutY="9.0" mnemonicParsing="false" onAction="#create" text="Добавить книгу" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="8.0" />
                </children>
             </AnchorPane>
             <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">

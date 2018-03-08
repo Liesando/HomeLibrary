@@ -5,9 +5,10 @@ import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.model.PublishingHouse;
 import org.hibernate.Session;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * DataUtils
@@ -17,7 +18,7 @@ import java.util.Optional;
  * TODO: обдумать, где должны лежать методы CRUD - здесь или в контроллерах
  *
  * @author Sergey Medelyan
- * @version 1.1 4 March 2018
+ * @version 1.2 8 March 2018
  */
 public class DataUtils {
 
@@ -60,6 +61,22 @@ public class DataUtils {
         }
 
         return pubHouses;
+    }
+
+    /**
+     * Возвращает список всех авторов, существующих в базе
+     *
+     * @param allBooks Массив книг, из которого извлечётся информация об авторах
+     * @return Массив имён авторов
+     */
+    public static String[] fetchAllAuthors(Book[] allBooks) {
+        return Arrays.stream(allBooks).filter(
+                distinctBy(Book::getAuthor)).map(Book::getAuthor).toArray(String[]::new);
+    }
+
+    private static <T> Predicate<T> distinctBy(Function<? super T, ?> keyExtractor) {
+        Set<Object> seen = ConcurrentHashMap.newKeySet();
+        return t -> seen.add(keyExtractor.apply(t));
     }
 
     /** Возвращает список всех объектов по указанному FROM-clause. */

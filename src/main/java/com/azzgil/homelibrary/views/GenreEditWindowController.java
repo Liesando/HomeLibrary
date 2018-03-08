@@ -4,6 +4,7 @@ import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.DataUtils;
+import com.azzgil.homelibrary.utils.GUIUtils;
 import com.azzgil.homelibrary.utils.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ import java.util.Comparator;
  * Контроллер окна создания/редактирования жанра.
  *
  * @author Sergey Medelyan
- * @version 1.1 4 March 2018
+ * @version 1.2 8 March 2018
  */
 public class GenreEditWindowController extends EditWindowBaseController<Genre> {
 
@@ -31,29 +32,7 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
 
     @FXML
     private void initialize() {
-
-        // создаём фабрику, которая в качестве имени ячейки
-        // вместо Genre.toString() будет выводить полное имя
-        // жанра (Genre.getFullName())
-        Callback<ListView<Genre>, ListCell<Genre>> cellFactory =
-                new Callback<>() {
-            @Override
-            public ListCell<Genre> call(ListView<Genre> param) {
-                return new ListCell<>() {
-                    @Override
-                    public void updateItem(Genre item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if(item != null) {
-                            setText(item.getFullName());
-                        } else {
-                            setText("без категории");
-                        }
-                    }
-                };
-            }
-        };
-
-        parentCategories.setCellFactory(cellFactory);
+        parentCategories.setCellFactory(GUIUtils.STD_GENRE_CELL_FACTORY);
         prepareCategories(null);
     }
 
@@ -68,7 +47,7 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
     private void prepareCategories(Genre exclude) {
         ArrayList<Genre> list = new ArrayList<>();
         list.add(null);
-        list.addAll(Arrays.asList(DataUtils.fetchAllGenres()));
+        list.addAll(Arrays.asList(HomeLibrary.getAllGenres()));
 
         if(exclude != null) {
             list.removeIf(g -> {
@@ -90,13 +69,21 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
                         e -> e == null ? "": e.getFullName())));
     }
 
+    @Override
+    protected boolean validateData() {
+        // TODO: посмотреть, что больше нет таких жанров
+        if(genreNameTF.getText().trim().isEmpty()) {
+            AlertUtil.showWarningAndWait("Warning", "Пустое имя жанра",
+                    "Пожалуйста, введите корректное (непустое) имя жанра");
+            return false;
+        }
+        return true;
+    }
 
     @FXML
     private void onConfirmBtn() {
-        isSuccessful = !genreNameTF.getText().trim().isEmpty();
+        isSuccessful = validateData();
         if(!isSuccessful) {
-            AlertUtil.showWarningAndWait("Warning", "Пустое имя жанра",
-                    "Пожалуйста, введите корректное (непустое) имя жанра");
             return;
         }
 
@@ -118,12 +105,6 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
         session.getTransaction().commit();
         session.close();
         primaryStage.close();
-
-        // произошли изменения в уже существующих жанрах,
-        // так что обновим книжечки
-        if(editMode) {
-            HomeLibrary.refreshBooks();
-        }
     }
 
     /**

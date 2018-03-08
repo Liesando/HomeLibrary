@@ -10,7 +10,7 @@ import javafx.stage.Window;
  *
  * Вспомогательный класс для отображения диалоговых окон с сообщениями пользователю.
  *
- * @version 1.2 4 March 2018
+ * @version 1.3 8 March 2018
  * @author Sergey Medelyan
  */
 public class AlertUtil
@@ -28,6 +28,19 @@ public class AlertUtil
     public static void showWarningAndWait(String title, String headerText, String contentText)
     {
         showAlertAndWait(Alert.AlertType.WARNING, null, title, headerText, contentText);
+    }
+
+    /**
+     * Отображает диалоговое предупреждающее окно и ожидает его закрытия
+     *
+     * @param owner       Окно-родитель
+     * @param title       Заголовок окна
+     * @param headerText  Заголовок сообщения
+     * @param contentText Сообщение
+     */
+    public static void showWarningAndWait(Window owner, String title, String headerText, String contentText)
+    {
+        showAlertAndWait(Alert.AlertType.WARNING, owner, title, headerText, contentText);
     }
 
     /**

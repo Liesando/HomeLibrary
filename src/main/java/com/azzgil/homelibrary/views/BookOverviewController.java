@@ -1,5 +1,6 @@
 package com.azzgil.homelibrary.views;
 
+import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.ICUDController;
 import com.azzgil.homelibrary.model.Book;
 import com.azzgil.homelibrary.utils.*;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import org.hibernate.Session;
 
 import java.io.IOException;
 
@@ -18,11 +20,18 @@ import java.io.IOException;
  * интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.5 6 March 2018
+ * @version 1.6 8 March 2018
  */
 public class BookOverviewController implements ICUDController {
+
     @FXML private Button addBookBtn;
     @FXML private VBox contentVBox;
+
+    /**
+     * Книга, по панельке которой щёлкнули (точнее, по кнопке
+     * редактирования или удаления на панельке)
+     */
+    private Book observableBook;
 
     @FXML
     private void initialize()
@@ -44,7 +53,7 @@ public class BookOverviewController implements ICUDController {
     public void refreshBooks() {
         contentVBox.getChildren().clear();
         try {
-            Book[] books = DataUtils.fetchAllBooks();
+            Book[] books = HomeLibrary.getAllBooks();
             double totalHeight = 0.0;
             for (Book b : books) {
                 FXMLLoader loader = FXMLUtils.configureLoaderFor("views/BookPanel.fxml");
@@ -84,7 +93,7 @@ public class BookOverviewController implements ICUDController {
 
     @Override
     public void create() {
-        AlertUtil.showNotRealizedWarningAndWait();
+        HomeLibrary.showBookEditWindow(false, null);
     }
 
     @Override
@@ -117,8 +126,29 @@ public class BookOverviewController implements ICUDController {
 
     }
 
+    public void setObservableBook(Book observableBook) {
+        this.observableBook = observableBook;
+    }
+
     @Override
     public void delete() {
-        AlertUtil.showNotRealizedWarningAndWait();
+        if(observableBook == null) {
+            AlertUtil.showEmptySelectionErrorAndWait("Не поддерживается в данной секции. " +
+                    "Используйте кнопки рядом с описанием книги.");
+            return;
+        }
+
+        Session session = HibernateUtil.openSession();
+
+        session.beginTransaction();
+        session.delete(observableBook);
+        session.getTransaction().commit();
+
+        HomeLibrary.refreshBooks();
+        HomeLibrary.getLibraryOverviewController().refreshOverallInfo();
+        refreshBooks();
+
+        session.close();
+        observableBook = null;
     }
 }

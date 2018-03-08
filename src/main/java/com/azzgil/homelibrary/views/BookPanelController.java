@@ -1,7 +1,10 @@
 package com.azzgil.homelibrary.views;
 
+import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.model.Book;
+import com.azzgil.homelibrary.utils.GUIUtils;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
@@ -14,9 +17,14 @@ import javafx.scene.layout.GridPane;
  * Контроллер панельки конкретной книги. Обрабатывает события интерфейса
  *
  * @author Sergey Medelyan
- * @version 1.1 4 March 2018
+ * @version 1.2 8 March 2018
  */
 public class BookPanelController {
+
+    private final static String DELETE_BTN_TOOLTIP =
+            "Удалить эту книгу";
+    private final static String EDIT_BTN_TOOLTIP =
+            "Редактировать...";
 
     /** Текст для "кнопки" сворота-разворота содержимого */
     private final static String MORE_INFO = "подробнее";
@@ -39,11 +47,17 @@ public class BookPanelController {
     @FXML private Label bookYearLbl;
     @FXML private Label bookIllustratorLbl;
     @FXML private Label bookTranslatorLbl;
+    @FXML private Button deleteBtn;
+    @FXML private Button editBtn;
 
 
     @FXML
     private void initialize() {
         initialHeight = anchorPane.getPrefHeight();
+        GUIUtils.loadButtonIcon(deleteBtn, GUIUtils.DELETE_ICON);
+        GUIUtils.loadButtonIcon(editBtn, GUIUtils.EDIT_ICON);
+        GUIUtils.addTooltipToButton(deleteBtn, DELETE_BTN_TOOLTIP);
+        GUIUtils.addTooltipToButton(editBtn, EDIT_BTN_TOOLTIP);
     }
 
     @FXML
@@ -110,5 +124,16 @@ public class BookPanelController {
 
     public void setParentController(BookOverviewController parentController) {
         this.parentController = parentController;
+    }
+
+    @FXML
+    private void onDeleteBtn() {
+        parentController.setObservableBook(book);
+        parentController.delete();
+    }
+
+    @FXML
+    private void onEditBtn() {
+        HomeLibrary.showBookEditWindow(true, book);
     }
 }

@@ -12,7 +12,7 @@ import java.util.Collection;
  * Жанр книги в библиотеке. Помимо непосредственной информации о себе
  * содержит информацию о книгах, относящихся к этому жанру (см. {@link Book})
  *
- * @version 1.2 2 March 2018
+ * @version 1.3 8 March 2018
  * @author Sergey Medelyan
  */
 @Entity
@@ -105,6 +105,16 @@ public class Genre {
     @Transient
     public String toString() {
         return getName();
+    }
+
+    @Override
+    @Transient
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Genre)) {
+            return false;
+        }
+
+        return id == ((Genre) obj).id;
     }
 
     /**

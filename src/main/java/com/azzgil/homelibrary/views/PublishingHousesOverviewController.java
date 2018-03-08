@@ -3,6 +3,7 @@ package com.azzgil.homelibrary.views;
 import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.ICUDController;
 import com.azzgil.homelibrary.model.Book;
+import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.model.PublishingHouse;
 import com.azzgil.homelibrary.utils.*;
 import javafx.application.Platform;
@@ -34,7 +35,7 @@ import java.util.Comparator;
  * Контроллер секции издательств.
  *
  * @author Sergey Medelyan
- * @version 1.1 6 March 2018
+ * @version 1.2 8 March 2018
  */
 public class PublishingHousesOverviewController implements ICUDController {
     private static final String EMPTY_SELECTION_ERROR =
@@ -69,9 +70,9 @@ public class PublishingHousesOverviewController implements ICUDController {
     }
 
     /** Обновляет и перерисовывает список издательств */
-    private void refreshPubHouses() {
+    public void refreshPubHouses() {
         pubHouses = FXCollections.observableArrayList(
-                Arrays.asList(DataUtils.fetchAllPubHouses()));
+                Arrays.asList(HomeLibrary.getAllPubHouses()));
         pubHouses.sort(Comparator.comparing(ph -> ph.getName()));
 
         listView.getItems().clear();
@@ -107,52 +108,13 @@ public class PublishingHousesOverviewController implements ICUDController {
 
     @Override
     public void create() {
-        showPubHouseEditWindow(false);
+        HomeLibrary.showPubHouseEditWindow(false, null);
     }
 
     @Override
     public void update() {
-        showPubHouseEditWindow(true);
-    }
-
-    /** см. {@link GenresOverviewController#showGenreEditWindow(boolean)}*/
-    private void showPubHouseEditWindow(boolean editMode) {
-        try {
-            FXMLLoader loader = FXMLUtils.configureLoaderFor("views/PublishingHouseEditWindow.fxml");
-
-            Stage stage = new Stage(StageStyle.UTILITY);
-            stage.setScene(new Scene(loader.load()));
-            PubHouseEditWindowController controller = loader.getController();
-            controller.setPrimaryStage(stage);
-
-            if(editMode) {
-                if (!validateUpdate()) {
-                    AlertUtil.showEmptySelectionErrorAndWait(EMPTY_SELECTION_ERROR);
-                    return;
-                }
-                controller.switchToEditMode(listView.getSelectionModel()
-                        .getSelectedItem());
-            }
-            stage.showAndWait();
-
-            if(controller.isSuccessful()) {
-                refreshPubHouses();
-                if(editMode) {
-
-                    // могли измениться названия издательств
-                    HomeLibrary.refreshBooks();
-                } else {
-
-                    // меняется количество издательств
-                    HomeLibrary.refreshOverallInfo();
-                }
-            }
-
-        } catch (IOException e) {
-            AlertUtil.showDataCorruptionErrorAndWait("views/GenreEditWindow.fxml");
-            e.printStackTrace();
-            Platform.exit();
-        }
+        HomeLibrary.showPubHouseEditWindow(true,
+                listView.getSelectionModel().getSelectedItem());
     }
 
     @Override
@@ -170,9 +132,10 @@ public class PublishingHousesOverviewController implements ICUDController {
                 session.delete(ph);
             }
             session.getTransaction().commit();
-            refreshPubHouses();
 
-            HomeLibrary.refreshOverallInfo();
+            HomeLibrary.refreshPublishingHouses();
+            HomeLibrary.getLibraryOverviewController().refreshOverallInfo();
+            refreshPubHouses();
         } catch (PersistenceException e) {
             session.getTransaction().rollback();
             if(e.getCause() instanceof ConstraintViolationException) {
