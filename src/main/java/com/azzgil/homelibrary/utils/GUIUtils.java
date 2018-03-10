@@ -33,6 +33,7 @@ public class GUIUtils {
     public static final String EYE_FIND_ICON = "icons/watch-tool.png";
     public static final String DELETE_ICON = "icons/delete.png";
     public static final String EDIT_ICON = "icons/edit.png";
+    public static final String REFRESH_ICON = "icons/crutch.png";
 
     // используется для замены содержимого элементов GUI, если они
     // пустые

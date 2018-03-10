@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER_RIGHT" maxHeight="50.0" prefHeight="50.0" prefWidth="600.0" spacing="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" />
+            <Button mnemonicParsing="false" />
+            <Button mnemonicParsing="false" />
+            <Button mnemonicParsing="false" text="Добавить друга">
+               <HBox.margin>
+                  <Insets right="8.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="8.0" />
+         </padding>
+      </HBox>
+      <Label styleClass="label-section-title" text="Друзья" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <ListView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0">
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#create" text="Добавить друга..." />
+                  <MenuItem mnemonicParsing="false" text="Редактировать" />
+                  <MenuItem mnemonicParsing="false" text="Удалить выбранное" />
+                  <MenuItem mnemonicParsing="false" text="Показать книги этого издательства" />
+              </items>
+            </ContextMenu>
+         </contextMenu></ListView>
+   </children>
+</AnchorPane>

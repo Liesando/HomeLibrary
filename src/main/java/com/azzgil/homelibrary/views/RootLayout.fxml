@@ -63,7 +63,10 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <ToolBar layoutY="27.0" prefHeight="40.0" prefWidth="1024.0" />
+            <ToolBar layoutY="27.0" maxHeight="30.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="1024.0">
+               <items>
+                  <Button fx:id="refreshBtn" mnemonicParsing="false" onAction="#onRefresh" />
+               </items></ToolBar>
          </children>
       </Pane>
    </top>

@@ -162,8 +162,7 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
         bookTitleTF.setText(editable.getName());
         authorCB.getSelectionModel().select(editable.getAuthor());
         genresCLV.getCheckModel().clearChecks();
-        editable.getGenres().forEach(g ->
-                genresCLV.getCheckModel().check(g));
+        checkGenres();
         yearPublishedTF.setText(Integer.toString(editable.getYear()));
         pubHouseCB.setValue(editable.getPublishingHouse());
         translatorTF.setText(editable.getTranslator());
@@ -171,10 +170,16 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
         commentaryTA.setText(editable.getCommentary());
     }
 
+    private void checkGenres() {
+        editable.getGenres().forEach(g ->
+                genresCLV.getCheckModel().check(g));
+    }
+
     @FXML
     private void onAddGenreBtn() {
         if(HomeLibrary.showGenreEditWindow(false, null)) {
             refreshGenres();
+            checkGenres();
         }
     }
 

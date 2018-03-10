@@ -140,7 +140,7 @@ public class Book {
     @Override
     @Transient
     public String toString() {
-        return String.format("\"%s\", %d", getName(), getYear());
+        return String.format("\"%1$s\", %2$d", getName(), getYear());
     }
 
     @Transient

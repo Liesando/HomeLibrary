@@ -93,6 +93,9 @@ public class DataUtils {
      * переносом строки
      */
     public static String reduceBooks(Collection<Book> books) {
+        if(books.size() == 1) {
+            return books.iterator().next().toString();
+        }
         Optional<Book> result = books.stream().reduce((book, book2) -> {
             Book b = new Book();
             b.setName(String.format("%1$s\n%2$s", book.toString(), book2.toString()));
