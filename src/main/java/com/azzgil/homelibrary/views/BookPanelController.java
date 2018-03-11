@@ -10,7 +10,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-
 /**
  * BookPanelController
  *
@@ -21,10 +20,8 @@ import javafx.scene.layout.GridPane;
  */
 public class BookPanelController {
 
-    private final static String DELETE_BTN_TOOLTIP =
-            "Удалить эту книгу";
-    private final static String EDIT_BTN_TOOLTIP =
-            "Редактировать...";
+    private final static String DELETE_BTN_TOOLTIP = "Удалить эту книгу";
+    private final static String EDIT_BTN_TOOLTIP = "Редактировать...";
 
     /** Текст для "кнопки" сворота-разворота содержимого */
     private final static String MORE_INFO = "подробнее";
@@ -54,6 +51,7 @@ public class BookPanelController {
     @FXML
     private void initialize() {
         initialHeight = anchorPane.getPrefHeight();
+
         GUIUtils.loadButtonIcon(deleteBtn, GUIUtils.DELETE_ICON);
         GUIUtils.loadButtonIcon(editBtn, GUIUtils.EDIT_ICON);
         GUIUtils.addTooltipToButton(deleteBtn, DELETE_BTN_TOOLTIP);

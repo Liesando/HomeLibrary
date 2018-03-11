@@ -27,7 +27,6 @@
          </children>
       </GridPane>
       <Label fx:id="bookAuthorLbl" layoutX="14.0" layoutY="39.0" styleClass="label-author" text="Автор" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="24.0" />
-      <Accordion layoutX="79.0" layoutY="194.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Label fx:id="moreInfoLbl" layoutX="172.0" layoutY="204.0" onMouseClicked="#onMoreInfoClick" styleClass="label-more-info" text="подробнее" textAlignment="CENTER" AnchorPane.bottomAnchor="-8.0" AnchorPane.rightAnchor="0.0" />
       <TextArea fx:id="bookCommentaryTA" editable="false" layoutX="292.0" layoutY="261.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="292.0" visible="false" wrapText="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="16.0" />
       <GridPane fx:id="additionalInfo" layoutX="58.0" layoutY="196.0" visible="false" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="150.0">

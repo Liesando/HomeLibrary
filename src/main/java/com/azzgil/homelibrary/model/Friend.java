@@ -12,7 +12,7 @@ import java.util.Collection;
  * Дополнительно содержит информацию о совершённых данным другом
  * займах ({@link Borrowing}).
  *
- * @version 1.0 23 Feb 2018
+ * @version 1.1 11 March 2018
  * @author Sergey Medelyan
  */
 @Entity
@@ -34,7 +34,9 @@ public class Friend {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "friend_gen")
+    @SequenceGenerator(name = "friend_gen", sequenceName = "FRIEND_SEQ", allocationSize = 5,
+            initialValue = 20)
     @Column(name = "id_friend")
     public int getId() {
         return id;
@@ -65,7 +67,7 @@ public class Friend {
         return phoneNumber;
     }
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "id_friend")
     public Collection<Borrowing> getBookBorrowings() {
         return bookBorrowings;
@@ -100,7 +102,6 @@ public class Friend {
     }
 
     @Override
-    @Transient
     public String toString() {
         return getFio();
     }

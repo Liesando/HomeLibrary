@@ -3,31 +3,23 @@ package com.azzgil.homelibrary.views;
 import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.ICUDController;
 import com.azzgil.homelibrary.model.Book;
-import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.model.PublishingHouse;
 import com.azzgil.homelibrary.utils.*;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseButton;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.PersistenceException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-
 
 /**
  * PublishingHousesOverviewController
@@ -38,8 +30,10 @@ import java.util.Comparator;
  * @version 1.2 8 March 2018
  */
 public class PublishingHousesOverviewController implements ICUDController {
-    private static final String EMPTY_SELECTION_ERROR =
-            "Пожалуйста, сначала выберите издательство из списка";
+
+    private static final String EMPTY_SELECTION_ERROR = "Пожалуйста, сначала выберите издательство из списка";
+
+    // тексты всплывающих подсказок
     private static final String SHOW_BOOKS_BTN_TOOLTIP = "Показать книги этого издательства";
     private static final String DELETE_BTN_TOOLTIP = "Удалить выбранные издательства";
     private static final String EDIT_BTN_TOOLTIP = "Редактировать издательство";
@@ -57,7 +51,7 @@ public class PublishingHousesOverviewController implements ICUDController {
     @FXML
     private void initialize() {
         GUIUtils.loadButtonIcon(addPubHouseBtn, GUIUtils.ADD_ICON);
-        GUIUtils.loadButtonIcon(showBooksBtn, GUIUtils.EYE_FIND_ICON);
+        GUIUtils.loadButtonIcon(showBooksBtn, GUIUtils.DETAILS_ICON);
         GUIUtils.loadButtonIcon(deleteBtn, GUIUtils.DELETE_ICON);
         GUIUtils.loadButtonIcon(editBtn, GUIUtils.EDIT_ICON);
 
@@ -73,7 +67,7 @@ public class PublishingHousesOverviewController implements ICUDController {
     public void refreshPubHouses() {
         pubHouses = FXCollections.observableArrayList(
                 Arrays.asList(HomeLibrary.getAllPubHouses()));
-        pubHouses.sort(Comparator.comparing(ph -> ph.getName()));
+        pubHouses.sort(Comparator.comparing(PublishingHouse::getName));
 
         listView.getItems().clear();
         listView.setItems(pubHouses);
@@ -103,7 +97,7 @@ public class PublishingHousesOverviewController implements ICUDController {
 
         AlertUtil.showInformationAndWait("Книги издательства",
                 pubHouse.getName(),
-                (books != "" ? books : "у этого издательство ещё нет книг"));
+                (books.equals("") ? books : "у этого издательство ещё нет книг"));
     }
 
     @Override
@@ -113,13 +107,15 @@ public class PublishingHousesOverviewController implements ICUDController {
 
     @Override
     public void update() {
-        HomeLibrary.showPubHouseEditWindow(true,
-                listView.getSelectionModel().getSelectedItem());
+        if(validateUpdate()) {
+            HomeLibrary.showPubHouseEditWindow(true,
+                    listView.getSelectionModel().getSelectedItem());
+        }
     }
 
     @Override
     public void delete() {
-        if(!validateUpdate()) {
+        if(!validateDelete()) {
             AlertUtil.showEmptySelectionErrorAndWait(EMPTY_SELECTION_ERROR);
             return;
         }
@@ -140,7 +136,8 @@ public class PublishingHousesOverviewController implements ICUDController {
             session.getTransaction().rollback();
             if(e.getCause() instanceof ConstraintViolationException) {
 
-                // отображаем список книг этого издательства
+                // ещё есть книги этого издательства, их нельзя просто удалить
+                // так что отображаем список книг этого издательства
                 ArrayList<Book> books = new ArrayList<>();
                 for (PublishingHouse ph:
                      listView.getSelectionModel().getSelectedItems()) {

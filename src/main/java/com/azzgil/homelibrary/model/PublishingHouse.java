@@ -62,7 +62,6 @@ public class PublishingHouse {
     }
 
     @Override
-    @Transient
     public String toString() {
         return getName();
     }

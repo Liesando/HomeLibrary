@@ -10,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import javafx.util.Duration;
 
-
 /**
  * GUIUtils
  *
@@ -18,19 +17,18 @@ import javafx.util.Duration;
  * для GUI-элементов и их настройку.
  *
  * @author Sergey Medelyan
- * @version 1.3 8 March 2018
+ * @version 1.3 11 March 2018
  */
 public class GUIUtils {
 
-    // стандартные размеры иконок на кнопках
-    public static final double STD_BUTTON_ICON_HEIGTH = 24.0;
+    // стандартные размеры
+    public static final double STD_BUTTON_ICON_HEIGHT = 24.0;
     public static final double STD_BUTTON_ICON_WIDTH = 24.0;
-
     public static final double DEFAULT_TOOLTIP_DELAY = 30.0;
 
     // пути до определённых иконок
     public static final String ADD_ICON = "icons/add_book.png";
-    public static final String EYE_FIND_ICON = "icons/watch-tool.png";
+    public static final String DETAILS_ICON = "icons/watch-tool.png";
     public static final String DELETE_ICON = "icons/delete.png";
     public static final String EDIT_ICON = "icons/edit.png";
     public static final String REFRESH_ICON = "icons/crutch.png";
@@ -68,7 +66,7 @@ public class GUIUtils {
      * Загружает указанную иконку и отображает её внутри кнопки btn
      */
     public static void loadButtonIcon(Button btn, String iconPath) {
-        loadButtonIcon(btn, iconPath, STD_BUTTON_ICON_HEIGTH, STD_BUTTON_ICON_WIDTH);
+        loadButtonIcon(btn, iconPath, STD_BUTTON_ICON_HEIGHT, STD_BUTTON_ICON_WIDTH);
     }
 
     /**
@@ -86,6 +84,7 @@ public class GUIUtils {
     /**
      * Добавляет кнопке всплывающую подсказку со временем
      * задержки до всплытия {@value DEFAULT_TOOLTIP_DELAY} мс
+     * и бесконечным временем показа.
      *
      * @param btn         Кнопка
      * @param tooltipText Текст подсказки
@@ -95,15 +94,42 @@ public class GUIUtils {
     }
 
     /**
-     * Добавляет кнопке всплывающую подсказку.
+     * Добавляет кнопке всплывающую подсказку с бесконечным временем
+     * показа.
      *
      * @param btn         Кнопка
      * @param tooltipText Текст подсказки
      * @param showDelayMs Задержка до показа подсказки в миллисекундах
      */
     public static void addTooltipToButton(Button btn, String tooltipText, double showDelayMs) {
+        btn.setTooltip(createTooltip(tooltipText, showDelayMs, Duration.INDEFINITE));
+    }
+
+    /**
+     * Создаёт всплывающую подсказку с указанным текстом, временем задержки
+     * {@value DEFAULT_TOOLTIP_DELAY} мс и бесконечным временем показа
+     *
+     * @param tooltipText Текст подсказки
+     * @return Всплывающая подсказка
+     */
+    public static Tooltip createTooltip(String tooltipText) {
+        return createTooltip(tooltipText, DEFAULT_TOOLTIP_DELAY, Duration.INDEFINITE);
+    }
+
+    /**
+     * Создаёт всплывающую подсказку с указанными текстом, временем задержки
+     * и бесконечным временем показа.
+     * Размер текста всех подсказок - 10 пунктов.
+     *
+     * @param tooltipText Текст подсказки
+     * @param showDelayMs Время задержки до появления в миллисекундах
+     * @return Всплывающая подсказка
+     */
+    public static Tooltip createTooltip(String tooltipText, double showDelayMs, Duration duration) {
         Tooltip t = new Tooltip(tooltipText);
         t.setShowDelay(Duration.millis(showDelayMs));
-        btn.setTooltip(t);
+        t.setShowDuration(duration);
+        t.setStyle("-fx-font-size: 10pt;");
+        return t;
     }
 }

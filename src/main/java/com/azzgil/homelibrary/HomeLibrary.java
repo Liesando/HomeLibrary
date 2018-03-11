@@ -14,21 +14,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.hibernate.Session;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
-import java.util.*;
-import java.util.List;
-
 
 /**
  * HomeLibrary
  *
  * Главный класс приложения. Отвечает за запуск и конфигурацию программы,
  * отображение интерфейса и открытие окон создания/редактирования сущностей.
- *
- * TODO: load .css file
  *
  * @version dev-0.8 8 March 2018
  * @author Sergey Medelyan
@@ -69,11 +62,14 @@ public class HomeLibrary extends Application {
     private LibraryOverviewController libraryOverviewController;
     private AnchorPane pubHousesOverviewLayout;
     private PublishingHousesOverviewController pubHousesOverviewController;
+    private AnchorPane friendsOverviewLayout;
+    private FriendsOverviewController friendsOverviewController;
 
     private Book[] allBooks;
     private String[] allAuthors;
     private Genre[] allGenres;
     private PublishingHouse[] allPubHouses;
+    private Friend[] allFriends;
 
     public static Book[] getAllBooks() {
         return instance.allBooks;
@@ -89,6 +85,10 @@ public class HomeLibrary extends Application {
 
     public static PublishingHouse[] getAllPubHouses() {
         return instance.allPubHouses;
+    }
+
+    public static Friend[] getAllFriends() {
+        return instance.allFriends;
     }
 
     /**
@@ -121,6 +121,10 @@ public class HomeLibrary extends Application {
         instance.allPubHouses = DataUtils.fetchAllPubHouses();
     }
 
+    public static void refreshFriends() {
+        instance.allFriends = DataUtils.fetchAllFriends();
+    }
+
     /** Просто главный метод */
 
     public static void main(String[] args) {
@@ -146,6 +150,7 @@ public class HomeLibrary extends Application {
         refreshAuthors();
         refreshGenres();
         refreshPublishingHouses();
+        refreshFriends();
 
         initRootLayout();
         loadSectionLayouts();
@@ -176,6 +181,7 @@ public class HomeLibrary extends Application {
             controller.setHomeLibrary(this);
 
             Scene scene = new Scene(rootLayout);
+            rootLayout.getStylesheets().add("views/theme.css");
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
@@ -210,6 +216,12 @@ public class HomeLibrary extends Application {
             loader = FXMLUtils.configureLoaderFor(missingFile);
             pubHousesOverviewLayout = loader.load();
             pubHousesOverviewController = loader.getController();
+
+            missingFile = "views/FriendsOverview.fxml";
+            loader = FXMLUtils.configureLoaderFor(missingFile);
+            friendsOverviewLayout = loader.load();
+            friendsOverviewController = loader.getController();
+
         } catch (IOException e) {
             e.printStackTrace();
             AlertUtil.showDataCorruptionErrorAndWait(missingFile);
@@ -224,6 +236,7 @@ public class HomeLibrary extends Application {
      */
     public void showSectionLayout(Section section) {
         switch (section) {
+
             case Library:
                 rootLayout.setCenter(libraryOverviewLayout);
                 currentController = null;
@@ -242,6 +255,11 @@ public class HomeLibrary extends Application {
             case PublishingHouses:
                 rootLayout.setCenter(pubHousesOverviewLayout);
                 currentController = pubHousesOverviewController;
+                break;
+
+            case Friends:
+                rootLayout.setCenter(friendsOverviewLayout);
+                currentController = friendsOverviewController;
                 break;
 
             default:
@@ -282,6 +300,10 @@ public class HomeLibrary extends Application {
 
     public static PublishingHousesOverviewController getPubHousesOverviewController() {
         return instance.pubHousesOverviewController;
+    }
+
+    public static FriendsOverviewController getFriendsOverviewController() {
+        return instance.friendsOverviewController;
     }
 
     public ICUDController getCurrentController() {
@@ -410,6 +432,42 @@ public class HomeLibrary extends Application {
                 instance.bookOverviewController.refreshBooks();
                 if(!editMode) {
                     HomeLibrary.getLibraryOverviewController().refreshOverallInfo();
+                }
+            }
+
+        } catch (IOException e) {
+            AlertUtil.showDataCorruptionErrorAndWait("views/GenreEditWindow.fxml");
+            e.printStackTrace();
+            Platform.exit();
+        }
+    }
+
+    /**
+     * Создаёт окно редактирования книги в одном из двух режимов:
+     * создание жанра (editMode = false) и редактирование жанра
+     * (editMode = false).
+     *
+     * @param editMode включить режим редактирования?
+     */
+    public static void showFriendEditWindow(boolean editMode, Friend friend) {
+        try {
+            FXMLLoader loader = FXMLUtils.configureLoaderFor("views/FriendEditWindow.fxml");
+
+            Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setScene(new Scene(loader.load()));
+            FriendEditWindowController controller = loader.getController();
+            controller.setPrimaryStage(stage);
+
+            if(editMode) {
+                controller.switchToEditMode(friend);
+            }
+            stage.showAndWait();
+
+            if(controller.isSuccessful()) {
+                HomeLibrary.refreshFriends();
+                instance.friendsOverviewController.refreshFriends();
+                if(!editMode) {
+                    instance.libraryOverviewController.refreshOverallInfo();
                 }
             }
 

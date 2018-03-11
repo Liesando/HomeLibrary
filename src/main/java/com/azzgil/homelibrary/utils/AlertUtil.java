@@ -1,6 +1,5 @@
 package com.azzgil.homelibrary.utils;
 
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.stage.Window;
@@ -83,6 +82,7 @@ public class AlertUtil
         alert.initOwner(owner);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
+
         TextArea ta = new TextArea(contentText);
         ta.setEditable(false);
         ta.setWrapText(true);

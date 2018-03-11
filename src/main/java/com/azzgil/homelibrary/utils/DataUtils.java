@@ -1,6 +1,7 @@
 package com.azzgil.homelibrary.utils;
 
 import com.azzgil.homelibrary.model.Book;
+import com.azzgil.homelibrary.model.Friend;
 import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.model.PublishingHouse;
 import org.hibernate.Session;
@@ -26,41 +27,25 @@ public class DataUtils {
 
     /** Возвращает список всех книг в базе */
     public static Book[] fetchAllBooks() {
-        Object[] objects = fetchAllObjects("from Book");
-
-        Book[] books = new Book[objects.length];
-        for(int i=0; i < objects.length; ++i) {
-            books[i] = (Book) objects[i];
-        }
-
-        return books;
+        return Arrays.stream(fetchAllObjects("from Book"))
+                .toArray(Book[]::new);
     }
 
     /** Возвращает список всех жанров в базе */
     public static Genre[] fetchAllGenres() {
-        Object[] objects = fetchAllObjects("from Genre");
-
-// genres = (Genre[]) objects;   < ------------- this one will fail with
-// ClassCastException, so we'll work around it with following straight-forward
-// code
-        Genre[] genres = new Genre[objects.length];
-        for(int i=0; i < objects.length; ++i) {
-            genres[i] = (Genre) objects[i];
-        }
-
-        return genres;
+        return Arrays.stream(fetchAllObjects("from Genre"))
+                .toArray(Genre[]::new);
     }
 
     /** Возвращает список всех издательств в базе */
     public static PublishingHouse[] fetchAllPubHouses() {
-        Object[] objects = fetchAllObjects("from PublishingHouse");
+        return Arrays.stream(fetchAllObjects("from PublishingHouse"))
+                .toArray(PublishingHouse[]::new);
+    }
 
-        PublishingHouse[] pubHouses = new PublishingHouse[objects.length];
-        for(int i = 0; i < objects.length; ++i) {
-            pubHouses[i] = (PublishingHouse) objects[i];
-        }
-
-        return pubHouses;
+    public static Friend[] fetchAllFriends() {
+        return Arrays.stream(fetchAllObjects("from Friend"))
+                .toArray(Friend[]::new);
     }
 
     /**
@@ -80,7 +65,7 @@ public class DataUtils {
     }
 
     /** Возвращает список всех объектов по указанному FROM-clause. */
-    public static Object[] fetchAllObjects(String fromClause) {
+    private static Object[] fetchAllObjects(String fromClause) {
         Session session = HibernateUtil.openSession();
         Object[] objects = session.createQuery(fromClause).list().toArray();
         session.close();
@@ -96,11 +81,13 @@ public class DataUtils {
         if(books.size() == 1) {
             return books.iterator().next().toString();
         }
+
         Optional<Book> result = books.stream().reduce((book, book2) -> {
             Book b = new Book();
             b.setName(String.format("%1$s\n%2$s", book.toString(), book2.toString()));
             return b;
         });
+
         return result.isPresent() ? result.get().getName() : "";
     }
 
@@ -123,5 +110,19 @@ public class DataUtils {
         }
 
         return books;
+    }
+
+    /**
+     * Сохраняет или обновляет переданный объект в базе. Для этого
+     * этот объект должен быть замапплен.
+     *
+     * @param o Сохраняемый объект
+     */
+    public static void saveOrUpdate(Object o) {
+        Session session = HibernateUtil.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(o);
+        session.getTransaction().commit();
+        session.close();
     }
 }

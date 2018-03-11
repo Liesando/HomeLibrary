@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="314.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azzgil.homelibrary.views.FriendEditWindowController">
+   <children>
+      <GridPane layoutX="11.0" layoutY="14.0" maxHeight="65.0" minHeight="39.0" prefHeight="39.0" prefWidth="384.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="131.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="326.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="82.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="ФИО:" />
+            <TextField fx:id="fioTF" promptText="Введите ФИО" GridPane.columnIndex="1" />
+            <Label text="Номер телефона:" GridPane.rowIndex="1" />
+            <Label text="Email:" GridPane.rowIndex="2" />
+            <Label text="ID ВКонтакте:" GridPane.rowIndex="3" />
+            <Label text="Комментарий:" GridPane.rowIndex="4" />
+            <TextField fx:id="phoneNumberTF" promptText="Введите номер телефона" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="emailTF" promptText="Введите email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="vkIdTF" promptText="Введите ID ВКонтакте" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextArea fx:id="commentaryTF" prefHeight="200.0" prefWidth="200.0" promptText="Введите комментарий (по желанию)" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER_RIGHT" layoutX="200.0" layoutY="300.0" maxHeight="39.0" prefHeight="39.0" prefWidth="400.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="confirmBtn" mnemonicParsing="false" onAction="#onConfirmBtn" text="Добавить" />
+            <Button mnemonicParsing="false" onAction="#onCancelBtn" text="Отмена" />
+         </children>
+         <padding>
+            <Insets right="8.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

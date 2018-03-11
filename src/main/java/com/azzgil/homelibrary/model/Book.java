@@ -2,17 +2,16 @@ package com.azzgil.homelibrary.model;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Iterator;
-
+import java.util.Comparator;
 
 /**
  * Book
  *
  * Книга в библиотеке. Помимо очевидных свойств и полей также имеет
  * информацию о жанрах, к которым она отнесена, и истории займов,
- * а именно кто и когда взял книгу (см. {@link Borrowing}).
+ * а именно: кто и когда взял книгу (см. {@link Borrowing}).
  *
- * @version 1.1 4 March 2018
+ * @version 1.2 11 March 2018
  * @author Sergey Medelyan
  */
 @Entity
@@ -91,7 +90,7 @@ public class Book {
         return genres;
     }
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "id_book")
     public Collection<Borrowing> getBookBorrowings() {
         return bookBorrowings;
@@ -138,7 +137,6 @@ public class Book {
     }
 
     @Override
-    @Transient
     public String toString() {
         return String.format("\"%1$s\", %2$d", getName(), getYear());
     }
@@ -157,5 +155,32 @@ public class Book {
 
         sb.delete(sb.length() - 2, sb.length());
         return sb.toString();
+    }
+
+    /**
+     * Проверяет наличие книги. Если книга одолжена другом, то для её возвращения
+     * нужно лишь указать дату возвращения большую, чем дату займа. В ином случае
+     * считается, что книги нет в наличии.
+     *
+     * @return true, если книга в наличии, false - иначе
+     */
+    @Transient
+    public boolean isPresent() {
+        Borrowing last = getLastBorrowing();
+        if(last == null) {
+            return false;
+        }
+
+        return last.getReturnDate().after(last.getId().getBorrowingDate());
+    }
+
+    /**
+     * Возвращает последний займ этой книги (null, если займов не было)
+     * @return Последний займ или null, если займов не было
+     */
+    @Transient
+    private Borrowing getLastBorrowing() {
+        return bookBorrowings.stream().max(Comparator.comparing(b -> b.getId()
+                    .getBorrowingDate())).orElse(null);
     }
 }

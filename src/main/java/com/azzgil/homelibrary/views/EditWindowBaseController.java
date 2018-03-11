@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-
 /**
  * EditWindowBaseController
  *
@@ -12,7 +11,7 @@ import javafx.stage.Stage;
  * создание и/или редактирование экземпляров сущностей.
  *
  * @author Sergey Medelyan
- * @version 1.0 4 March 2018
+ * @version 1.1 11 March 2018
  * @param <T> Тип создаваемой/редактируемой сущности
  */
 public abstract class EditWindowBaseController<T> {
@@ -58,5 +57,9 @@ public abstract class EditWindowBaseController<T> {
         primaryStage.close();
     }
 
+    /**
+     * Выполняет проверку корректности введённых данных.
+     * @return true, если данные корректны, иначе false
+     */
     protected abstract boolean validateData();
 }

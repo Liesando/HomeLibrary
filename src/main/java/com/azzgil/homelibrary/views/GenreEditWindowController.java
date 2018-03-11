@@ -5,17 +5,13 @@ import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.DataUtils;
 import com.azzgil.homelibrary.utils.GUIUtils;
-import com.azzgil.homelibrary.utils.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.util.Callback;
-import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-
 
 /**
  * GenreEditWindowController
@@ -23,7 +19,7 @@ import java.util.Comparator;
  * Контроллер окна создания/редактирования жанра.
  *
  * @author Sergey Medelyan
- * @version 1.2 8 March 2018
+ * @version 1.3 11 March 2018
  */
 public class GenreEditWindowController extends EditWindowBaseController<Genre> {
 
@@ -34,6 +30,7 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
     private void initialize() {
         parentCategories.setCellFactory(GUIUtils.STD_GENRE_CELL_FACTORY);
         prepareCategories(null);
+        editable = new Genre();
     }
 
     /**
@@ -71,7 +68,9 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
 
     @Override
     protected boolean validateData() {
-        // TODO: посмотреть, что больше нет таких жанров
+
+        // TODO: посмотреть, что больше жанров с таким именем
+
         if(genreNameTF.getText().trim().isEmpty()) {
             AlertUtil.showWarningAndWait("Warning", "Пустое имя жанра",
                     "Пожалуйста, введите корректное (непустое) имя жанра");
@@ -87,11 +86,6 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
             return;
         }
 
-        Session session = HibernateUtil.openSession();
-
-        if(!editMode) {
-            editable = new Genre();
-        }
         editable.setName(genreNameTF.getText().trim());
         Genre parent = parentCategories.getSelectionModel().getSelectedItem();
         if(parent == null) {
@@ -100,10 +94,8 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
             editable.setParentId(parent.getId());
         }
 
-        session.beginTransaction();
-        session.saveOrUpdate(editable);
-        session.getTransaction().commit();
-        session.close();
+        DataUtils.saveOrUpdate(editable);
+
         primaryStage.close();
     }
 

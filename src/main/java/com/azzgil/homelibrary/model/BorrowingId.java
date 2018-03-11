@@ -2,7 +2,6 @@ package com.azzgil.homelibrary.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -53,7 +52,6 @@ public class BorrowingId implements Serializable {
     }
 
     @Override
-    @Transient
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -68,7 +66,6 @@ public class BorrowingId implements Serializable {
     }
 
     @Override
-    @Transient
     public int hashCode() {
         return Objects.hash(getIdBook(), getIdFriend(), getBorrowingDate());
     }

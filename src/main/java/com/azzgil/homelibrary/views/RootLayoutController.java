@@ -100,15 +100,18 @@ public class RootLayoutController {
 
     @FXML
     private void onRefresh() {
-        // total refresh here :D
+
+        // total refresh here :D (code crutch)
         HomeLibrary.refreshBooks();
         HomeLibrary.refreshAuthors();
         HomeLibrary.refreshGenres();
         HomeLibrary.refreshPublishingHouses();
+        HomeLibrary.refreshFriends();
 
         HomeLibrary.getLibraryOverviewController().refreshOverallInfo();
         HomeLibrary.getBookOverviewController().refreshBooks();
         HomeLibrary.getGenresOverviewController().refreshGenres();
         HomeLibrary.getPubHousesOverviewController().refreshPubHouses();
+        HomeLibrary.getFriendsOverviewController().refreshFriends();
     }
 }

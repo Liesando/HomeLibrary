@@ -5,20 +5,13 @@ import com.azzgil.homelibrary.ICUDController;
 import com.azzgil.homelibrary.model.Book;
 import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.utils.*;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.PersistenceException;
-import java.io.IOException;
 import java.util.*;
-
 
 /**
  * GenresOverviewController
@@ -30,14 +23,13 @@ import java.util.*;
  * @version 1.4 8 March 2018
  */
 public class GenresOverviewController implements ICUDController {
-    private static final String EMPTY_SELECTION_ERROR =
-            "Пожалуйста, сначала выберите жанр из списка";
-    private static final String SHOW_BOOKS_BTN_TOOLTIP =
-            "Показать книги этого жанра";
-    private static final String DELETE_BTN_TOOLTIP =
-            "Удалить выбранные жанры и их поджанры";
-    private static final String EDIT_BTN_TOOLTIP =
-            "Редактировать выбранный жанр";
+
+    private static final String EMPTY_SELECTION_ERROR = "Пожалуйста, сначала выберите жанр из списка";
+
+    // тексты всплывающих подсказок
+    private static final String SHOW_BOOKS_BTN_TOOLTIP = "Показать книги этого жанра";
+    private static final String DELETE_BTN_TOOLTIP = "Удалить выбранные жанры и их поджанры";
+    private static final String EDIT_BTN_TOOLTIP = "Редактировать выбранный жанр";
 
     @FXML private Button addGenreBtn;
     @FXML private Button showBooksBtn;
@@ -52,7 +44,7 @@ public class GenresOverviewController implements ICUDController {
     @FXML
     private void initialize() {
         GUIUtils.loadButtonIcon(addGenreBtn, GUIUtils.ADD_ICON);
-        GUIUtils.loadButtonIcon(showBooksBtn, GUIUtils.EYE_FIND_ICON);
+        GUIUtils.loadButtonIcon(showBooksBtn, GUIUtils.DETAILS_ICON);
         GUIUtils.loadButtonIcon(deleteBtn, GUIUtils.DELETE_ICON);
         GUIUtils.loadButtonIcon(editBtn, GUIUtils.EDIT_ICON);
 
@@ -136,7 +128,7 @@ public class GenresOverviewController implements ICUDController {
 
         String books = DataUtils.reduceBooks(DataUtils.collectBooksOfGenre(g));
         AlertUtil.showInformationAndWait("Книги жанра", g.getFullName(),
-                (books != "" ? books : "книг указанного жанра нет в библиотеке"));
+                (books.equals("") ? books : "книг указанного жанра нет в библиотеке"));
     }
 
     @Override
@@ -202,8 +194,8 @@ public class GenresOverviewController implements ICUDController {
             session.getTransaction().rollback();
             if(e.getCause() instanceof ConstraintViolationException) {
 
-                // отображаем список книг, которые, возможно,
-                // вызывают конфликт и препятствуют удалению жанра
+                // отображаем список книг, которые вызывают
+                // конфликт и препятствуют удалению жанра
                 ArrayList<Book> books = new ArrayList<>();
                 for (TreeItem<Genre> i:
                      treeView.getSelectionModel().getSelectedItems()) {

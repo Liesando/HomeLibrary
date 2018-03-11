@@ -5,17 +5,15 @@ import com.azzgil.homelibrary.model.Book;
 import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.model.PublishingHouse;
 import com.azzgil.homelibrary.utils.AlertUtil;
+import com.azzgil.homelibrary.utils.DataUtils;
 import com.azzgil.homelibrary.utils.GUIUtils;
-import com.azzgil.homelibrary.utils.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxListCell;
 import org.controlsfx.control.CheckListView;
-import org.hibernate.Session;
 
 import java.util.Arrays;
-
 
 /**
  * BookEditWindowController
@@ -24,13 +22,12 @@ import java.util.Arrays;
  * и событиями интерфейса.
  *
  * @author Sergey Medelyan
- * @version 1.0 8 March 2018
+ * @version 1.1 11 March 2018
  */
 public class BookEditWindowController extends EditWindowBaseController<Book> {
-    private static final String ADD_GENRE_BTN_TOOLTIP =
-            "Добавить новый жанр...";
-    private static final String ADD_PUBHOUSE_BTN_TOOLTIP =
-            "Добавить новое издательство...";
+    private static final String ADD_GENRE_BTN_TOOLTIP = "Добавить новый жанр...";
+    private static final String ADD_PUB_HOUSE_BTN_TOOLTIP = "Добавить новое издательство...";
+
     private static final int LEAST_ALLOWED_YEAR_OF_PUBLISHING = 1500;
 
     @FXML private TextField bookTitleTF;
@@ -49,8 +46,10 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
         GUIUtils.loadButtonIcon(addGenreBtn, GUIUtils.ADD_ICON);
         GUIUtils.loadButtonIcon(addPubHouseBtn, GUIUtils.ADD_ICON);
         GUIUtils.addTooltipToButton(addGenreBtn, ADD_GENRE_BTN_TOOLTIP);
-        GUIUtils.addTooltipToButton(addPubHouseBtn, ADD_PUBHOUSE_BTN_TOOLTIP);
+        GUIUtils.addTooltipToButton(addPubHouseBtn, ADD_PUB_HOUSE_BTN_TOOLTIP);
 
+        // отображаем жанры как полные имена (напр., "Классика / Поэма"
+        // вместо "Поэма")
         genresCLV.setCellFactory(listView -> new CheckBoxListCell<>(genresCLV::getItemBooleanProperty) {
             @Override
             public void updateItem(Genre item, boolean empty) {
@@ -63,6 +62,8 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
                 Arrays.asList(HomeLibrary.getAllAuthors())));
         refreshGenres();
         refreshPubHouses();
+
+        editable = new Book();
     }
 
     private void refreshGenres() {
@@ -111,8 +112,10 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
 
         translatorTF.setText(translatorTF.getText().trim().length() > 0 ?
                 translatorTF.getText() : GUIUtils.STD_NOT_SPECIFIED_REPLACER);
+
         illustratorTF.setText(illustratorTF.getText().trim().length() > 0 ?
                 illustratorTF.getText() : GUIUtils.STD_NOT_SPECIFIED_REPLACER);
+
         commentaryTA.setText(commentaryTA.getText().length() > 0 ?
                 commentaryTA.getText() : GUIUtils.NO_COMMENT_REPLACER);
 
@@ -132,12 +135,6 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
             return;
         }
 
-        Session session = HibernateUtil.openSession();
-
-        if(!editMode) {
-            editable = new Book();
-        }
-
         editable.setName(bookTitleTF.getText().trim());
         editable.setAuthor(authorCB.getSelectionModel().getSelectedItem().trim());
         editable.setGenres(genresCLV.getCheckModel().getCheckedItems());
@@ -147,11 +144,8 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
         editable.setPicAuthor(illustratorTF.getText().trim());
         editable.setCommentary(commentaryTA.getText().trim());
 
-        session.beginTransaction();
-        session.saveOrUpdate(editable);
-        session.getTransaction().commit();
+        DataUtils.saveOrUpdate(editable);
 
-        session.close();
         primaryStage.close();
     }
 
@@ -162,6 +156,8 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
         bookTitleTF.setText(editable.getName());
         authorCB.getSelectionModel().select(editable.getAuthor());
         genresCLV.getCheckModel().clearChecks();
+
+        // check - отметить, а не проверить :)
         checkGenres();
         yearPublishedTF.setText(Integer.toString(editable.getYear()));
         pubHouseCB.setValue(editable.getPublishingHouse());
@@ -170,6 +166,7 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
         commentaryTA.setText(editable.getCommentary());
     }
 
+    /** Отмечает галочками жанры, которым принадлежит книга, в списке жанров */
     private void checkGenres() {
         editable.getGenres().forEach(g ->
                 genresCLV.getCheckModel().check(g));
@@ -184,8 +181,11 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
     }
 
     @FXML private void onAddPubHouseBtn() {
+        PublishingHouse oldValue = pubHouseCB.getValue();
         if(HomeLibrary.showPubHouseEditWindow(false, null)) {
             refreshPubHouses();
+
+            // TODO: не теряем старое значение
         }
     }
 }

@@ -34,17 +34,11 @@ public class Genre {
 
     public Genre() {}
 
-    public Genre(int id, String name, Integer parentId) {
-        this.id = id;
-        this.name = name;
-        this.parentId = parentId;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genre_seq_gen")
     @SequenceGenerator(name = "genre_seq_gen",
-            sequenceName = "genre_seq", initialValue = 1,
-            allocationSize = 20)
+            sequenceName = "genre_seq", allocationSize = 20)
     @Column(name = "id_genre")
     public int getId() {
         return id;
@@ -72,7 +66,7 @@ public class Genre {
         return parentGenre;
     }
 
-    @OneToMany(mappedBy = "parentGenre", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "parentGenre", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     public Collection<Genre> getChildGenres() {
         return childGenres;
     }
@@ -102,13 +96,11 @@ public class Genre {
     }
 
     @Override
-    @Transient
     public String toString() {
         return getName();
     }
 
     @Override
-    @Transient
     public boolean equals(Object obj) {
         if(!(obj instanceof Genre)) {
             return false;

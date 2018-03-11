@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * Представляет займ книги ({@link Book}) другом ({@link Friend}).
  *
- * @version 1.0 23 Feb 2018
+ * @version 1.1 11 March 2018
  * @author Sergey Medelyan
  */
 @Entity
@@ -98,7 +98,6 @@ public class Borrowing {
     }
 
     @Override
-    @Transient
     public String toString() {
         return bookBorrowed.toString() + " borrowed by " + friendBorrowed.toString();
     }

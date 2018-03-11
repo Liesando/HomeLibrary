@@ -5,14 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.hibernate.Session;
 
-
 /**
- * LibraryOverviewConrtoller
+ * LibraryOverviewController
  *
  * Контроллер секции общей информации о библиотеке.
  *
  * @author Sergey Medelyan
- * @version 1.1 4 March 2018
+ * @version 1.2 11 March 2018
  */
 public class LibraryOverviewController {
 
@@ -26,13 +25,20 @@ public class LibraryOverviewController {
         refreshOverallInfo();
     }
 
+    /**
+     * Обновить общую информацию
+     */
     public void refreshOverallInfo() {
         Session session = HibernateUtil.openSession();
 
-        int booksCount = session.createQuery("from Book").list().size();
-        int genresCount = session.createQuery("from Genre").list().size();
-        int pubHousesCount = session.createQuery("from PublishingHouse").list().size();
-        int friendsCount = session.createQuery("from Friend").list().size();
+        int booksCount = ((Number) session.createQuery("select count(*) from Book")
+                .iterate().next()).intValue();
+        int genresCount = ((Number) session.createQuery("select count(*) from Genre")
+                .iterate().next()).intValue();
+        int pubHousesCount = ((Number) session.createQuery("select count(*) from PublishingHouse")
+                .iterate().next()).intValue();
+        int friendsCount = ((Number) session.createQuery("select count(*) from Friend")
+                .iterate().next()).intValue();
 
         session.close();
 
