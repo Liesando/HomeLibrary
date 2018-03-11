@@ -4,34 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="280a25a7-f5fc-40ae-a334-933f27d41c30" name="Default" comment="added friends section&#10;resolved 2 TODOs&#10;some small improvements allover the code">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindow.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java" />
+    <list default="true" id="280a25a7-f5fc-40ae-a334-933f27d41c30" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/.gitignore" afterPath="$PROJECT_DIR$/src/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Friend.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Friend.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanel.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanel.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/EditWindowBaseController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/EditWindowBaseController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverview.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverview.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary$1.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary$1.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Book.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Book.class" />
@@ -59,8 +33,8 @@
       <file leaf-file-name="FriendsOverviewController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="153" column="5" lean-forward="true" selection-start-line="153" selection-start-column="5" selection-end-line="153" selection-end-column="5" />
+            <state relative-caret-position="104">
+              <caret line="141" column="9" lean-forward="true" selection-start-line="141" selection-start-column="9" selection-end-line="141" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4743#4744#0" expanded="true" />
@@ -547,7 +521,7 @@
       <workItem from="1520706009793" duration="4821000" />
       <workItem from="1520753491848" duration="14546000" />
       <workItem from="1520773627879" duration="6222000" />
-      <workItem from="1520789506718" duration="2423000" />
+      <workItem from="1520789506718" duration="2456000" />
     </task>
     <task id="LOCAL-00001" summary="added book display feature">
       <created>1519759996314</created>
@@ -612,11 +586,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520709348818</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added friends section&#10;resolved 2 TODOs&#10;some small improvements allover the code">
+      <created>1520791949627</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1520791949627</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168745000" />
+    <option name="totallyTimeSpent" value="168778000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1169,8 +1150,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="153" column="5" lean-forward="true" selection-start-line="153" selection-start-column="5" selection-end-line="153" selection-end-column="5" />
+        <state relative-caret-position="104">
+          <caret line="141" column="9" lean-forward="true" selection-start-line="141" selection-start-column="9" selection-end-line="141" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4743#4744#0" expanded="true" />
