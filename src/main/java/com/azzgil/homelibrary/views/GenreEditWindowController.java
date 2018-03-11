@@ -8,7 +8,9 @@ import com.azzgil.homelibrary.utils.GUIUtils;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.hibernate.exception.ConstraintViolationException;
 
+import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -19,7 +21,7 @@ import java.util.Comparator;
  * Контроллер окна создания/редактирования жанра.
  *
  * @author Sergey Medelyan
- * @version 1.3 11 March 2018
+ * @version 1.4 11 March 2018
  */
 public class GenreEditWindowController extends EditWindowBaseController<Genre> {
 
@@ -76,6 +78,7 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
                     "Пожалуйста, введите корректное (непустое) имя жанра");
             return false;
         }
+
         return true;
     }
 
@@ -94,9 +97,32 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
             editable.setParentId(parent.getId());
         }
 
-        DataUtils.saveOrUpdate(editable);
+        try {
+            DataUtils.saveOrUpdate(editable);
+            primaryStage.close();
+        } catch (PersistenceException e) {
+            if(e.getCause() instanceof ConstraintViolationException) {
+                DataUtils.rollback();
 
-        primaryStage.close();
+                // если мы доходим сюда, значит, был вызван Session.commit()
+                // он задал ненулевое значение editable.id, переведя editable из
+                // transient state в persistent state.
+                // но, даже откатив все изменения транзакции, мы всё ещё имеем
+                // editable.id != 0. То есть в следующий раз при вызове saveOrUpdate
+                // хибернейт попытается ОБНОВИТЬ данные, которых нет, т.к.
+                // editable - persistent-объект. Таким образом здесь мы, можно сказать,
+                // "дооткатываем" изменения нашего объекта.
+                if(!editMode) {
+                    editable.setId(0);
+                }
+
+                AlertUtil.showErrorAndWait(primaryStage,"Ошибка", "Жанр с таким именем уже существует",
+                        "Пожалуйста, выберите другое имя для жанра");
+
+            } else {
+                throw e;
+            }
+        }
     }
 
     /**

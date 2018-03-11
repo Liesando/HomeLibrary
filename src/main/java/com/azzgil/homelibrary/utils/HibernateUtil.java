@@ -56,7 +56,7 @@ public class HibernateUtil {
             try {
                 sessionFactory = configuration.buildSessionFactory();
             } catch (ServiceException e) {
-                AlertUtil.showErrorAndWait("Ошибка подключения",
+                AlertUtil.showErrorAndWait(null,"Ошибка подключения",
                         "Не удалось подключиться к базе",
                         "Проверьте настройки hibernate.cfg.xml (" +
                                 "возможно, неправильно указаны адрес сервера," +

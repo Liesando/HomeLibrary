@@ -23,6 +23,8 @@ import java.util.function.Predicate;
  */
 public class DataUtils {
 
+    private static Session lastSession = null;
+
     private DataUtils() {}
 
     /** Возвращает список всех книг в базе */
@@ -119,10 +121,31 @@ public class DataUtils {
      * @param o Сохраняемый объект
      */
     public static void saveOrUpdate(Object o) {
-        Session session = HibernateUtil.openSession();
-        session.beginTransaction();
-        session.saveOrUpdate(o);
-        session.getTransaction().commit();
-        session.close();
+
+        if(lastSession != null && lastSession.isOpen()) {
+            AlertUtil.showErrorAndWait(null, "FATAL ERROR",
+                    "Повторное открытие сессии", "");
+            return;
+        }
+
+        lastSession = HibernateUtil.openSession();
+        lastSession.beginTransaction();
+        lastSession.saveOrUpdate(o);
+        lastSession.getTransaction().commit();
+        lastSession.close();
+        lastSession = null;
+    }
+
+    /**
+     * Откатывает изменения текущей транзакции последней сессии,
+     * открытой во время выполнения {@link DataUtils#saveOrUpdate(Object)},
+     * если она уже не была закрыта.
+     */
+    public static void rollback() {
+        if(lastSession != null) {
+            lastSession.getTransaction().rollback();
+            lastSession.close();
+            lastSession = null;
+        }
     }
 }

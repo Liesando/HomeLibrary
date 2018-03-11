@@ -4,20 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="280a25a7-f5fc-40ae-a334-933f27d41c30" name="Default" comment="">
+    <list default="true" id="280a25a7-f5fc-40ae-a334-933f27d41c30" name="Default" comment="fixed bug with transient-&gt;persistent state of genre that's being edited">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary$1.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Book.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Book.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Borrowing.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Borrowing.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/BorrowingId.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/BorrowingId.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Friend.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Friend.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Genre.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Genre.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/PublishingHouse.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/PublishingHouse.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/utils/AlertUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/utils/AlertUtil.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/utils/HibernateUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/utils/HibernateUtil.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/views/RootLayoutController.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/views/RootLayoutController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/RootLayout.fxml" afterPath="$PROJECT_DIR$/target/classes/views/RootLayout.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FriendsOverviewController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FriendsOverviewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="141" column="9" lean-forward="true" selection-start-line="141" selection-start-column="9" selection-end-line="141" selection-end-column="9" />
+            <state relative-caret-position="176">
+              <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4743#4744#0" expanded="true" />
@@ -44,6 +36,28 @@
                 <element signature="e#5795#5796#0" expanded="true" />
                 <element signature="e#5834#5835#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenreEditWindowController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="122" column="24" lean-forward="true" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Genre.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="120" column="18" lean-forward="false" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -58,10 +72,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HibernateUtil.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HibernateUtil.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
+            <state relative-caret-position="299">
               <caret line="85" column="7" lean-forward="false" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -73,9 +87,11 @@
       <file leaf-file-name="DataUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="67" column="64" lean-forward="true" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
-              <folding />
+            <state relative-caret-position="366">
+              <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,28 +133,8 @@
       <file leaf-file-name="AlertUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="77" column="4" lean-forward="false" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Genre.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="104" column="8" lean-forward="false" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FriendEditWindowController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+            <state relative-caret-position="164">
+              <caret line="63" column="31" lean-forward="false" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -210,11 +206,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/EditWindowBaseController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java" />
@@ -223,13 +217,15 @@
         <option value="$PROJECT_DIR$/src/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" />
       </list>
     </option>
   </component>
@@ -329,17 +325,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="homelibrary" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HomeLibrary" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HomeLibrary" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HomeLibrary" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HomeLibrary" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HomeLibrary" type="b2602c69:ProjectViewProjectNode" />
@@ -521,7 +506,7 @@
       <workItem from="1520706009793" duration="4821000" />
       <workItem from="1520753491848" duration="14546000" />
       <workItem from="1520773627879" duration="6222000" />
-      <workItem from="1520789506718" duration="2456000" />
+      <workItem from="1520789506718" duration="5936000" />
     </task>
     <task id="LOCAL-00001" summary="added book display feature">
       <created>1519759996314</created>
@@ -593,11 +578,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520791949627</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added friends section&#10;resolved 2 TODOs&#10;some small improvements allover the code">
+      <created>1520791976174</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1520791976174</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168778000" />
+    <option name="totallyTimeSpent" value="172258000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -613,8 +605,8 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -622,12 +614,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32805908" sideWeight="0.5021592" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40189874" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41189188" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41983122" sideWeight="0.49784085" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24120913" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24825397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -635,7 +627,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39891893" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -662,11 +654,12 @@
     <MESSAGE value="added add-edit-delete book feature" />
     <MESSAGE value="added magic &quot;refresh-it-all&quot; button&#10;fixed little bug with unchecking all genres while editing book" />
     <MESSAGE value="added friends section&#10;resolved 2 TODOs&#10;some small improvements allover the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="added friends section&#10;resolved 2 TODOs&#10;some small improvements allover the code" />
+    <MESSAGE value="fixed bug with transient-&gt;persistent state of genre that's being edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug with transient-&gt;persistent state of genre that's being edited" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="65" />
+      <option name="time" value="69" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -923,10 +916,10 @@
           <caret line="63" column="46" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2256#2257#0" expanded="true" />
-            <element signature="e#2327#2328#0" expanded="true" />
-            <element signature="e#3255#3256#0" expanded="true" />
-            <element signature="e#3307#3308#0" expanded="true" />
+            <element signature="e#2256#2257#0" expanded="false" />
+            <element signature="e#2327#2328#0" expanded="false" />
+            <element signature="e#3255#3256#0" expanded="false" />
+            <element signature="e#3307#3308#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -955,16 +948,6 @@
             <element signature="e#954#955#0" expanded="false" />
             <element signature="e#1009#1010#0" expanded="false" />
             <element signature="e#1057#1058#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1070,34 +1053,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="104" column="8" lean-forward="false" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="67" column="64" lean-forward="true" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="77" column="4" lean-forward="false" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1128,16 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="85" column="7" lean-forward="false" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -1150,8 +1099,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="141" column="9" lean-forward="true" selection-start-line="141" selection-start-column="9" selection-end-line="141" selection-end-column="9" />
+        <state relative-caret-position="176">
+          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4743#4744#0" expanded="true" />
@@ -1160,6 +1109,52 @@
             <element signature="e#5742#5743#0" expanded="true" />
             <element signature="e#5795#5796#0" expanded="true" />
             <element signature="e#5834#5835#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="63" column="31" lean-forward="false" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="120" column="18" lean-forward="false" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="122" column="24" lean-forward="true" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="85" column="7" lean-forward="false" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

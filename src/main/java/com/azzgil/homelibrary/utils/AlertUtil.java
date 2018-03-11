@@ -61,9 +61,9 @@ public class AlertUtil
      * @param headerText  Заголовок сообщения
      * @param contentText Сообщение
      */
-    public static void showErrorAndWait(String title, String headerText, String contentText)
+    public static void showErrorAndWait(Window owner, String title, String headerText, String contentText)
     {
-        showAlertAndWait(Alert.AlertType.ERROR, null, title, headerText, contentText);
+        showAlertAndWait(Alert.AlertType.ERROR, owner, title, headerText, contentText);
     }
 
     /**
@@ -107,7 +107,7 @@ public class AlertUtil
      */
     public static void showDataCorruptionErrorAndWait(String content)
     {
-        showErrorAndWait("Core Error",
+        showErrorAndWait(null,"Core Error",
                 "Файлы программы поверждены или отсутствуют",
                 content);
     }
@@ -120,7 +120,7 @@ public class AlertUtil
      * @param content Текст сообщения
      */
     public static void showEmptySelectionErrorAndWait(String content) {
-        showErrorAndWait("Error", "Не выбран объект", content);
+        showErrorAndWait(null,"Error", "Не выбран объект", content);
     }
 
     /**
