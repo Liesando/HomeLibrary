@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="HomeLibrary">
+    <output-path>$PROJECT_DIR$/out/artifacts/HomeLibrary</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="com.azzgil.homelibrary.HomeLibrary" />
+        <option name="description" value="" />
+        <option name="height" value="768" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="Домашняя библиотека" />
+        <option name="vendor" value="" />
+        <option name="version" value="1.0-DEV" />
+        <option name="width" value="1024" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="HomeLibrary.jar">
+        <element id="module-output" name="HomeLibrary" />
+      </element>
+      <element id="library" level="project" name="Hibernate 5.2.12-5.2.12" />
+      <element id="library" level="project" name="ojdbc6" />
+      <element id="library" level="project" name="controlsfx-8.40.14" />
+      <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-core:2.3.0" />
+      <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.3.0" />
+      <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
+      <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.3.0" />
+    </root>
+  </artifact>
+</component>
