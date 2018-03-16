@@ -26,7 +26,7 @@ import java.util.Comparator;
  *
  * Контроллер секции издательств.
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.2 8 March 2018
  */
 public class PublishingHousesOverviewController implements ICUDController {
@@ -120,7 +120,7 @@ public class PublishingHousesOverviewController implements ICUDController {
             return;
         }
 
-        Session session = HibernateUtil.openSession();
+        Session session = HibernateUtils.openSession();
         try {
             session.beginTransaction();
             for (PublishingHouse ph:

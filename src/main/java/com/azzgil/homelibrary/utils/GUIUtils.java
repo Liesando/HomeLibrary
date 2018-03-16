@@ -1,10 +1,7 @@
 package com.azzgil.homelibrary.utils;
 
 import com.azzgil.homelibrary.model.Genre;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
@@ -16,7 +13,7 @@ import javafx.util.Duration;
  * Класс-утилита, отвечает за подгрузку различных ресурсов
  * для GUI-элементов и их настройку.
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.3 11 March 2018
  */
 public class GUIUtils {
@@ -32,11 +29,16 @@ public class GUIUtils {
     public static final String DELETE_ICON = "icons/delete.png";
     public static final String EDIT_ICON = "icons/edit.png";
     public static final String REFRESH_ICON = "icons/crutch.png";
+    public static final String HISTORY_ICON = "icons/history.png";
+    public static final String GIVE_ICON = "icons/give.png";
+    public static final String RETURN_ICON = "icons/return.png";
+    public static final String FILTER_ICON = "icons/filter.png";
 
     // используется для замены содержимого элементов GUI, если они
     // пустые
-    public static final String STD_NOT_SPECIFIED_REPLACER = "<не указано>";
-    public static final String NO_COMMENT_REPLACER = "<нет комментария>";
+    public static final String STD_NOT_SPECIFIED_REPLACER = "(не указано)";
+    public static final String NO_COMMENT_REPLACER = "(нет комментария)";
+    public static final String DO_NOT_HAVE_ONE = "(не имеется)";
 
     // фабрика, которая в качестве имени ячейки
     // вместо Genre.toString() будет выводить полное имя
@@ -65,7 +67,7 @@ public class GUIUtils {
     /**
      * Загружает указанную иконку и отображает её внутри кнопки btn
      */
-    public static void loadButtonIcon(Button btn, String iconPath) {
+    public static void loadButtonIcon(Labeled btn, String iconPath) {
         loadButtonIcon(btn, iconPath, STD_BUTTON_ICON_HEIGHT, STD_BUTTON_ICON_WIDTH);
     }
 
@@ -73,10 +75,10 @@ public class GUIUtils {
      * Загружает и отображает иконку внутри указанной кнопки с указанными
      * размерами (иконки)
      */
-    public static void loadButtonIcon(Button btn, String iconPath, double heigth, double width) {
+    public static void loadButtonIcon(Labeled btn, String iconPath, double height, double width) {
         ImageView iv = new ImageView(new Image(GUIUtils.class.getClassLoader()
                 .getResourceAsStream(iconPath)));
-        iv.setFitHeight(heigth);
+        iv.setFitHeight(height);
         iv.setFitWidth(width);
         btn.setGraphic(iv);
     }

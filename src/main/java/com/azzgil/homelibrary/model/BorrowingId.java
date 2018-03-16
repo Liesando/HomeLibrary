@@ -3,7 +3,7 @@ package com.azzgil.homelibrary.model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 /**
@@ -12,7 +12,7 @@ import java.util.Objects;
  * Служебный класс. Представляет составной ключ для займа ({@link Borrowing}).
  *
  * @version 1.0 23 Feb 2018
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  */
 @Embeddable
 public class BorrowingId implements Serializable {

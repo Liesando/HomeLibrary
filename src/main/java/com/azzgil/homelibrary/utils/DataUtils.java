@@ -4,10 +4,12 @@ import com.azzgil.homelibrary.model.Book;
 import com.azzgil.homelibrary.model.Friend;
 import com.azzgil.homelibrary.model.Genre;
 import com.azzgil.homelibrary.model.PublishingHouse;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -16,9 +18,8 @@ import java.util.function.Predicate;
  *
  * Класс-утилита, предоставляет функции для извлечения данных из базы
  * и вспомогательные функции для работы с этими данными.
- * TODO: обдумать, где должны лежать методы CRUD - здесь или в контроллерах
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.2 8 March 2018
  */
 public class DataUtils {
@@ -29,24 +30,34 @@ public class DataUtils {
 
     /** Возвращает список всех книг в базе */
     public static Book[] fetchAllBooks() {
-        return Arrays.stream(fetchAllObjects("from Book"))
+        return Arrays.stream(fetchAllObjects("from Book", (books) -> {
+            for (Object o:
+                 books) {
+                Hibernate.initialize(((Book) o).getBookBorrowings());
+            }
+        }))
                 .toArray(Book[]::new);
     }
 
     /** Возвращает список всех жанров в базе */
     public static Genre[] fetchAllGenres() {
-        return Arrays.stream(fetchAllObjects("from Genre"))
+        return Arrays.stream(fetchAllObjects("from Genre", null))
                 .toArray(Genre[]::new);
     }
 
     /** Возвращает список всех издательств в базе */
     public static PublishingHouse[] fetchAllPubHouses() {
-        return Arrays.stream(fetchAllObjects("from PublishingHouse"))
+        return Arrays.stream(fetchAllObjects("from PublishingHouse", null))
                 .toArray(PublishingHouse[]::new);
     }
 
     public static Friend[] fetchAllFriends() {
-        return Arrays.stream(fetchAllObjects("from Friend"))
+        return Arrays.stream(fetchAllObjects("from Friend", objs -> {
+            for (Object o:
+                 objs) {
+                Hibernate.initialize(((Friend) o).getBookBorrowings());
+            }
+        }))
                 .toArray(Friend[]::new);
     }
 
@@ -67,9 +78,12 @@ public class DataUtils {
     }
 
     /** Возвращает список всех объектов по указанному FROM-clause. */
-    private static Object[] fetchAllObjects(String fromClause) {
-        Session session = HibernateUtil.openSession();
+    private static Object[] fetchAllObjects(String fromClause, Consumer<Object[]> actionBeforeSessionClose) {
+        Session session = HibernateUtils.openSession();
         Object[] objects = session.createQuery(fromClause).list().toArray();
+        if(actionBeforeSessionClose != null) {
+            actionBeforeSessionClose.accept(objects);
+        }
         session.close();
 
         return objects;
@@ -128,7 +142,7 @@ public class DataUtils {
             return;
         }
 
-        lastSession = HibernateUtil.openSession();
+        lastSession = HibernateUtils.openSession();
         lastSession.beginTransaction();
         lastSession.saveOrUpdate(o);
         lastSession.getTransaction().commit();

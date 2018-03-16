@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
  *
  * Вспомогательный класс для работы с FXML-файлами
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.0 27 Feb 2018
  */
 public class FXMLUtils {

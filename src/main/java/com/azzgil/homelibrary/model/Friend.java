@@ -13,7 +13,7 @@ import java.util.Collection;
  * займах ({@link Borrowing}).
  *
  * @version 1.1 11 March 2018
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  */
 @Entity
 @Table(name = "Friends")
@@ -68,7 +68,7 @@ public class Friend {
     }
 
     @OneToMany(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "id_friend")
+    @JoinColumn(name = "id_friend", updatable = false)
     public Collection<Borrowing> getBookBorrowings() {
         return bookBorrowings;
     }
@@ -104,5 +104,14 @@ public class Friend {
     @Override
     public String toString() {
         return getFio();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Friend)) {
+            return false;
+        }
+
+        return id == ((Friend) obj).id;
     }
 }

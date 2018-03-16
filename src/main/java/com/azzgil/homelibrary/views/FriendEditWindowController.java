@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
  *
  * Контроллер окна создания/редактирования друга.
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.0 11 March 2018
  */
 public class FriendEditWindowController extends EditWindowBaseController<Friend> {
@@ -32,14 +32,6 @@ public class FriendEditWindowController extends EditWindowBaseController<Friend>
             errorMessage.append("Не указано ФИО. Пожалуйста, укажите непустое ФИО.");
         }
 
-        if(phoneNumberTF.getText().trim().isEmpty()) {
-            errorMessage.append("Не указан номер телефона. Пожалуйста, укажите непустой номер.");
-        }
-
-        if(emailTF.getText().trim().isEmpty()) {
-            errorMessage.append("");
-        }
-
         if(vkIdTF.getText().trim().isEmpty()) {
             errorMessage.append("Не указан ID ВКонтакте. Пожалуйста, укажите непустой ID.");
         } else {
@@ -52,6 +44,12 @@ public class FriendEditWindowController extends EditWindowBaseController<Friend>
 
         commentaryTF.setText(commentaryTF.getText().trim().isEmpty() ?
                 GUIUtils.NO_COMMENT_REPLACER : commentaryTF.getText().trim());
+
+        phoneNumberTF.setText(phoneNumberTF.getText().trim().length() > 0 ?
+                phoneNumberTF.getText() : GUIUtils.DO_NOT_HAVE_ONE);
+
+        emailTF.setText(emailTF.getText().trim().length() > 0 ?
+                emailTF.getText() : GUIUtils.DO_NOT_HAVE_ONE);
 
         if(errorMessage.length() > 0) {
             AlertUtil.showWarningAndWait(primaryStage, "Ошибки ввода",

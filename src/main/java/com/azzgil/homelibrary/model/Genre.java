@@ -13,7 +13,7 @@ import java.util.Collection;
  * содержит информацию о книгах, относящихся к этому жанру (см. {@link Book})
  *
  * @version 1.3 8 March 2018
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  */
 @Entity
 @Table(name = "Genres")

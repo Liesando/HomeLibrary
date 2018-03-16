@@ -7,19 +7,17 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 
 /**
- * class RootLayoutController
+ * RootLayoutController
  *
  * Контроллер для корневого представления (окна) приложения. Обрабатывает
  * определённые события.
  *
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.3 6 March 2018
- * @author Sergey Medelyan
  */
 public class RootLayoutController {
 
@@ -74,15 +72,6 @@ public class RootLayoutController {
     private void onPublishingHousesRBtn() {
         homeLibrary.showSectionLayout(Section.PublishingHouses);
     }
-
-//    TODO: add global all-app user capabilities turning on/off methods
-//    @FXML
-//    private boolean onValidateEdit() {
-//        boolean result = homeLibrary.getCurrentController() != null
-//                && homeLibrary.getCurrentController().validateUpdate();
-//        editMI.setDisable(!result);
-//        return result;
-//    }
 
     @FXML
     private void onEdit() {

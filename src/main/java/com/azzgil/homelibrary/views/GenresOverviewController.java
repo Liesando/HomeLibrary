@@ -19,7 +19,7 @@ import java.util.*;
  * Контроллер для секции обзора жанров. Обрабатывает события
  * интерфейса
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.4 8 March 2018
  */
 public class GenresOverviewController implements ICUDController {
@@ -86,6 +86,7 @@ public class GenresOverviewController implements ICUDController {
         int indexOfParent;
 
         // next one is just to obtain access to indexOf() method :\
+        // since we really need it (see below)
         List lgenres = Arrays.asList(genres);
 
         // здесь мы хотим создать между узлами дерева такую же
@@ -178,7 +179,7 @@ public class GenresOverviewController implements ICUDController {
             return;
         }
 
-        Session session = HibernateUtil.openSession();
+        Session session = HibernateUtils.openSession();
         try {
             session.beginTransaction();
             for (TreeItem<Genre> t:
@@ -209,7 +210,7 @@ public class GenresOverviewController implements ICUDController {
                         "Существуют книги этого жанра или его поджанров. " +
                                 "Чтобы удаление жанра стало возможным, " +
                                 "сначала удалите эти книги либо измените их жанр\n\n" +
-                                "Книги, могущие вызвать конфликт:\n" +
+                                "Книги, вызывающие конфликт:\n" +
                                 info);
 
             } else {

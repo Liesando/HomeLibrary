@@ -10,7 +10,7 @@ import javafx.stage.Window;
  * Вспомогательный класс для отображения диалоговых окон с сообщениями пользователю.
  *
  * @version 1.3 8 March 2018
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  */
 public class AlertUtil
 {
@@ -128,7 +128,7 @@ public class AlertUtil
      * (используется только во время разработки)
      * TODO: удалить после завершения разработки
      */
-    public static void showDevTimeMessage() {
-        showInformationAndWait("", "", "dev");
+    public static void showDevTimeMessage(String message) {
+        showInformationAndWait("", "", message);
     }
 }

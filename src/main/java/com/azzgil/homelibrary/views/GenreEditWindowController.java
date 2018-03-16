@@ -20,7 +20,7 @@ import java.util.Comparator;
  *
  * Контроллер окна создания/редактирования жанра.
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.4 11 March 2018
  */
 public class GenreEditWindowController extends EditWindowBaseController<Genre> {
@@ -70,9 +70,6 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
 
     @Override
     protected boolean validateData() {
-
-        // TODO: посмотреть, что больше жанров с таким именем
-
         if(genreNameTF.getText().trim().isEmpty()) {
             AlertUtil.showWarningAndWait("Warning", "Пустое имя жанра",
                     "Пожалуйста, введите корректное (непустое) имя жанра");
@@ -109,9 +106,10 @@ public class GenreEditWindowController extends EditWindowBaseController<Genre> {
                 // transient state в persistent state.
                 // но, даже откатив все изменения транзакции, мы всё ещё имеем
                 // editable.id != 0. То есть в следующий раз при вызове saveOrUpdate
-                // хибернейт попытается ОБНОВИТЬ данные, которых нет, т.к.
-                // editable - persistent-объект. Таким образом здесь мы, можно сказать,
-                // "дооткатываем" изменения нашего объекта.
+                // хибернейт попытается ОБНОВИТЬ данные, т. к. editable -
+                // persistent-объект. Но этих данных ещё нет в базе, т. к.
+                // транзакция была отменена. Таким образом здесь мы, можно сказать,
+                // "дооткатываем" изменения нашего объекта до transient-state.
                 if(!editMode) {
                     editable.setId(0);
                 }

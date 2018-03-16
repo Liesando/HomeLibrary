@@ -21,7 +21,7 @@ import java.util.Arrays;
  * Контроллер окна создания/редактирования книги. Управляет настройкой
  * и событиями интерфейса.
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.1 11 March 2018
  */
 public class BookEditWindowController extends EditWindowBaseController<Book> {
@@ -168,8 +168,10 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
 
     /** Отмечает галочками жанры, которым принадлежит книга, в списке жанров */
     private void checkGenres() {
-        editable.getGenres().forEach(g ->
-                genresCLV.getCheckModel().check(g));
+        if(editable.getGenres() != null) {
+            editable.getGenres().forEach(g ->
+                    genresCLV.getCheckModel().check(g));
+        }
     }
 
     @FXML
@@ -181,7 +183,7 @@ public class BookEditWindowController extends EditWindowBaseController<Book> {
     }
 
     @FXML private void onAddPubHouseBtn() {
-        PublishingHouse oldValue = pubHouseCB.getValue();
+//        PublishingHouse oldValue = pubHouseCB.getValue();
         if(HomeLibrary.showPubHouseEditWindow(false, null)) {
             refreshPubHouses();
 

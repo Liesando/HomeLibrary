@@ -49,6 +49,21 @@
     -fx-text-fill: #505050;
 }
 
+.label-book-persists {
+    -fx-text-fill: #005500;
+    -fx-underline: true;
+}
+
+.label-book-is-borrowed {
+    -fx-text-fill: #002591;
+    -fx-underline: true;
+}
+
+.label-book-is-lost {
+    -fx-text-fill: #910000;
+    -fx-underline: true;
+}
+
 .common-page {
     -fx-padding: 8px 0px 8px -16px;
     -fx-font-size: 20px;

@@ -4,7 +4,7 @@ import com.azzgil.homelibrary.model.*;
 import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.DataUtils;
 import com.azzgil.homelibrary.utils.FXMLUtils;
-import com.azzgil.homelibrary.utils.HibernateUtil;
+import com.azzgil.homelibrary.utils.HibernateUtils;
 import com.azzgil.homelibrary.views.*;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -23,8 +23,8 @@ import java.io.IOException;
  * Главный класс приложения. Отвечает за запуск и конфигурацию программы,
  * отображение интерфейса и открытие окон создания/редактирования сущностей.
  *
- * @version dev-0.8 8 March 2018
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
+ * @version 1.0-DEV 16 March 2018
  */
 public class HomeLibrary extends Application {
 
@@ -141,7 +141,7 @@ public class HomeLibrary extends Application {
     public void start(Stage primaryStage) {
         instance = this;
         registerMappingClasses();
-        HibernateUtil.buildSessionFactory();
+        HibernateUtils.buildSessionFactory();
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle(APP_TITLE);
@@ -163,11 +163,11 @@ public class HomeLibrary extends Application {
      * в объекты средствами Hibernate).
      */
     private void registerMappingClasses() {
-        HibernateUtil.registerMappingClass(PublishingHouse.class);
-        HibernateUtil.registerMappingClass(Genre.class);
-        HibernateUtil.registerMappingClass(Book.class);
-        HibernateUtil.registerMappingClass(Friend.class);
-        HibernateUtil.registerMappingClass(Borrowing.class);
+        HibernateUtils.registerMappingClass(PublishingHouse.class);
+        HibernateUtils.registerMappingClass(Genre.class);
+        HibernateUtils.registerMappingClass(Book.class);
+        HibernateUtils.registerMappingClass(Friend.class);
+        HibernateUtils.registerMappingClass(Borrowing.class);
     }
 
     /**
@@ -283,7 +283,7 @@ public class HomeLibrary extends Application {
      * Освобождает занятые ресурсы.
      */
     private void releaseResources() {
-        HibernateUtil.destroySessionFactory();
+        HibernateUtils.destroySessionFactory();
     }
 
     public static BookOverviewController getBookOverviewController() {
@@ -322,6 +322,7 @@ public class HomeLibrary extends Application {
             FXMLLoader loader = FXMLUtils.configureLoaderFor("views/GenreEditWindow.fxml");
 
             Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setTitle("Жанр");
             stage.setScene(new Scene(loader.load()));
             GenreEditWindowController controller = loader.getController();
             controller.setPrimaryStage(stage);
@@ -360,7 +361,7 @@ public class HomeLibrary extends Application {
 
     /**
      * Создаёт окно редактирования издательств в одном из двух режимов:
-     * создание жанра (editMode = false) и редактирование жанра
+     * создание издательств (editMode = false) и редактирование издательств
      * (editMode = false).
      *
      * @param editMode включить режим редактирования?
@@ -370,6 +371,7 @@ public class HomeLibrary extends Application {
             FXMLLoader loader = FXMLUtils.configureLoaderFor("views/PublishingHouseEditWindow.fxml");
 
             Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setTitle("Издательство");
             stage.setScene(new Scene(loader.load()));
             PubHouseEditWindowController controller = loader.getController();
             controller.setPrimaryStage(stage);
@@ -418,6 +420,7 @@ public class HomeLibrary extends Application {
             FXMLLoader loader = FXMLUtils.configureLoaderFor("views/BookEditWindow.fxml");
 
             Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setTitle("Книга");
             stage.setScene(new Scene(loader.load()));
             BookEditWindowController controller = loader.getController();
             controller.setPrimaryStage(stage);
@@ -443,17 +446,18 @@ public class HomeLibrary extends Application {
     }
 
     /**
-     * Создаёт окно редактирования книги в одном из двух режимов:
-     * создание жанра (editMode = false) и редактирование жанра
+     * Создаёт окно редактирования друга в одном из двух режимов:
+     * создание друга (editMode = false) и редактирование друга
      * (editMode = false).
      *
      * @param editMode включить режим редактирования?
      */
-    public static void showFriendEditWindow(boolean editMode, Friend friend) {
+    public static boolean showFriendEditWindow(boolean editMode, Friend friend) {
         try {
             FXMLLoader loader = FXMLUtils.configureLoaderFor("views/FriendEditWindow.fxml");
 
             Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setTitle("Друг");
             stage.setScene(new Scene(loader.load()));
             FriendEditWindowController controller = loader.getController();
             controller.setPrimaryStage(stage);
@@ -469,6 +473,8 @@ public class HomeLibrary extends Application {
                 if(!editMode) {
                     instance.libraryOverviewController.refreshOverallInfo();
                 }
+            } else {
+                return false;
             }
 
         } catch (IOException e) {
@@ -476,5 +482,67 @@ public class HomeLibrary extends Application {
             e.printStackTrace();
             Platform.exit();
         }
+
+        return true;
+    }
+
+    /**
+     * Создаёт окно редактирования займа в одном из режимов:
+     * создание, и редактирование жанра
+     * (editMode = false).
+     *
+     * @param mode Режим контроллера
+     */
+    public static boolean showBorrowingEditWindow(BorrowingEditWindowController.BorrowMode mode, Borrowing borrowing) {
+        try {
+            FXMLLoader loader = FXMLUtils.configureLoaderFor("views/BorrowingEditWindow.fxml");
+
+            Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setTitle("Займ книги");
+            stage.setScene(new Scene(loader.load()));
+            BorrowingEditWindowController controller = loader.getController();
+            controller.setPrimaryStage(stage);
+
+            controller.changeMode(mode, borrowing);
+            stage.showAndWait();
+
+            if(controller.isSuccessful()) {
+                HomeLibrary.refreshBooks();
+                HomeLibrary.refreshFriends();
+                instance.bookOverviewController.refreshBooks();
+                instance.friendsOverviewController.refreshFriends();
+            } else {
+                return false;
+            }
+
+        } catch (IOException e) {
+            AlertUtil.showDataCorruptionErrorAndWait("views/GenreEditWindow.fxml");
+            e.printStackTrace();
+            Platform.exit();
+        }
+
+        return true;
+    }
+
+    public static String showFilterBooksWindow() {
+        try {
+            FXMLLoader loader = FXMLUtils.configureLoaderFor("views/FilterBooksWindow.fxml");
+
+            Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setTitle("Фильтр");
+            stage.setScene(new Scene(loader.load()));
+            FilterBooksWindowController controller = loader.getController();
+            controller.setPrimaryStage(stage);
+
+            stage.showAndWait();
+            return controller.getFormedQuery();
+
+        } catch (IOException e) {
+            AlertUtil.showDataCorruptionErrorAndWait("views/GenreEditWindow.fxml");
+            e.printStackTrace();
+            Platform.exit();
+        }
+
+        return null;
     }
 }

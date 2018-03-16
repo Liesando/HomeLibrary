@@ -4,12 +4,56 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="280a25a7-f5fc-40ae-a334-933f27d41c30" name="Default" comment="fixed bug with transient-&gt;persistent state of genre that's being edited">
+    <list default="true" id="280a25a7-f5fc-40ae-a334-933f27d41c30" name="Default" comment="final stage!&#10;not realized:&#10; - show book borrowing history&#10; - show overall borrowing history&#10; - show friend borrowing history">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtils.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BorrowingEditWindow.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BorrowingEditWindowController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FilterBooksWindow.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FilterBooksWindowController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/filter.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/give.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/history.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/return.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/ICUDController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/ICUDController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/Section.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/Section.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Friend.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Friend.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/FXMLUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/FXMLUtils.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverview.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverview.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverviewController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanel.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanel.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/theme.css" afterPath="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/theme.css" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/HomeLibrary.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Book.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Book.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Borrowing.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Borrowing.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/BorrowingId.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/BorrowingId.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Friend.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/model/Friend.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/utils/AlertUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/utils/AlertUtil.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/utils/HibernateUtil.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/views/BookOverviewController.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/views/BookOverviewController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/views/RootLayoutController.class" afterPath="$PROJECT_DIR$/target/classes/com/azzgil/homelibrary/views/RootLayoutController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/BookOverview.fxml" afterPath="$PROJECT_DIR$/target/classes/views/BookOverview.fxml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/theme.css" afterPath="$PROJECT_DIR$/target/classes/views/theme.css" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,61 +66,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FriendsOverviewController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FilterBooksWindowController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FilterBooksWindowController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="76" column="60" lean-forward="false" selection-start-line="76" selection-start-column="60" selection-end-line="76" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#10612#10613#0" expanded="true" />
+                <element signature="e#10660#10661#0" expanded="true" />
+                <element signature="e#10698#10699#0" expanded="true" />
+                <element signature="e#10732#10733#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BorrowingEditWindowController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BorrowingEditWindowController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="120" column="17" lean-forward="false" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FriendsOverviewController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="113" column="8" lean-forward="false" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4743#4744#0" expanded="true" />
-                <element signature="e#4804#4805#0" expanded="true" />
-                <element signature="e#5664#5665#0" expanded="true" />
-                <element signature="e#5742#5743#0" expanded="true" />
-                <element signature="e#5795#5796#0" expanded="true" />
-                <element signature="e#5834#5835#0" expanded="true" />
+                <element signature="e#2591#3108#0" expanded="true" />
+                <element signature="e#3107#3108#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenreEditWindowController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java">
+      <file leaf-file-name="HomeLibrary.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="122" column="24" lean-forward="true" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+            <state relative-caret-position="110">
+              <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3980#3981#0" expanded="true" />
+                <element signature="e#4008#4009#0" expanded="true" />
+                <element signature="e#8985#8986#0" expanded="true" />
+                <element signature="e#9019#9020#0" expanded="true" />
+                <element signature="e#9110#9111#0" expanded="true" />
+                <element signature="e#9164#9165#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Genre.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java">
+      <file leaf-file-name="ICUDController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/ICUDController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="120" column="18" lean-forward="false" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
+            <state relative-caret-position="114">
+              <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java">
+      <file leaf-file-name="Section.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/Section.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="164" column="56" lean-forward="false" selection-start-line="164" selection-start-column="56" selection-end-line="164" selection-end-column="56" />
+            <state relative-caret-position="198">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HibernateUtil.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java">
+      <file leaf-file-name="LibraryOverviewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="85" column="7" lean-forward="false" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
+            <state relative-caret-position="-264">
+              <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,36 +158,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java">
+      <file leaf-file-name="PubHouseEditWindowController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
+            <state relative-caret-position="-480">
+              <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenresOverviewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="130" column="33" lean-forward="false" selection-start-line="130" selection-start-column="33" selection-end-line="130" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookEditWindowController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="146" column="41" lean-forward="false" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -121,8 +173,8 @@
       <file leaf-file-name="PublishingHousesOverviewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="99" column="33" lean-forward="false" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,12 +182,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlertUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java">
+      <file leaf-file-name="RootLayoutController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="164">
-              <caret line="63" column="31" lean-forward="false" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
-              <folding />
+              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,8 +203,8 @@
         <option value="hibernate-main-5.2" />
         <option value="Interface" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -161,7 +215,12 @@
       <find>spaci</find>
       <find>create</find>
       <find>styles</find>
+      <find>DataUt</find>
+      <find>Sergey Medelyan</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Sergey Medelyan &amp; Maria Laktionova</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -182,12 +241,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/home_library.java" />
         <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/MainApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/Section.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/bookPanel.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/bookPanelController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverview.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverview.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/FXMLUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayout.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanel.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindow.fxml" />
@@ -196,36 +253,41 @@
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverview.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHouseOverviewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/theme.css" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/ICUDController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindow.fxml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverviewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Friend.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/EditWindowBaseController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/test.css" />
+        <option value="$PROJECT_DIR$/src/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/theme.css" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Friend.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/FXMLUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverviewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/test.css" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" />
-        <option value="$PROJECT_DIR$/src/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/ICUDController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/Section.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FilterBooksWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BorrowingEditWindowController.java" />
       </list>
     </option>
   </component>
@@ -266,6 +328,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -328,14 +392,23 @@
             </path>
             <path>
               <item name="HomeLibrary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HomeLibrary" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HomeLibrary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HomeLibrary" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HomeLibrary" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
@@ -506,7 +579,16 @@
       <workItem from="1520706009793" duration="4821000" />
       <workItem from="1520753491848" duration="14546000" />
       <workItem from="1520773627879" duration="6222000" />
-      <workItem from="1520789506718" duration="5936000" />
+      <workItem from="1520789506718" duration="5979000" />
+      <workItem from="1520840419110" duration="7893000" />
+      <workItem from="1520966264601" duration="3086000" />
+      <workItem from="1521009614779" duration="8846000" />
+      <workItem from="1521130445587" duration="4153000" />
+      <workItem from="1521135979241" duration="164000" />
+      <workItem from="1521136400177" duration="11000" />
+      <workItem from="1521138060566" duration="4871000" />
+      <workItem from="1521179646528" duration="1313000" />
+      <workItem from="1521182915718" duration="9138000" />
     </task>
     <task id="LOCAL-00001" summary="added book display feature">
       <created>1519759996314</created>
@@ -585,11 +667,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520791976174</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fixed bug with transient-&gt;persistent state of genre that's being edited">
+      <created>1520795881943</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1520795881943</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172258000" />
+    <option name="totallyTimeSpent" value="211776000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -619,9 +708,9 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24825397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27809525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -655,113 +744,56 @@
     <MESSAGE value="added magic &quot;refresh-it-all&quot; button&#10;fixed little bug with unchecking all genres while editing book" />
     <MESSAGE value="added friends section&#10;resolved 2 TODOs&#10;some small improvements allover the code" />
     <MESSAGE value="fixed bug with transient-&gt;persistent state of genre that's being edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug with transient-&gt;persistent state of genre that's being edited" />
+    <MESSAGE value="final stage!&#10;not realized:&#10; - show book borrowing history&#10; - show overall borrowing history&#10; - show friend borrowing history" />
+    <option name="LAST_COMMIT_MESSAGE" value="final stage!&#10;not realized:&#10; - show book borrowing history&#10; - show overall borrowing history&#10; - show friend borrowing history" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="69" />
+      <option name="time" value="90" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.2.12.Final.jar!/org/hibernate/Session.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk-9.0.4/lib/src.zip!/java.base/java/io/IOException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/views/theme.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/Section.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.2.12.Final.jar!/org/hibernate/event/spi/SaveOrUpdateEvent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.2.12.Final.jar!/org/hibernate/internal/SessionImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="596" column="0" lean-forward="false" selection-start-line="596" selection-start-column="0" selection-end-line="596" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk-9.0.4/lib/src.zip!/java.base/java/util/function/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverview.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverview.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayout.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayout.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverview.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverview.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/ICUDController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
           <folding />
         </state>
       </provider>
@@ -770,7 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="52" lean-forward="false" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -783,158 +814,67 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverview.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
           <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/views/BookOverview.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/views/BookOverview.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindow.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverview.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHouseEditWindow.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHouseEditWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-206">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverview.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk-9.0.4/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30006">
-          <caret line="1785" column="0" lean-forward="false" selection-start-line="1785" selection-start-column="0" selection-end-line="1785" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverview.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-665">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Friend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1717#1718#0" expanded="false" />
-            <element signature="e#1754#1755#0" expanded="false" />
-            <element signature="e#1806#1807#0" expanded="false" />
-            <element signature="e#1850#1851#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="63" column="13" lean-forward="false" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="63" column="46" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2256#2257#0" expanded="false" />
-            <element signature="e#2327#2328#0" expanded="false" />
-            <element signature="e#3255#3256#0" expanded="false" />
-            <element signature="e#3307#3308#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1944">
-          <caret line="118" column="27" lean-forward="false" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2733#2734#0" expanded="false" />
-            <element signature="e#2760#2761#0" expanded="false" />
-            <element signature="e#3983#3984#0" expanded="false" />
-            <element signature="e#4032#4033#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -952,27 +892,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="33" column="51" lean-forward="true" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1004">
-          <caret line="59" column="1" lean-forward="false" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/java/jdk-9.0.4/lib/src.zip!/java.base/java/net/AbstractPlainSocketImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/test.css" />
+    <entry file="file://$PROJECT_DIR$/src/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1512">
+          <caret line="110" column="7" lean-forward="false" selection-start-line="110" selection-start-column="7" selection-end-line="110" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BorrowingEditWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -980,159 +918,218 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/FXMLUtils.java">
+    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-5.2.12.Final.jar!/org/hibernate/Session.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        <state relative-caret-position="298">
+          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FilterBooksWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/test.css">
+    <entry file="file://$PROJECT_DIR$/target/classes/hibernate.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="108">
+          <caret line="6" column="68" lean-forward="false" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/theme.css">
+    <entry file="jar:///usr/java/jdk-9.0.4/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="36" column="11" lean-forward="true" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+        <state relative-caret-position="30006">
+          <caret line="1785" column="0" lean-forward="false" selection-start-line="1785" selection-start-column="0" selection-end-line="1785" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanel.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-          <folding>
-            <marker date="1520790648058" expanded="true" signature="4354:4367" ph="..." />
-          </folding>
-        </state>
-      </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="77" column="6" lean-forward="false" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
+        <state relative-caret-position="522">
+          <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1521010791548" expanded="true" signature="4623:4636" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/theme.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="23" column="76" lean-forward="false" selection-start-line="23" selection-start-column="76" selection-end-line="23" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
-          <caret line="110" column="7" lean-forward="false" selection-start-line="110" selection-start-column="7" selection-end-line="110" selection-end-column="7" />
+        <state relative-caret-position="1134">
+          <caret line="63" column="24" lean-forward="false" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverview.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="99" column="33" lean-forward="false" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="164" column="56" lean-forward="false" selection-start-line="164" selection-start-column="56" selection-end-line="164" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="146" column="41" lean-forward="false" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="130" column="33" lean-forward="false" selection-start-line="130" selection-start-column="33" selection-end-line="130" selection-end-column="33" />
+        <state relative-caret-position="252">
+          <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Borrowing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="144">
+          <caret line="8" column="66" lean-forward="true" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4743#4744#0" expanded="true" />
-            <element signature="e#4804#4805#0" expanded="true" />
-            <element signature="e#5664#5665#0" expanded="true" />
-            <element signature="e#5742#5743#0" expanded="true" />
-            <element signature="e#5795#5796#0" expanded="true" />
-            <element signature="e#5834#5835#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/BorrowingId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Friend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/PublishingHouse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/AlertUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="63" column="31" lean-forward="false" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/model/Genre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="120" column="18" lean-forward="false" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="216">
+          <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/DataUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
+        <state relative-caret-position="378">
+          <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/FXMLUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/GUIUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookEditWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="45" lean-forward="false" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookOverviewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BookPanelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="45" lean-forward="false" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6877#6878#0" expanded="true" />
+            <element signature="e#6926#6927#0" expanded="true" />
+            <element signature="e#7239#7240#0" expanded="true" />
+            <element signature="e#7297#7298#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendEditWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-973">
+          <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1141,20 +1138,128 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenreEditWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="122" column="24" lean-forward="true" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+        <state relative-caret-position="-108">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/utils/HibernateUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/GenresOverviewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="85" column="7" lean-forward="false" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
+        <state relative-caret-position="168">
+          <caret line="212" column="50" lean-forward="false" selection-start-line="212" selection-start-column="50" selection-end-line="212" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/LibraryOverviewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-264">
+          <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PubHouseEditWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/PublishingHousesOverviewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/RootLayoutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/HomeLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3980#3981#0" expanded="true" />
+            <element signature="e#4008#4009#0" expanded="true" />
+            <element signature="e#8985#8986#0" expanded="true" />
+            <element signature="e#9019#9020#0" expanded="true" />
+            <element signature="e#9110#9111#0" expanded="true" />
+            <element signature="e#9164#9165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/ICUDController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/Section.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FilterBooksWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="76" column="60" lean-forward="false" selection-start-line="76" selection-start-column="60" selection-end-line="76" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10612#10613#0" expanded="true" />
+            <element signature="e#10660#10661#0" expanded="true" />
+            <element signature="e#10698#10699#0" expanded="true" />
+            <element signature="e#10732#10733#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/BorrowingEditWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="120" column="17" lean-forward="false" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/azzgil/homelibrary/views/FriendsOverviewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="113" column="8" lean-forward="false" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2591#3108#0" expanded="true" />
+            <element signature="e#3107#3108#0" expanded="true" />
           </folding>
         </state>
       </provider>

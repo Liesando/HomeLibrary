@@ -9,7 +9,7 @@ import java.util.Date;
  * Представляет займ книги ({@link Book}) другом ({@link Friend}).
  *
  * @version 1.1 11 March 2018
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  */
 @Entity
 @Table(name = "Borrowing")
@@ -47,9 +47,27 @@ public class Borrowing {
         return isDamaged;
     }
 
+    @Transient
+    public boolean isDamaged() {
+        return isDamaged == 't' || isDamaged == 'T';
+    }
+
+    public void setDamaged(boolean damaged) {
+        isDamaged = damaged ? 't' : 'f';
+    }
+
     @Column(name = "is_lost")
     public char getIsLost() {
         return isLost;
+    }
+
+    @Transient
+    public boolean isLost() {
+        return isLost == 't' || isLost == 'T';
+    }
+
+    public void setLost(boolean lost) {
+        isLost = lost ? 't' : 'f';
     }
 
     @Column(name = "return_date")
@@ -99,6 +117,7 @@ public class Borrowing {
 
     @Override
     public String toString() {
-        return bookBorrowed.toString() + " borrowed by " + friendBorrowed.toString();
+        return (bookBorrowed != null ? bookBorrowed.toString() : "<нет книги>") + " borrowed by " +
+                (friendBorrowed != null ? friendBorrowed.toString() : "<нет друга>");
     }
 }

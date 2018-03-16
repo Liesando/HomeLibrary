@@ -1,6 +1,6 @@
 package com.azzgil.homelibrary.views;
 
-import com.azzgil.homelibrary.utils.HibernateUtil;
+import com.azzgil.homelibrary.utils.HibernateUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.hibernate.Session;
@@ -10,7 +10,7 @@ import org.hibernate.Session;
  *
  * Контроллер секции общей информации о библиотеке.
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.2 11 March 2018
  */
 public class LibraryOverviewController {
@@ -29,7 +29,7 @@ public class LibraryOverviewController {
      * Обновить общую информацию
      */
     public void refreshOverallInfo() {
-        Session session = HibernateUtil.openSession();
+        Session session = HibernateUtils.openSession();
 
         int booksCount = ((Number) session.createQuery("select count(*) from Book")
                 .iterate().next()).intValue();

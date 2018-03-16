@@ -2,6 +2,9 @@ package com.azzgil.homelibrary.views;
 
 import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.model.Book;
+import com.azzgil.homelibrary.model.Borrowing;
+import com.azzgil.homelibrary.model.BorrowingId;
+import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.GUIUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,17 +18,25 @@ import javafx.scene.layout.GridPane;
  *
  * Контроллер панельки конкретной книги. Обрабатывает события интерфейса
  *
- * @author Sergey Medelyan
- * @version 1.2 8 March 2018
+ * @author Sergey Medelyan & Maria Laktionova
+ * @version 1.3 14 March 2018
  */
 public class BookPanelController {
 
-    private final static String DELETE_BTN_TOOLTIP = "Удалить эту книгу";
-    private final static String EDIT_BTN_TOOLTIP = "Редактировать...";
+    // тексты вслывающих подсказок
+    private static final String DELETE_BTN_TOOLTIP = "Удалить эту книгу";
+    private static final String EDIT_BTN_TOOLTIP = "Редактировать...";
+    private static final String HISTORY_BTN_TOOLTIP = "Показать историю займов книги";
+    private static final String GIVE_BTN_TOOLTIP = "Одолжить книгу другу...";
+    private static final String RETURN_BTN_TOOLTIP = "Зарегистрировать возвращение книги...";
 
     /** Текст для "кнопки" сворота-разворота содержимого */
-    private final static String MORE_INFO = "подробнее";
-    private final static String LESS_INFO = "свернуть";
+    private static final String MORE_INFO = "подробнее";
+    private static final String LESS_INFO = "свернуть";
+
+    private static final String BOOK_PERSISTS_LBL_TEXT = "в наличии";
+    private static final String BOOK_IS_BORROWED_LBL_TEXT = "книга сейчас у %s";
+    private static final String BOOK_IS_LOST_LBL_TEXT = "книга утеряна! (виновник: %s)";
 
     private BookOverviewController parentController;
     private Book book;
@@ -44,8 +55,11 @@ public class BookPanelController {
     @FXML private Label bookYearLbl;
     @FXML private Label bookIllustratorLbl;
     @FXML private Label bookTranslatorLbl;
+    @FXML private Label bookPersistenceLbl;
     @FXML private Button deleteBtn;
     @FXML private Button editBtn;
+    @FXML private Button showBorrowingHistoryBtn;
+    @FXML private Button giveOrReturnBtn;
 
 
     @FXML
@@ -54,8 +68,10 @@ public class BookPanelController {
 
         GUIUtils.loadButtonIcon(deleteBtn, GUIUtils.DELETE_ICON);
         GUIUtils.loadButtonIcon(editBtn, GUIUtils.EDIT_ICON);
+        GUIUtils.loadButtonIcon(showBorrowingHistoryBtn, GUIUtils.HISTORY_ICON);
         GUIUtils.addTooltipToButton(deleteBtn, DELETE_BTN_TOOLTIP);
         GUIUtils.addTooltipToButton(editBtn, EDIT_BTN_TOOLTIP);
+        GUIUtils.addTooltipToButton(showBorrowingHistoryBtn, HISTORY_BTN_TOOLTIP);
     }
 
     @FXML
@@ -87,10 +103,27 @@ public class BookPanelController {
     public void setBook(Book book) {
         this.book = book;
         updateBookInfo();
+        switchGiveOrReturnBtn();
     }
 
     /**
-     * Отображает содержимое текущей заданной книги
+     * Меняет внешний вид кнопки займа/возврата книги
+     * в зависимости от наличия самой книги
+     */
+    private void switchGiveOrReturnBtn() {
+        if(book.isPresent()) {
+            GUIUtils.loadButtonIcon(giveOrReturnBtn, GUIUtils.GIVE_ICON);
+            GUIUtils.addTooltipToButton(giveOrReturnBtn, GIVE_BTN_TOOLTIP);
+            giveOrReturnBtn.setOnAction(actionEvent -> onGiveBtn());
+        } else {
+            GUIUtils.loadButtonIcon(giveOrReturnBtn, GUIUtils.RETURN_ICON);
+            GUIUtils.addTooltipToButton(giveOrReturnBtn, RETURN_BTN_TOOLTIP);
+            giveOrReturnBtn.setOnAction(actionEvent -> onReturnBtn());
+        }
+    }
+
+    /**
+     * Обновляет отображаемое содержимое текущей заданной книги
      */
     private void updateBookInfo() {
         if(book == null) {
@@ -103,6 +136,8 @@ public class BookPanelController {
             bookIllustratorLbl.setText("");
             bookTranslatorLbl.setText("");
             bookCommentaryTA.setText("");
+            bookPersistenceLbl.setText("");
+            bookPersistenceLbl.setTooltip(null);
         } else {
             bookTitleLbl.setText(book.getName());
             bookAuthorLbl.setText(book.getAuthor());
@@ -113,6 +148,24 @@ public class BookPanelController {
             bookIllustratorLbl.setText(book.getPicAuthor());
             bookTranslatorLbl.setText(book.getTranslator());
             bookCommentaryTA.setText(book.getCommentary());
+            bookPersistenceLbl.getStyleClass().clear();
+
+            if(book.isPresent()) {
+                bookPersistenceLbl.setText(BOOK_PERSISTS_LBL_TEXT);
+                bookPersistenceLbl.getStyleClass().add("label-book-persists");
+                bookPersistenceLbl.setTooltip(GUIUtils.createTooltip(BOOK_PERSISTS_LBL_TEXT));
+            } else {
+                bookPersistenceLbl.setTooltip(GUIUtils.createTooltip(book.getLastBorrowing().getCommentary()));
+                if (book.getLastBorrowing().isLost()) {
+                    bookPersistenceLbl.setText(String.format(BOOK_IS_LOST_LBL_TEXT,
+                            book.getLastBorrowing().getFriendBorrowed().toString()));
+                    bookPersistenceLbl.getStyleClass().add("label-book-is-lost");
+                } else {
+                    bookPersistenceLbl.setText(String.format(BOOK_IS_BORROWED_LBL_TEXT,
+                            book.getLastBorrowing().getFriendBorrowed().toString()));
+                    bookPersistenceLbl.getStyleClass().add("label-book-is-borrowed");
+                }
+            }
         }
     }
 
@@ -133,5 +186,32 @@ public class BookPanelController {
     @FXML
     private void onEditBtn() {
         HomeLibrary.showBookEditWindow(true, book);
+    }
+
+    private void onGiveBtn() {
+        Borrowing borrowing = new Borrowing();
+        borrowing.setId(new BorrowingId());
+        borrowing.getId().setIdBook(book.getId());
+        borrowing.setBookBorrowed(book);
+
+        if(HomeLibrary.showBorrowingEditWindow(BorrowingEditWindowController.BorrowMode.GIVE,
+                borrowing)) {
+            switchGiveOrReturnBtn();
+        }
+    }
+
+    private void onReturnBtn() {
+        Borrowing borrowing = book.getLastBorrowing();
+        if(borrowing == null) {
+            AlertUtil.showErrorAndWait(null, "Ошибка кода",
+                    "Неверно назначена функция onReturnBtn",
+                    "Обратитесь к разработчику");
+            return;
+        }
+
+        if(HomeLibrary.showBorrowingEditWindow(BorrowingEditWindowController.BorrowMode.RETURN,
+                borrowing)) {
+            switchGiveOrReturnBtn();
+        }
     }
 }

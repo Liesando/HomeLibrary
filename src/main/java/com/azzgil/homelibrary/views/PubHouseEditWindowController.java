@@ -9,9 +9,9 @@ import javafx.scene.control.TextField;
 /**
  * PubHouseEditWindowController
  *
- * Контроллер окна создания/редактирования издательства
+ * Контроллер окна создания/редактирования издательства.
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.2 11 March 2018 */
 public class PubHouseEditWindowController
         extends EditWindowBaseController<PublishingHouse> {

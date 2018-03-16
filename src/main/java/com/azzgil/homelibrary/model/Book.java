@@ -11,8 +11,8 @@ import java.util.Comparator;
  * информацию о жанрах, к которым она отнесена, и истории займов,
  * а именно: кто и когда взял книгу (см. {@link Borrowing}).
  *
- * @version 1.2 11 March 2018
- * @author Sergey Medelyan
+ * @version 1.5 14 March 2018
+ * @author Sergey Medelyan & Maria Laktionova
  */
 @Entity
 @Table(name = "Books")
@@ -90,8 +90,12 @@ public class Book {
         return genres;
     }
 
+    // здесь при попытке удаления книги хибернейт попытается
+    // залезть в таблицу BORROWING и задать id_book = null,
+    // т. к. книга будет удалена; но это PK и он не может быть null,
+    // поэтому мы запрещаем обновлять таблицу BORROWING при изменении книги
     @OneToMany(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "id_book")
+    @JoinColumn(name = "id_book", updatable = false)
     public Collection<Borrowing> getBookBorrowings() {
         return bookBorrowings;
     }
@@ -141,6 +145,15 @@ public class Book {
         return String.format("\"%1$s\", %2$d", getName(), getYear());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Book)) {
+            return false;
+        }
+
+        return id == ((Book) obj).id;
+    }
+
     @Transient
     public String getGenresAsString() {
         StringBuilder sb = new StringBuilder();
@@ -168,10 +181,11 @@ public class Book {
     public boolean isPresent() {
         Borrowing last = getLastBorrowing();
         if(last == null) {
-            return false;
+            return true;
         }
 
-        return last.getReturnDate().after(last.getId().getBorrowingDate());
+        return !last.getReturnDate().before(last.getId().getBorrowingDate())
+                && !last.isLost();
     }
 
     /**
@@ -179,7 +193,7 @@ public class Book {
      * @return Последний займ или null, если займов не было
      */
     @Transient
-    private Borrowing getLastBorrowing() {
+    public Borrowing getLastBorrowing() {
         return bookBorrowings.stream().max(Comparator.comparing(b -> b.getId()
                     .getBorrowingDate())).orElse(null);
     }

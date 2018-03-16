@@ -2,11 +2,12 @@ package com.azzgil.homelibrary.views;
 
 import com.azzgil.homelibrary.HomeLibrary;
 import com.azzgil.homelibrary.ICUDController;
+import com.azzgil.homelibrary.model.Book;
 import com.azzgil.homelibrary.model.Friend;
 import com.azzgil.homelibrary.utils.AlertUtil;
 import com.azzgil.homelibrary.utils.DataUtils;
 import com.azzgil.homelibrary.utils.GUIUtils;
-import com.azzgil.homelibrary.utils.HibernateUtil;
+import com.azzgil.homelibrary.utils.HibernateUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,13 +16,15 @@ import org.hibernate.Session;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * FriendsOverviewController
  *
  * Контроллер секции друзей.
  *
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  * @version 1.0 11 March 2018
  */
 public class FriendsOverviewController implements ICUDController {
@@ -65,6 +68,7 @@ public class FriendsOverviewController implements ICUDController {
      * Настраивает внешний вид таблицы и формат столбцов
      */
     private void setupTableView() {
+        // добавляем всплывающие подсказки строкам таблицы
         tableView.setRowFactory(param -> new TableRow<>() {
             @Override
             protected void updateItem(Friend item, boolean empty) {
@@ -137,14 +141,14 @@ public class FriendsOverviewController implements ICUDController {
     @Override
     public void delete() {
         if(!validateDelete()) {
-            AlertUtil.showEmptySelectionErrorAndWait("Выберите друга из списка");
+
             return;
         }
 
-        Session session = HibernateUtil.openSession();
+        Session session = HibernateUtils.openSession();
         session.beginTransaction();
         tableView.getSelectionModel().getSelectedItems()
-                .forEach(f -> session.delete(f));
+                .forEach(session::delete);
         session.getTransaction().commit();
         session.close();
 
@@ -155,12 +159,42 @@ public class FriendsOverviewController implements ICUDController {
 
     @Override
     public boolean validateUpdate() {
-        return tableView.getSelectionModel().getSelectedItem() != null;
+        boolean result = tableView.getSelectionModel().getSelectedItem() != null;
+        if(!result) {
+            AlertUtil.showEmptySelectionErrorAndWait("Выберите друга из списка");
+        }
+
+        return result;
     }
 
     @Override
     public boolean validateDelete() {
-        return validateUpdate();
+        if(!validateUpdate()) {
+            return false;
+        }
+
+        Session session = HibernateUtils.openSession();
+        Supplier<Stream<Book>> booksSup = ()->Arrays.stream(HomeLibrary.getAllBooks());
+
+        String[] badFriends = tableView.getSelectionModel().getSelectedItems().stream()
+                .filter(f ->
+                    f.getBookBorrowings().stream()
+                            .anyMatch(bb -> (booksSup.get().anyMatch(b ->
+                                    !b.isPresent() && b.equals(bb.getBookBorrowed())))))
+                .map(Friend::getFio).toArray(String[]::new);
+        session.close();
+
+        if(badFriends.length > 0) {
+            String badGuys = String.join("\n", badFriends);
+            AlertUtil.showErrorAndWait(null, "Ошибка",
+                    "Обнаружены не возвращённые книги",
+                    String.format("Среди выбранных друзей есть те, кто не вернул взятые книги.\n" +
+                            "Зарегистрируйте возврат взятых ими книг или отредактируйте\n" +
+                            "данные займов.\n\nДолжники:\n%s", badGuys));
+            return false;
+        }
+
+        return true;
     }
 
     @Override

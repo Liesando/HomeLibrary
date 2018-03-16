@@ -14,7 +14,7 @@ import java.util.Collection;
  * данным издательством.
  *
  * @version 1.1 4 March 2018
- * @author Sergey Medelyan
+ * @author Sergey Medelyan & Maria Laktionova
  */
 @Entity
 @Table(name = "Publishing_Houses")
