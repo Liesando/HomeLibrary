@@ -97,7 +97,7 @@ public class PublishingHousesOverviewController implements ICUDController {
 
         AlertUtil.showInformationAndWait("Книги издательства",
                 pubHouse.getName(),
-                (books.equals("") ? books : "у этого издательство ещё нет книг"));
+                (!books.equals("") ? books : "у этого издательство ещё нет книг"));
     }
 
     @Override
